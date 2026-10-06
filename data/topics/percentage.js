@@ -74,7 +74,37 @@
         solution: ['After increase: 200 × 1.1 = $220.', 'After decrease: 220 × 0.9 = $198.', 'Overall decrease = {2|200} × 100% = 1%.'] },
       { id: 'p14', level: 'standard', prompt: '15% of a number is 63. Find the number.', answer: 420, solution: ['15% = 63, so 1% = 4.2.', '100% = 420.'] },
       { id: 'p15', level: 'challenge', prompt: 'Sam saves 30% of his salary. His salary then rises by 20% and he saves 40% of his new salary. His new savings are what percentage of his old savings?', answer: 160, unit: '%',
-        hint: 'Let the old salary be $100 and compare the savings.', solution: ['Old salary $100: old savings = $30.', 'New salary = $120: new savings = 40% × 120 = $48.', '{48|30} × 100% = 160%.'] }
+        hint: 'Let the old salary be $100 and compare the savings.', solution: ['Old salary $100: old savings = $30.', 'New salary = $120: new savings = 40% × 120 = $48.', '{48|30} × 100% = 160%.'] },
+
+      // Exam-style: original items, mark allocations modelled on school papers (1 mark per step of working).
+      { id: 'px1', level: 'standard', prompt: 'A watch has a price of $400 before GST.',
+        parts: [{ label: '(a)', prompt: 'Find its price including 9% GST.', answer: 436, unit: '$', marks: 2 },
+                { label: '(b)', prompt: 'A shop gives a 15% discount on the GST-inclusive price. Find the selling price.', answer: 370.6, dp: 2, unit: '$', marks: 2 }],
+        solution: ['400 × 1.09 = $436.', '85% of 436 = 0.85 × 436 = $370.60.'] },
+      { id: 'px2', level: 'standard', prompt: 'A museum had 12 500 visitors in 2023 and 15 000 visitors in 2024.',
+        parts: [{ label: '(a)', prompt: 'Find the percentage increase from 2023 to 2024.', answer: 20, unit: '%', marks: 2 },
+                { label: '(b)', prompt: 'In 2025 the number of visitors fell by 8% from 2024. Find the number of visitors in 2025.', answer: 13800, marks: 2 }],
+        solution: ['Increase = 2 500. {2500|12500} × 100% = 20%.', '92% of 15 000 = 0.92 × 15 000 = 13 800.'] },
+      { id: 'px3', level: 'standard', prompt: 'After a 12% pay rise, Mr Wong\'s monthly salary is $4 592.',
+        parts: [{ label: '(a)', prompt: 'Find his salary before the pay rise.', answer: 4100, unit: '$', marks: 2 },
+                { label: '(b)', prompt: 'Express the pay rise as a percentage of his new salary, correct to 1 decimal place.', answer: 10.7143, dp: 1, unit: '%', marks: 2 }],
+        hint: 'The new salary is 112% of the old salary.', solution: ['112% = $4 592, so 1% = $41 and 100% = $4 100.', 'Pay rise = 4 592 - 4 100 = $492.', '{492|4592} × 100% = 10.7% (1 d.p.).'] },
+      { id: 'px4', level: 'standard', marks: 3, prompt: 'Jia Hui deposits $8 000 in an account paying simple interest at 1.5% per year. The total amount in the account is $8 720. For how many years was the money deposited?', answer: 6, unit: 'years',
+        hint: 'Interest = total - principal.', solution: ['Interest = 8 720 - 8 000 = $720.', '720 = {8000 × 1.5 × T|100} = 120T.', 'T = 6 years.'] },
+      { id: 'px5', level: 'challenge', prompt: 'In a school, 40% of the students are boys. 25% of the boys and 35% of the girls wear glasses.',
+        parts: [{ label: '(a)', prompt: 'What percentage of all the students wear glasses?', answer: 31, unit: '%', marks: 3 },
+                { label: '(b)', prompt: '62 students wear glasses. Find the total number of students in the school.', answer: 200, marks: 2 }],
+        hint: 'Take 100 students to start with.', solution: ['Of 100 students: 40 boys and 60 girls.', 'Glasses = 25% × 40 + 35% × 60 = 10 + 21 = 31, so 31%.', '31% = 62, so 1% = 2 and the total = 200.'] },
+      { id: 'px6', level: 'standard', prompt: 'A phone was sold at a 27% discount for $584.',
+        parts: [{ label: '(a)', prompt: 'Find the original price of the phone.', answer: 800, unit: '$', marks: 2 },
+                { label: '(b)', prompt: 'The shop had bought the phone for $640. Find its percentage loss on this sale.', answer: 8.75, unit: '%', marks: 2 }],
+        hint: 'After a 27% discount the selling price is 73% of the original.', solution: ['73% = $584, so 1% = $8 and 100% = $800.', 'Loss = 640 - 584 = $56.', '{56|640} × 100% = 8.75%.'] },
+      { id: 'px7', level: 'standard', marks: 3, prompt: 'Ravi\'s monthly salary is $3 200. He spends 25% of it on rent, {1|8} of it on food and $1 120 on transport. He saves the rest. What percentage of his salary does he save?', answer: 27.5, unit: '%',
+        hint: 'Work out each amount in dollars, then subtract from the salary.', solution: ['Rent = 0.25 × 3 200 = $800. Food = 3 200 ÷ 8 = $400.', 'Spent = 800 + 400 + 1 120 = $2 320.', 'Saved = 3 200 - 2 320 = $880.', '{880|3200} × 100% = 27.5%.'] },
+      { id: 'px8', level: 'challenge', prompt: 'Mr Tan deposits $5 000 in a bank that pays 2% interest per year, compounded yearly.',
+        parts: [{ label: '(a)', prompt: 'Find the total amount in the account after 3 years.', answer: 5306.04, dp: 2, unit: '$', marks: 3 },
+                { label: '(b)', prompt: 'The same sum earns simple interest at 2% per year for 3 years. How much more interest does compound interest give?', answer: 6.04, dp: 2, unit: '$', marks: 2 }],
+        hint: 'Total amount = P(1 + r/100)^n.', solution: ['Total = 5 000 × 1.02^3 = 5 000 × 1.061208 = $5 306.04.', 'Compound interest = $306.04.', 'Simple interest = 5 000 × 2 × 3 ÷ 100 = $300.', 'Difference = $6.04.'] }
     ],
     generators: [
       { id: 'percent-of', level: 'foundation', make: function (r) {

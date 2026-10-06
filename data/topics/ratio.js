@@ -82,7 +82,36 @@
         hint: 'Let 1 unit be $x. Write both ratios as equations in x.', solution: ['Let the amounts be 2u and 5u. Then (2u - 30) : (5u - 30) = 1 : 4.', '4(2u - 30) = 5u - 30, so 8u - 120 = 5u - 30, so 3u = 90 and u = 30.', 'Tom: 5 × 30 = $150. Check: 60 - 30 = 30 and 150 - 30 = 120, and 30 : 120 = 1 : 4 ✓.'] },
       { id: 'r15', level: 'challenge', prompt: 'Ravi, Siti and Jun share some sweets. Ravi gets {1|3} of the total. Siti and Jun share the rest in the ratio 3 : 5. Jun gets 20 more sweets than Siti.',
         parts: [{ label: '(a)', prompt: 'How many sweets does Siti get?', answer: 30 }, { label: '(b)', prompt: 'How many sweets were there altogether?', answer: 120 }],
-        solution: ['Siti : Jun = 3 : 5, so the difference is 2 units = 20 and 1 unit = 10.', 'Siti = 30, Jun = 50, so Siti and Jun have 80 sweets.', '80 is {2|3} of the total, so the total = 80 ÷ 2 × 3 = 120.'] }
+        solution: ['Siti : Jun = 3 : 5, so the difference is 2 units = 20 and 1 unit = 10.', 'Siti = 30, Jun = 50, so Siti and Jun have 80 sweets.', '80 is {2|3} of the total, so the total = 80 ÷ 2 × 3 = 120.'] },
+
+      // Exam-style: original items, mark allocations modelled on school papers (1 mark per step of working).
+      { id: 'rx1', level: 'standard', type: 'ratio', marks: 2, prompt: 'Express 2.4 km : 800 m in its simplest form.', answer: '3:1',
+        hint: 'Write both quantities in the same unit first.', solution: ['2.4 km = 2 400 m.', '2 400 : 800 = 3 : 1.'] },
+      { id: 'rx2', level: 'standard', prompt: 'The numbers of red, blue and green pens in a box are in the ratio 3 : 4 : 5. There are 24 more green pens than red pens.',
+        parts: [{ label: '(a)', prompt: 'Find the total number of pens in the box.', answer: 144, marks: 2 },
+                { label: '(b)', prompt: '12 more blue pens are added to the box. Find the new ratio of red : blue : green in its simplest form.', type: 'ratio', answer: '3:5:5', marks: 2 }],
+        hint: 'Green - red = 5 - 3 = 2 units.', solution: ['2 units = 24, so 1 unit = 12.', 'Total = 12 units = 12 × 12 = 144.', 'Red = 36, blue = 48 + 12 = 60, green = 60.', '36 : 60 : 60 = 3 : 5 : 5.'] },
+      { id: 'rx3', level: 'standard', prompt: 'On a map drawn to a scale of 1 : 20 000, a park is shown as a rectangle 8 cm by 5 cm.',
+        parts: [{ label: '(a)', prompt: 'Find the actual length of the longer side in km.', answer: 1.6, unit: 'km', marks: 2 },
+                { label: '(b)', prompt: 'Find the actual area of the park in km².', answer: 1.6, unit: 'km²', marks: 2 }],
+        hint: '1 cm on the map is 20 000 cm = 200 m in real life.', solution: ['8 × 20 000 = 160 000 cm = 1.6 km.', '5 × 20 000 = 100 000 cm = 1 km.', 'Area = 1.6 × 1 = 1.6 km².'] },
+      { id: 'rx4', level: 'standard', prompt: 'Ali cycles 18 km in 45 minutes at a constant speed.',
+        parts: [{ label: '(a)', prompt: 'Find his speed in km/h.', answer: 24, unit: 'km/h', marks: 2 },
+                { label: '(b)', prompt: 'At this speed, how many minutes will he take to cycle 30 km?', answer: 75, unit: 'min', marks: 2 }],
+        hint: '45 minutes = 0.75 hours.', solution: ['Speed = 18 ÷ 0.75 = 24 km/h.', 'Time = 30 ÷ 24 = 1.25 h = 75 minutes.'] },
+      { id: 'rx5', level: 'challenge', marks: 3, prompt: 'The ratio of Amy\'s savings to Bala\'s savings is 3 : 7. Bala gives Amy $60 and they now have the same amount. How much did Bala have at first?', answer: 210, unit: '$',
+        hint: 'Bala\'s amount falls by $60 and Amy\'s rises by $60.', solution: ['Let the savings be 3u and 7u.', '3u + 60 = 7u - 60, so 4u = 120 and u = 30.', 'Bala = 7 × 30 = $210.'] },
+      { id: 'rx6', level: 'standard', prompt: 'Mei drove 210 km from Singapore to Kuantan at a constant speed of 84 km/h. She then drove a further 90 km at 72 km/h.',
+        parts: [{ label: '(a)', prompt: 'Express 84 km/h in m/s, correct to 2 decimal places.', answer: 23.3333, dp: 2, unit: 'm/s', marks: 1 },
+                { label: '(b)', prompt: 'Find the time taken for the first part of the journey, in minutes.', answer: 150, unit: 'min', marks: 2 },
+                { label: '(c)', prompt: 'Find her average speed for the whole journey in km/h.', answer: 80, unit: 'km/h', marks: 3 }],
+        hint: 'Average speed = total distance ÷ total time, not the mean of the two speeds.', solution: ['84 × 1 000 ÷ 3 600 = 23.33 m/s (2 d.p.).', '210 ÷ 84 = 2.5 h = 150 minutes.', 'Second part: 90 ÷ 72 = 1.25 h.', 'Total distance = 300 km and total time = 3.75 h.', 'Average speed = 300 ÷ 3.75 = 80 km/h.'] },
+      { id: 'rx7', level: 'standard', prompt: 'The time T minutes taken to fill a tank is inversely proportional to the number N of identical pipes used. 8 pipes take 30 minutes to fill the tank.',
+        parts: [{ label: '(a)', prompt: 'Write down an equation connecting T and N. T =', type: 'expression', answer: '240/N', marks: 2 },
+                { label: '(b)', prompt: 'Two of the 8 pipes are faulty and cannot be used. Find the extra time needed to fill the tank.', answer: 10, unit: 'min', marks: 2 }],
+        hint: 'Inverse proportion means T × N is constant.', solution: ['T × N = 30 × 8 = 240, so T = {240|N}.', 'With 6 pipes: T = 240 ÷ 6 = 40 minutes.', 'Extra time = 40 - 30 = 10 minutes.'] },
+      { id: 'rx8', level: 'challenge', marks: 3, prompt: 'Oats, nuts and raisins in a snack mix are in the ratio 4 : 1 : 3 by mass. Betty adds 60 g of raisins and the ratio becomes 8 : 2 : 9. Find the total mass of the new mix in grams.', answer: 380, unit: 'g',
+        hint: 'Write the original ratio as 8 : 2 : 6 so that oats and nuts match the new ratio.', solution: ['4 : 1 : 3 = 8 : 2 : 6. Oats and nuts did not change.', 'Raisins went from 6 units to 9 units, so 3 units = 60 g and 1 unit = 20 g.', 'New total = (8 + 2 + 9) × 20 = 380 g.'] }
     ],
     generators: [
       { id: 'share', level: 'standard', make: function (r) {

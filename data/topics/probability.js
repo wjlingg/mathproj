@@ -76,7 +76,17 @@
         hint: 'Find P(RR), P(BB) and P(YY) and add.', solution: ['P(RR) = {5|10} × {4|9} = {20|90}.', 'P(BB) = {3|10} × {2|9} = {6|90}.', 'P(YY) = {2|10} × {1|9} = {2|90}.', 'Total = {28|90} = {14|45}.'] },
       { id: 'b15', level: 'challenge', prompt: 'A bag has 4 red and some blue balls. The probability of picking red is {2|5}.',
         parts: [{ label: '(a)', prompt: 'How many balls are in the bag?', answer: 10 }, { label: '(b)', prompt: 'Two balls are picked without replacement. Find the probability that both are red.', answer: '2/15' }],
-        solution: ['{4|n} = {2|5} so n = 10.', 'P(both red) = {4|10} × {3|9} = {12|90} = {2|15}.'] }
+        solution: ['{4|n} = {2|5} so n = 10.', 'P(both red) = {4|10} × {3|9} = {12|90} = {2|15}.'] },
+
+      // Exam-style: original items, mark allocations modelled on school papers.
+      { id: 'bx1', level: 'standard', prompt: 'A bag contains 24 balls: 9 are red, 7 are yellow and the rest are green. A ball is chosen at random.',
+        parts: [{ label: '(a)', prompt: 'Find the probability that the ball is either red or yellow.', answer: '2/3', marks: 1 },
+                { label: '(b)', prompt: 'x more red balls are added to the bag so that the probability of choosing a red ball becomes {1|2}. Find x.', answer: 6, marks: 3 }],
+        hint: 'After adding x red balls there are 9 + x red balls out of 24 + x.', solution: ['Red or yellow = 16 balls. P = {16|24} = {2|3}.', '{9 + x|24 + x} = {1|2}.', '2(9 + x) = 24 + x, so 18 + 2x = 24 + x and x = 6.'] },
+      { id: 'bx2', level: 'standard', prompt: 'A box has 8 red pens and 4 blue pens. Two pens are taken at random, one after the other, without replacement.',
+        parts: [{ label: '(a)', prompt: 'Find the probability that both pens are blue.', answer: '1/11', marks: 2 },
+                { label: '(b)', prompt: 'Find the probability that the two pens are of different colours.', answer: '16/33', marks: 2 }],
+        hint: 'For (b), add P(red then blue) and P(blue then red).', solution: ['P(both blue) = {4|12} × {3|11} = {12|132} = {1|11}.', 'P(red, blue) = {8|12} × {4|11} = {32|132}.', 'P(blue, red) = {4|12} × {8|11} = {32|132}.', 'P(different) = {64|132} = {16|33}.'] }
     ],
     generators: []
   });
