@@ -106,7 +106,20 @@
         parts: [{ label: '(a)', prompt: 'Find the value of a.', answer: 3, marks: 1 },
                 { label: '(b)', prompt: 'Find the value of b.', answer: -11, marks: 1 },
                 { label: '(c)', prompt: 'Hence solve x^2 + 6x - 2 = 0. Give the positive solution correct to 2 decimal places.', answer: 0.3166, dp: 2, marks: 2 }],
-        hint: 'a is half of the coefficient of x.', solution: ['(x + 3)^2 = x^2 + 6x + 9, so a = 3.', 'x^2 + 6x - 2 = (x + 3)^2 - 9 - 2 = (x + 3)^2 - 11, so b = -11.', '(x + 3)^2 = 11, so x + 3 = ±sqrt(11).', 'x = -3 + 3.3166 = 0.32 (2 d.p.) for the positive solution.'] }
+        hint: 'a is half of the coefficient of x.', solution: ['(x + 3)^2 = x^2 + 6x + 9, so a = 3.', 'x^2 + 6x - 2 = (x + 3)^2 - 9 - 2 = (x + 3)^2 - 11, so b = -11.', '(x + 3)^2 = 11, so x + 3 = ±sqrt(11).', 'x = -3 + 3.3166 = 0.32 (2 d.p.) for the positive solution.'] },
+      { id: 'ax12', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise completely 2a^2 - 98b^2.', answer: '2(a+7b)(a-7b)',
+        hint: 'Take out the common factor 2 first, then use the difference of two squares.', solution: ['2a^2 - 98b^2 = 2(a^2 - 49b^2).', '= 2(a + 7b)(a - 7b).'] },
+      { id: 'ax13', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise 15y^2 - 17y - 4.', answer: '(3y-4)(5y+1)',
+        hint: 'Look for factors of 15 and of -4 that combine to give -17.', solution: ['(3y - 4)(5y + 1) = 15y^2 + 3y - 20y - 4 = 15y^2 - 17y - 4 ✓.'] },
+      { id: 'ax14', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise completely 10yz - 15y + 8xz - 12x.', answer: '(2z-3)(5y+4x)',
+        hint: 'Group the terms in pairs: 5y(2z - 3) and 4x(2z - 3).', solution: ['10yz - 15y = 5y(2z - 3) and 8xz - 12x = 4x(2z - 3).', 'Together: (2z - 3)(5y + 4x).'] },
+      { id: 'ax15', level: 'standard', type: 'expression', marks: 2, prompt: 'Express {4x - 28|x^2 - 7x} as a fraction in its simplest form.', answer: '4/x',
+        hint: 'Factorise the top and the bottom.', solution: ['4x - 28 = 4(x - 7) and x^2 - 7x = x(x - 7).', 'Cancel (x - 7): {4|x}.'] },
+      { id: 'ax16', level: 'challenge', type: 'expression', marks: 3, prompt: 'Make t the subject of the formula V = {k|1 + t}.', answer: '(k-V)/V',
+        hint: 'Multiply both sides by (1 + t) first.', solution: ['V(1 + t) = k.', '1 + t = {k|V}.', 't = {k|V} - 1 = {k - V|V}.'] },
+      { id: 'ax17', level: 'challenge', prompt: 'It is given that x = 3 is one solution of 2x^2 - bx - 3 = 0, where b is a constant.',
+        parts: [{ label: '(a)', prompt: 'Find the value of b.', answer: 5, marks: 2 }, { label: '(b)', prompt: 'Find the other solution of the equation.', answer: -0.5, marks: 2 }],
+        hint: 'Substitute x = 3 to find b, then factorise.', solution: ['2(9) - 3b - 3 = 0, so 15 = 3b and b = 5.', '2x^2 - 5x - 3 = (2x + 1)(x - 3) = 0.', 'The other solution is x = -{1|2} = -0.5.'] }
     ],
     generators: [
       { id: 'linear', level: 'foundation', make: function (r) {
