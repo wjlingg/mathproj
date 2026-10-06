@@ -83,9 +83,17 @@
       { id: 'av18', level: 'challenge', marks: 2, type: 'mcq', prompt: 'Class A has a mean mark of 65 and a standard deviation of 4. Class B has a mean mark of 65 and a standard deviation of 10. Which class has more consistent marks?', options: ['Class A', 'Class B'], answer: 0,
         solution: ['A smaller standard deviation means the marks are closer to the mean, so Class A is more consistent.'] },
       { id: 'av19', level: 'challenge', marks: 3, prompt: 'The values 1, 2 and 3 have frequencies 2, 5 and 3. Find the standard deviation.', answer: 0.7,
-        hint: 'SD = sqrt({Σfx^2|Σf} - ({Σfx|Σf})^2).', solution: ['Σf = 10, Σfx = 2 + 10 + 9 = 21, so the mean = 2.1.', 'Σfx^2 = 2 + 20 + 27 = 49, so {Σfx^2|Σf} = 4.9.', 'SD = sqrt(4.9 - 4.41) = sqrt(0.49) = 0.7.'] },
+        hint: 'SD = sqrt({Σfx^2|Σf} - mean^2).', solution: ['Σf = 10, Σfx = 2 + 10 + 9 = 21, so the mean = 2.1.', 'Σfx^2 = 2 + 20 + 27 = 49, so {Σfx^2|Σf} = 4.9.', 'SD = sqrt(4.9 - 4.41) = sqrt(0.49) = 0.7.'] },
       { id: 'av20', level: 'challenge', marks: 3, prompt: 'Five numbers have a mean of 10 and a standard deviation of 3. Find the sum of the squares of the five numbers, Σx^2.', answer: 545,
-        solution: ['SD^2 = {Σx^2|n} - mean^2.', '9 = {Σx^2|5} - 100, so {Σx^2|5} = 109.', 'Σx^2 = 545.'] }
+        solution: ['SD^2 = {Σx^2|n} - mean^2.', '9 = {Σx^2|5} - 100, so {Σx^2|5} = 109.', 'Σx^2 = 545.'] },
+
+      // Sec 4 style
+      { id: 'av21', level: 'challenge', prompt: 'The monthly salaries of the workers in a company: $2 800 (6 workers), $3 200 (x workers), $4 000 (10 workers), $5 000 (2 workers) and $24 000 (1 worker). The mean salary is $4 400.',
+        parts: [{ label: '(a)', prompt: 'Find x.', answer: 6, marks: 3 }, { label: '(b)', prompt: 'Find the median salary ($).', answer: 4000, marks: 1 },
+                { label: '(c)', prompt: 'Which average describes a typical salary better?', type: 'mcq', options: ['The mean', 'The median'], answer: 1, marks: 1 }],
+        solution: ['Σfx = 16 800 + 3 200x + 40 000 + 10 000 + 24 000 = 90 800 + 3 200x, and Σf = 19 + x.', '90 800 + 3 200x = 4 400(19 + x) = 83 600 + 4 400x, so 7 200 = 1 200x and x = 6.', '25 workers: the 13th salary is the median. Cumulative frequencies are 6, 12, 22, so the median is $4 000.', 'The $24 000 is an extreme value that pulls the mean up, so the median is better.'] },
+      { id: 'av22', level: 'challenge', marks: 2, prompt: 'The sum of three numbers p, q and r is 90 and p^2 + q^2 + r^2 = 3 000. Find the standard deviation of the three numbers.', answer: 10,
+        solution: ['Mean = 30.', 'SD = sqrt({3000|3} - 30^2) = sqrt(1000 - 900) = 10.'] }
     ],
     generators: [
       { id: 'median', level: 'foundation', make: function (r) {

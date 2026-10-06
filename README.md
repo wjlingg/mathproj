@@ -35,7 +35,7 @@ data/                 syllabus, glossary, formulae, topics/<id>.js
 
 ## Topics
 
-Ready: Ratio and Proportion, Percentage, Algebraic Manipulation and Linear Equations, Pythagoras' Theorem, Probability, Primes/HCF/LCM, Integers and Rational Numbers, Approximation and Estimation, Angles/Lines/Polygons, Perimeter/Area/Volume, Data Handling, Direct and Inverse Proportion, Linear Inequalities, Number Patterns and Sequences, Linear Graphs and Simultaneous Equations, Congruence and Similarity, Mean/Median/Mode, Indices and Standard Form, Quadratic Equations and Graphs, Set Language, Trigonometry, Sine and Cosine Rules, Properties of Circles, Bearings, Speed-Time Graphs. The remaining syllabus topics appear as "Coming soon".
+Ready: Ratio and Proportion, Percentage, Algebraic Manipulation and Linear Equations, Pythagoras' Theorem, Probability, Primes/HCF/LCM, Integers and Rational Numbers, Approximation and Estimation, Angles/Lines/Polygons, Perimeter/Area/Volume, Data Handling, Direct and Inverse Proportion, Linear Inequalities, Number Patterns and Sequences, Linear Graphs and Simultaneous Equations, Congruence and Similarity, Mean/Median/Mode, Indices and Standard Form, Quadratic Equations and Graphs, Set Language, Trigonometry, Sine and Cosine Rules, Properties of Circles, Bearings, Speed-Time Graphs, Vectors, Matrices, Cumulative Frequency and Box Plots, Money Matters (interest, hire purchase, exchange rates), Graphs of Functions. The remaining syllabus topics appear as "Coming soon".
 
 ## Notes
 

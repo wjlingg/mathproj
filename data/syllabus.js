@@ -34,6 +34,9 @@ EMATH.syllabus = {
     { id: 'quadratics', title: 'Quadratic Equations and Graphs', strand: 'number-algebra', levels: [3, 4] },
     { id: 'sets', title: 'Set Language and Notation', strand: 'number-algebra', levels: [3], check: 'Unsure whether this sits in Sec 2 or Sec 3.' },
     { id: 'speed-time', title: 'Speed-Time Graphs', strand: 'number-algebra', levels: [3], check: 'Added from the Sec 3 papers; level placement to be confirmed.' },
+    { id: 'matrices', title: 'Matrices', strand: 'number-algebra', levels: [4], check: 'Previously believed out of 4052, but several 2026 Sec 4 prelim papers set matrix questions. Confirm against the MOE syllabus.' },
+    { id: 'money-maths', title: 'Money Matters: Interest, Hire Purchase and Exchange Rates', strand: 'number-algebra', levels: [3, 4], check: 'Added from the Sec 3-4 papers; level placement to be confirmed.' },
+    { id: 'curve-graphs', title: 'Graphs of Functions and Their Features', strand: 'number-algebra', levels: [4], check: 'Added from the Sec 4 papers; level placement to be confirmed.' },
 
     { id: 'angles', title: 'Angles, Lines and Polygons', strand: 'geometry', levels: [1, 2] },
     { id: 'mensuration', title: 'Perimeter, Area and Volume', strand: 'geometry', levels: [1, 2, 3] },

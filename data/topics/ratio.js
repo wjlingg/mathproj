@@ -111,7 +111,10 @@
                 { label: '(b)', prompt: 'Two of the 8 pipes are faulty and cannot be used. Find the extra time needed to fill the tank.', answer: 10, unit: 'min', marks: 2 }],
         hint: 'Inverse proportion means T × N is constant.', solution: ['T × N = 30 × 8 = 240, so T = {240|N}.', 'With 6 pipes: T = 240 ÷ 6 = 40 minutes.', 'Extra time = 40 - 30 = 10 minutes.'] },
       { id: 'rx8', level: 'challenge', marks: 3, prompt: 'Oats, nuts and raisins in a snack mix are in the ratio 4 : 1 : 3 by mass. Betty adds 60 g of raisins and the ratio becomes 8 : 2 : 9. Find the total mass of the new mix in grams.', answer: 380, unit: 'g',
-        hint: 'Write the original ratio as 8 : 2 : 6 so that oats and nuts match the new ratio.', solution: ['4 : 1 : 3 = 8 : 2 : 6. Oats and nuts did not change.', 'Raisins went from 6 units to 9 units, so 3 units = 60 g and 1 unit = 20 g.', 'New total = (8 + 2 + 9) × 20 = 380 g.'] }
+        hint: 'Write the original ratio as 8 : 2 : 6 so that oats and nuts match the new ratio.', solution: ['4 : 1 : 3 = 8 : 2 : 6. Oats and nuts did not change.', 'Raisins went from 6 units to 9 units, so 3 units = 60 g and 1 unit = 20 g.', 'New total = (8 + 2 + 9) × 20 = 380 g.'] },
+      { id: 'rx9', level: 'standard', prompt: 'On a map, a road of actual length 12 km is shown as a line 6 cm long. A lake is shown with an area of 1.65 cm^2 on the map.',
+        parts: [{ label: '(a)', prompt: 'Express the scale of the map as 1 : n. Find n.', answer: 200000, marks: 1 }, { label: '(b)', prompt: 'Find the actual area of the lake in km^2.', answer: 6.6, unit: 'km²', marks: 2 }],
+        hint: '1 km^2 = 10 000 000 000 cm^2.', solution: ['12 km = 1 200 000 cm, and 1 200 000 ÷ 6 = 200 000.', 'Area scale = 200 000^2 = 4 × 10^10, so the area = 1.65 × 4 × 10^10 cm^2 = 6.6 × 10^10 cm^2.', '1 km^2 = 10^10 cm^2, so the area = 6.6 km^2.'] }
     ],
     generators: [
       { id: 'share', level: 'standard', make: function (r) {

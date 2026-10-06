@@ -86,7 +86,13 @@
       { id: 'bx2', level: 'standard', prompt: 'A box has 8 red pens and 4 blue pens. Two pens are taken at random, one after the other, without replacement.',
         parts: [{ label: '(a)', prompt: 'Find the probability that both pens are blue.', answer: '1/11', marks: 2 },
                 { label: '(b)', prompt: 'Find the probability that the two pens are of different colours.', answer: '16/33', marks: 2 }],
-        hint: 'For (b), add P(red then blue) and P(blue then red).', solution: ['P(both blue) = {4|12} × {3|11} = {12|132} = {1|11}.', 'P(red, blue) = {8|12} × {4|11} = {32|132}.', 'P(blue, red) = {4|12} × {8|11} = {32|132}.', 'P(different) = {64|132} = {16|33}.'] }
+        hint: 'For (b), add P(red then blue) and P(blue then red).', solution: ['P(both blue) = {4|12} × {3|11} = {12|132} = {1|11}.', 'P(red, blue) = {8|12} × {4|11} = {32|132}.', 'P(blue, red) = {4|12} × {8|11} = {32|132}.', 'P(different) = {64|132} = {16|33}.'] },
+
+      // Sec 4 style: unknown number of items
+      { id: 'bx3', level: 'challenge', prompt: 'A bag contains n beads, of which 4 are red and the rest are white. Two beads are taken at random without replacement. The probability that they are the same colour is {17|33}.',
+        parts: [{ label: '(a)', prompt: 'Find n. (The equation reduces to 2n^2 - 35n + 132 = 0. One solution is not a whole number.)', answer: 12, marks: 4 },
+                { label: '(b)', prompt: 'Find the probability that at least one of the two beads is white.', answer: '10/11', marks: 2 }],
+        hint: 'P(same) = P(RR) + P(WW) = {4|n} × {3|n - 1} + {n - 4|n} × {n - 5|n - 1}.', solution: ['{12 + (n - 4)(n - 5)|n(n - 1)} = {17|33}.', '33(n^2 - 9n + 32) = 17n(n - 1), so 2n^2 - 35n + 132 = 0.', '(2n - 11)(n - 12) = 0, so n = 5.5 (rejected) or n = 12.', 'P(RR) = {4|12} × {3|11} = {1|11}, so P(at least one white) = 1 - {1|11} = {10|11}.'] }
     ],
     generators: []
   });

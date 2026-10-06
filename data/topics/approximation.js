@@ -47,7 +47,7 @@
     questions: [
       { id: 'ap1', level: 'foundation', prompt: 'Write 5.678 correct to 1 decimal place.', answer: 5.678, dp: 1, solution: ['The digit after the first decimal place is 7, so round up: 5.7.'] },
       { id: 'ap2', level: 'foundation', prompt: 'Write 40 672 correct to 3 significant figures.', answer: 40672, sf: 3, hint: 'The 4th significant figure is 7.', solution: ['The first 3 s.f. are 4, 0, 6. The next digit is 7, so round the 6 up to 7.', 'Answer: 40 700.'] },
-      { id: 'ap3', level: 'foundation', prompt: 'Write 0.004 567 correct to 2 significant figures.', answer: 0.004567, sf: 2, solution: ['The first significant figure is 4.', '2 s.f.: 0.0045|67, and the next digit is 6, so 0.0046.'] },
+      { id: 'ap3', level: 'foundation', prompt: 'Write 0.004 567 correct to 2 significant figures.', answer: 0.004567, sf: 2, solution: ['The first significant figure is 4.', 'The first 2 s.f. are 4 and 5, and the next digit is 6, so round up: 0.0046.'] },
       { id: 'ap4', level: 'foundation', type: 'mcq', prompt: 'Write 2.0449 correct to 3 significant figures.', options: ['2.04', '2.05', '2.045', '2.1'], answer: 0, solution: ['The first 3 s.f. are 2, 0, 4. The next digit is 4, so do not round up.', 'Answer: 2.04.'] },
       { id: 'ap5', level: 'foundation', prompt: 'Write 3 846 correct to the nearest hundred.', answer: 3800, solution: ['The tens digit is 4, so round down: 3 800.'] },
       { id: 'ap6', level: 'foundation', prompt: 'How many significant figures does 0.03050 have?', answer: 4, hint: 'Leading zeros do not count; the zero at the end does.', solution: ['The significant figures are 3, 0, 5, 0.', 'So there are 4.'] },

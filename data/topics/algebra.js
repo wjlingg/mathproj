@@ -124,7 +124,18 @@
         hint: 'Cross-multiply, then form a quadratic equation equal to 0.', solution: ['8 = (x + 2)(x - 1) = x^2 + x - 2.', 'x^2 + x - 10 = 0.', 'x = {-1 ± sqrt(41)|2}, so the positive solution is x = 2.70.'] },
       { id: 'ax19', level: 'challenge', prompt: '{p|x^2 - 9} + {q|x + 3} = {5x - 7|x^2 - 9}. Find p and q.',
         parts: [{ label: '(a)', prompt: 'Find q.', answer: 5, marks: 2 }, { label: '(b)', prompt: 'Find p.', answer: 8, marks: 2 }],
-        hint: 'Write the second fraction over x^2 - 9 = (x + 3)(x - 3), then compare the numerators.', solution: ['{q|x + 3} = {q(x - 3)|x^2 - 9}.', 'Numerators: p + q(x - 3) = 5x - 7, so qx + (p - 3q) = 5x - 7.', 'q = 5, and p - 15 = -7, so p = 8.'] }
+        hint: 'Write the second fraction over x^2 - 9 = (x + 3)(x - 3), then compare the numerators.', solution: ['{q|x + 3} = {q(x - 3)|x^2 - 9}.', 'Numerators: p + q(x - 3) = 5x - 7, so qx + (p - 3q) = 5x - 7.', 'q = 5, and p - 15 = -7, so p = 8.'] },
+
+      // Sec 4 style
+      { id: 'ax20', level: 'challenge', type: 'expression', marks: 3, prompt: 'Express {2x - 1|x + 3} - {3|x - 2} as a single fraction in its simplest form.', answer: '(2x^2-8x-7)/((x+3)(x-2))',
+        hint: 'The common denominator is (x + 3)(x - 2).', solution: ['{(2x - 1)(x - 2) - 3(x + 3)|(x + 3)(x - 2)}.', '(2x - 1)(x - 2) = 2x^2 - 5x + 2, and 3(x + 3) = 3x + 9.', 'Numerator = 2x^2 - 8x - 7.'] },
+      { id: 'ax21', level: 'challenge', type: 'expression', marks: 3, prompt: 'Rearrange m = {3k + 2|k - 1} to make k the subject.', answer: '(m+2)/(m-3)',
+        hint: 'Multiply out, then collect the terms in k on one side.', solution: ['m(k - 1) = 3k + 2, so mk - m = 3k + 2.', 'mk - 3k = m + 2, so k(m - 3) = m + 2.', 'k = {m + 2|m - 3}.'] },
+      { id: 'ax22', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise ab - 2b - 3a + 6.', answer: '(a-2)(b-3)',
+        hint: 'Group as b(a - 2) - 3(a - 2).', solution: ['ab - 2b - 3a + 6 = b(a - 2) - 3(a - 2).', '= (a - 2)(b - 3).'] },
+      { id: 'ax23', level: 'challenge', prompt: 'Express x^2 - 7x + 15 in the form p + (x + q)^2.',
+        parts: [{ label: '(a)', prompt: 'Find q.', answer: -3.5, marks: 1 }, { label: '(b)', prompt: 'Find p.', answer: 2.75, marks: 2 }],
+        solution: ['x^2 - 7x = (x - 3.5)^2 - 12.25.', 'x^2 - 7x + 15 = (x - 3.5)^2 + 2.75.', 'So q = -3.5 and p = 2.75.'] }
     ],
     generators: [
       { id: 'linear', level: 'foundation', make: function (r) {

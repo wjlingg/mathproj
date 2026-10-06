@@ -78,7 +78,21 @@
       { id: 'tz17', level: 'challenge', prompt: 'A cuboid has a rectangular base ABCD with AB = 8 cm and BC = 6 cm, and a height CG = 5 cm (G is directly above C).',
         parts: [{ label: '(a)', prompt: 'Find the length of the diagonal AC of the base.', answer: 10, unit: 'cm', marks: 1 },
                 { label: '(b)', prompt: 'Find the angle between the space diagonal AG and the base ABCD, correct to 1 decimal place.', answer: Math.atan(0.5) / rad, dp: 1, unit: '°', marks: 3 }],
-        hint: 'The angle is in the right-angled triangle ACG, at A.', solution: ['AC^2 = 8^2 + 6^2 = 100, so AC = 10 cm.', 'In the right-angled triangle ACG: tan θ = {CG|AC} = {5|10} = 0.5.', 'θ = 26.6°.'] }
+        hint: 'The angle is in the right-angled triangle ACG, at A.', solution: ['AC^2 = 8^2 + 6^2 = 100, so AC = 10 cm.', 'In the right-angled triangle ACG: tan θ = {CG|AC} = {5|10} = 0.5.', 'θ = 26.6°.'] },
+
+      // Sec 4 style 3D and journey problems
+      { id: 'tz18', level: 'challenge', prompt: 'VABCD is a pyramid with a rectangular base ABCD, where AB = 12 m and BC = 8 m. The vertex V is directly above the centre of the base, and VA = VB = VC = VD. Angle AVB = 80°.',
+        parts: [{ label: '(a)', prompt: 'Find VA, correct to 2 decimal places.', answer: 6 / Math.sin(40 * rad), dp: 2, unit: 'm', marks: 2 },
+                { label: '(b)', prompt: 'Find the height of V above the base, correct to 2 decimal places.', answer: Math.sqrt(Math.pow(6 / Math.sin(40 * rad), 2) - 52), dp: 2, unit: 'm', marks: 3 },
+                { label: '(c)', prompt: 'Find the angle between VA and the base, correct to 1 decimal place.', answer: Math.acos(Math.sqrt(52) / (6 / Math.sin(40 * rad))) / rad, dp: 1, unit: '°', marks: 2 }],
+        hint: 'Triangle VAB is isosceles. Half of AB is 6 m, opposite half the apex angle (40°). The centre of the base is half of the diagonal AC from A.',
+        solution: ['sin 40° = {6|VA}, so VA = 9.33 m.', 'AC^2 = 12^2 + 8^2 = 208, so half of AC squared = 52.', 'Height^2 = 9.334^2 - 52 = 35.13, so the height = 5.93 m.', 'cos θ = {sqrt(52)|9.334} = 0.7725, so θ = 39.4°.'] },
+      { id: 'tz19', level: 'challenge', prompt: 'ABC and ADC are two paths around a pond. In triangle ADC, AC = 2 km, angle ADC = 110°, angle DAC = 40° and angle ACD = 30°.',
+        parts: [{ label: '(a)', prompt: 'Find CD, correct to 2 decimal places.', answer: 2 * Math.sin(40 * rad) / Math.sin(110 * rad), dp: 2, unit: 'km', marks: 3 },
+                { label: '(b)', prompt: 'Find the shortest distance from D to the path AC, correct to 2 decimal places.', answer: 2 * Math.sin(40 * rad) / Math.sin(110 * rad) * Math.sin(30 * rad), dp: 2, unit: 'km', marks: 2 },
+                { label: '(c)', prompt: 'A drone is 200 m vertically above D. Find the largest angle of depression from the drone to a point on AC, correct to 1 decimal place.', answer: Math.atan(0.2 / (2 * Math.sin(40 * rad) / Math.sin(110 * rad) * Math.sin(30 * rad))) / rad, dp: 1, unit: '°', marks: 2 }],
+        hint: 'The largest angle of depression is to the nearest point on AC, which is the foot of the perpendicular from D.',
+        solution: ['{CD|sin 40°} = {2|sin 110°}, so CD = 1.37 km.', 'Shortest distance = CD sin 30° = 0.68 km.', 'tan θ = {0.2|0.684}, so θ = 16.3°.'] }
     ],
     generators: [
       { id: 'area', level: 'foundation', make: function (r) {

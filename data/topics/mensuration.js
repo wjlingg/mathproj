@@ -92,7 +92,15 @@
       { id: 'me21', level: 'challenge', marks: 4, prompt: 'A solid is made of a cone on top of a hemisphere, both with radius 6 cm. The height of the cone is 8 cm. Find the volume of the solid, correct to 2 decimal places.', answer: 240 * Math.PI, dp: 2, unit: 'cm³',
         hint: 'Volume of a hemisphere = {2|3}πr^3.', solution: ['Hemisphere: {2|3} × π × 216 = 144π.', 'Cone: {1|3} × π × 36 × 8 = 96π.', 'Total = 240π = 753.98 cm^3.'] },
       { id: 'me22', level: 'challenge', marks: 4, prompt: 'A solid metal cone of radius 6 cm and height 8 cm is melted and recast into a solid sphere. Find the radius of the sphere, correct to 2 decimal places.', answer: Math.cbrt(72), dp: 2, unit: 'cm',
-        solution: ['Volume of the cone = 96π.', '{4|3}πr^3 = 96π, so r^3 = 72.', 'r = 4.16 cm.'] }
+        solution: ['Volume of the cone = 96π.', '{4|3}πr^3 = 96π, so r^3 = 72.', 'r = 4.16 cm.'] },
+
+      // Sec 4 style: composite solids and pyramids
+      { id: 'me23', level: 'challenge', prompt: 'A solid is a hemisphere of radius 5 cm on top of a cylinder of radius 5 cm and height 10 cm.',
+        parts: [{ label: '(a)', prompt: 'Find the total surface area, correct to 2 decimal places.', answer: 175 * Math.PI, dp: 2, unit: 'cm²', marks: 3 }, { label: '(b)', prompt: 'Find the volume, correct to 2 decimal places.', answer: (1000 / 3) * Math.PI, dp: 2, unit: 'cm³', marks: 3 }],
+        hint: 'The surface is the curved part of the hemisphere, the curved part of the cylinder and the base circle.', solution: ['Hemisphere curved area = 2π × 25 = 50π. Cylinder curved area = 2π × 5 × 10 = 100π. Base = 25π.', 'Total = 175π = 549.78 cm^2.', 'Volume = {2|3}π × 125 + π × 25 × 10 = {250|3}π + 250π = {1000|3}π = 1 047.20 cm^3.'] },
+      { id: 'me24', level: 'challenge', prompt: 'A pyramid has a square base of side 8 cm and a vertical height of 9 cm. The vertex is directly above the centre of the base.',
+        parts: [{ label: '(a)', prompt: 'Find the volume. Volume of a pyramid = {1|3} × base area × height.', answer: 192, unit: 'cm³', marks: 2 }, { label: '(b)', prompt: 'Find the slant height of a triangular face (the height from the vertex to the midpoint of a base edge), correct to 2 decimal places.', answer: Math.sqrt(97), dp: 2, unit: 'cm', marks: 2 }],
+        solution: ['V = {1|3} × 64 × 9 = 192 cm^3.', 'Slant height^2 = 9^2 + 4^2 = 97, so the slant height = 9.85 cm.'] }
     ],
     generators: [
       { id: 'rect-area', level: 'foundation', make: function (r) {

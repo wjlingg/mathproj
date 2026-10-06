@@ -71,7 +71,9 @@
       { id: 'in15', level: 'challenge', marks: 4, prompt: 'How many integers x satisfy 2x - 5 < 3x + 1 ≤ x + 11?', answer: 11,
         hint: 'Solve the two parts separately: 2x - 5 < 3x + 1, and 3x + 1 ≤ x + 11.', solution: ['2x - 5 < 3x + 1 gives -6 < x.', '3x + 1 ≤ x + 11 gives 2x ≤ 10, so x ≤ 5.', 'So -6 < x ≤ 5. The integers are -5, -4, ..., 5.', 'There are 11.'] },
       { id: 'in16', level: 'challenge', marks: 3, prompt: 'The sum of three consecutive integers is less than 50. What is the greatest possible value of the largest of the three integers?', answer: 17,
-        hint: 'Let the integers be n, n + 1, n + 2.', solution: ['n + (n + 1) + (n + 2) < 50, so 3n + 3 < 50 and n < 15.67.', 'The greatest n is 15, so the integers are 15, 16, 17 (sum 48).', 'The largest is 17.'] }
+        hint: 'Let the integers be n, n + 1, n + 2.', solution: ['n + (n + 1) + (n + 2) < 50, so 3n + 3 < 50 and n < 15.67.', 'The greatest n is 15, so the integers are 15, 16, 17 (sum 48).', 'The largest is 17.'] },
+      { id: 'in17', level: 'challenge', marks: 3, prompt: 'Find the sum of all the integers x that satisfy 3 < 2x - 5 ≤ 9.', answer: 18,
+        solution: ['Add 5: 8 < 2x ≤ 14, so 4 < x ≤ 7.', 'The integers are 5, 6 and 7, with sum 18.'] }
     ],
     generators: [
       { id: 'one-step', level: 'foundation', make: function (r) {

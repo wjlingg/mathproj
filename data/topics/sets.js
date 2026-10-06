@@ -76,7 +76,14 @@
         parts: [{ label: '(a)', prompt: 'How many speak both languages?', answer: 8, marks: 2 }, { label: '(b)', prompt: 'How many speak English only?', answer: 22, marks: 1 }],
         solution: ['50 = 30 + 28 - both, so both = 8.', 'English only = 30 - 8 = 22.'] },
       { id: 'st16', level: 'challenge', marks: 3, prompt: 'Of 100 students, 60 read newspaper A, 50 read newspaper B and 30 read both. What percentage read neither?', answer: 20, unit: '%',
-        solution: ['n(A ∪ B) = 60 + 50 - 30 = 80.', 'Neither = 100 - 80 = 20, which is 20%.'] }
+        solution: ['n(A ∪ B) = 60 + 50 - 30 = 80.', 'Neither = 100 - 80 = 20, which is 20%.'] },
+
+      // Sec 4 style: Venn diagrams with an unknown, and number sets
+      { id: 'st17', level: 'standard', marks: 2, prompt: 'A Venn diagram for ξ shows 8 elements in A only, x elements in both A and B, 12 elements in B only and 5 elements in neither. n(ξ) = 35. Find x.', answer: 10,
+        solution: ['8 + x + 12 + 5 = 35.', 'x + 25 = 35, so x = 10.'] },
+      { id: 'st18', level: 'standard', marks: 1, type: 'mcq', prompt: 'Which set notation describes the elements that are in B but not in A?', options: ['A′ ∩ B', 'A ∩ B′', 'A ∪ B', 'A′ ∪ B′'], answer: 0, solution: ['In B and not in A means in B and in A′, so A′ ∩ B.'] },
+      { id: 'st19', level: 'standard', marks: 2, type: 'mcq', prompt: 'A is the set of integers and B is the set of rational numbers. Is B a subset of A?', options: ['Yes', 'No, because B contains numbers such as {1|2} that are not integers'], answer: 1,
+        solution: ['Every integer is rational, so A ⊂ B. But {1|2} is rational and not an integer, so B is not a subset of A.'] }
     ],
     generators: [
       { id: 'union', level: 'foundation', make: function (r) {

@@ -80,7 +80,15 @@
       { id: 'pl15', level: 'challenge', prompt: 'Written as a product of prime factors, 450 = 2 × 3^2 × 5^2.',
         parts: [{ label: '(a)', prompt: 'Find the smallest positive integer p such that 450p is a perfect cube.', answer: 60, marks: 2 },
                 { label: '(b)', prompt: 'Find the smallest positive integer q such that 450 ÷ q is a perfect square.', answer: 2, marks: 2 }],
-        hint: 'In (b), divide away only the primes that have an odd index.', solution: ['(a) Make every index 3: multiply by 2^2 × 3 × 5 = 60. 450 × 60 = 27 000 = 30^3.', '(b) Only 2 has an odd index, so q = 2. 450 ÷ 2 = 225 = 15^2.'] }
+        hint: 'In (b), divide away only the primes that have an odd index.', solution: ['(a) Make every index 3: multiply by 2^2 × 3 × 5 = 60. 450 × 60 = 27 000 = 30^3.', '(b) Only 2 has an odd index, so q = 2. 450 ÷ 2 = 225 = 15^2.'] },
+
+      // Sec 4 style
+      { id: 'pl16', level: 'standard', prompt: '216 boys and 252 girls join a camp. They form as many groups as possible so that each group has the same number of boys and the same number of girls.',
+        parts: [{ label: '(a)', prompt: 'Find the greatest number of groups.', answer: 36, marks: 2 }, { label: '(b)', prompt: 'How many boys are in each group?', answer: 6, marks: 1 }, { label: '(c)', prompt: 'How many girls are in each group?', answer: 7, marks: 1 }],
+        solution: ['216 = 2^3 × 3^3 and 252 = 2^2 × 3^2 × 7, so HCF = 2^2 × 3^2 = 36 groups.', 'Boys: 216 ÷ 36 = 6. Girls: 252 ÷ 36 = 7.'] },
+      { id: 'pl17', level: 'challenge', prompt: '440 = 2^3 × 5 × 11, and the LCM of 440 and B is 1 320.',
+        parts: [{ label: '(a)', prompt: 'If B = 6, find the HCF of 440 and B.', answer: 2, marks: 1 }, { label: '(b)', prompt: 'If the HCF of 440 and B is 55, find B.', answer: 165, marks: 2 }],
+        hint: 'HCF × LCM = 440 × B.', solution: ['HCF(440, 6) = 2.', '55 × 1 320 = 440 × B, so B = 72 600 ÷ 440 = 165.', 'Check: 165 = 3 × 5 × 11, so the LCM is 2^3 × 3 × 5 × 11 = 1 320 ✓.'] }
     ],
     generators: [
       { id: 'hcf', level: 'foundation', make: function (r) {

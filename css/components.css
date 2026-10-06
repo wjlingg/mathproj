@@ -2,6 +2,9 @@
 .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; line-height: 1.15; margin: 0 .15em; font-size: .95em; }
 .frac .num { border-bottom: 1.5px solid currentColor; padding: 0 .25em .05em; }
 .frac .den { padding: .05em .25em 0; }
+.mat { display: inline-block; vertical-align: middle; margin: 0 .2em; }
+.mat-grid { display: inline-grid; gap: .1em .9em; padding: .1em .5em; text-align: center; line-height: 1.3;
+  border-left: 1.5px solid currentColor; border-right: 1.5px solid currentColor; border-radius: .45em; }
 .rad { white-space: nowrap; }
 .rad-in { border-top: 1.5px solid currentColor; padding: 0 .1em; margin-left: 1px; }
 sup { font-size: .72em; line-height: 0; }

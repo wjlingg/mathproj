@@ -67,7 +67,15 @@
       { id: 'ix15', level: 'challenge', marks: 3, prompt: 'Solve 2^(2x - 1) = 8^(x - 2).', answer: 5,
         hint: 'Write 8 as 2^3.', solution: ['8^(x - 2) = 2^(3x - 6).', '2x - 1 = 3x - 6, so x = 5.'] },
       { id: 'ix16', level: 'challenge', marks: 2, prompt: '3^n + 3^(n + 1) = k × 3^n. Find the value of k.', answer: 4,
-        hint: 'Take 3^n out as a common factor.', solution: ['3^(n + 1) = 3 × 3^n.', '3^n + 3 × 3^n = 4 × 3^n, so k = 4.'] }
+        hint: 'Take 3^n out as a common factor.', solution: ['3^(n + 1) = 3 × 3^n.', '3^n + 3 × 3^n = 4 × 3^n, so k = 4.'] },
+
+      // Sec 4 style
+      { id: 'ix17', level: 'challenge', marks: 3, prompt: 'Use the laws of indices to find k when {2^k|8} = 4^(k - 1).', answer: -1,
+        hint: 'Write 8 as 2^3 and 4 as 2^2.', solution: ['2^(k - 3) = 2^(2k - 2).', 'k - 3 = 2k - 2, so k = -1.'] },
+      { id: 'ix18', level: 'challenge', marks: 3, prompt: 'Given that 5^(2n - 1) = 5^2026 - 4 × 5^2025, find n.', answer: 1013,
+        hint: 'Take 5^2025 out as a common factor on the right.', solution: ['5^2026 = 5 × 5^2025, so the right side = 5^2025(5 - 4) = 5^2025.', '2n - 1 = 2025, so n = 1013.'] },
+      { id: 'ix19', level: 'challenge', marks: 2, type: 'expression', prompt: 'Given a = 3^x, express 9^(x - 1) in terms of a.', answer: 'a^2/9',
+        solution: ['9^(x - 1) = 3^(2x - 2) = {(3^x)^2|3^2} = {a^2|9}.'] }
     ],
     generators: [
       { id: 'index-add', level: 'foundation', make: function (r) {

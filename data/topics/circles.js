@@ -75,7 +75,14 @@
       { id: 'ci15', level: 'challenge', marks: 3, prompt: 'PA and PB are tangents to a circle with centre O. Angle AOB = 130°. Find angle APB.', answer: 50, unit: '°',
         hint: 'Quadrilateral OAPB has two right angles.', solution: ['Angle OAP = angle OBP = 90° (tangent and radius).', 'The angles in quadrilateral OAPB add to 360°, so APB = 360° - 90° - 90° - 130° = 50°.'] },
       { id: 'ci16', level: 'challenge', marks: 3, prompt: 'The tangent PT from P to a circle with centre O has length 8 cm. OP = 10 cm. Find the circumference of the circle, correct to 1 decimal place.', answer: 2 * Math.PI * 6, dp: 1, unit: 'cm',
-        solution: ['Angle OTP = 90°, so r^2 = 10^2 - 8^2 = 36 and r = 6 cm.', 'Circumference = 2π × 6 = 37.7 cm.'] }
+        solution: ['Angle OTP = 90°, so r^2 = 10^2 - 8^2 = 36 and r = 6 cm.', 'Circumference = 2π × 6 = 37.7 cm.'] },
+
+      // Sec 4 style: equal chords, segments
+      { id: 'ci17', level: 'challenge', prompt: 'A, B, C and D are points on a circle with centre O. Angle BAD = 70° and BC = CD.',
+        parts: [{ label: '(a)', prompt: 'Find angle BCD.', answer: 110, unit: '°', marks: 2 }, { label: '(b)', prompt: 'Find angle CBD.', answer: 35, unit: '°', marks: 2 }, { label: '(c)', prompt: 'Find angle BOD.', answer: 140, unit: '°', marks: 2 }],
+        hint: 'ABCD is a cyclic quadrilateral. Triangle BCD is isosceles.', solution: ['BCD = 180° - 70° = 110° (opposite angles of a cyclic quadrilateral).', 'BC = CD, so CBD = (180° - 110°) ÷ 2 = 35°.', 'BOD = 2 × BAD = 140° (angle at the centre is twice the angle at the circumference).'] },
+      { id: 'ci18', level: 'challenge', marks: 4, prompt: 'A chord AB of a circle with centre O and radius 7 cm subtends an angle of 80° at O. Find the area of the minor segment cut off by AB, correct to 2 decimal places.', answer: (80 / 360) * Math.PI * 49 - 0.5 * 49 * Math.sin(80 * Math.PI / 180), dp: 2, unit: 'cm²',
+        hint: 'Segment = sector - triangle OAB.', solution: ['Sector = {80|360} × π × 7^2 = 34.21 cm^2.', 'Triangle OAB = {1|2} × 7 × 7 × sin 80° = 24.13 cm^2.', 'Segment = 34.21 - 24.13 = 10.08 cm^2.'] }
     ],
     generators: [
       { id: 'centre-angle', level: 'foundation', make: function (r) {

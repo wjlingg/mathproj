@@ -58,7 +58,7 @@
         hint: 'Factorise as (2x - 1)(x - 3).', solution: ['2x^2 - 7x + 3 = (2x - 1)(x - 3) = 0.', 'x = {1|2} or x = 3.'] },
       { id: 'qd9', level: 'standard', prompt: 'Solve x^2 + 3x - 5 = 0, giving your answers correct to 2 decimal places.',
         parts: [{ label: '(a)', prompt: 'The positive solution.', answer: 1.192582, dp: 2, marks: 3 }, { label: '(b)', prompt: 'The negative solution.', answer: -4.192582, dp: 2, marks: 1 }],
-        solution: ['x = {-3 ± sqrt(3^2 - 4(1)(-5))|2} = {-3 ± sqrt(29)|2}.', 'x = 1.19 or x = -4.19.'] },
+        solution: ['x = {-3 ± sqrt(9 + 20)|2} = {-3 ± sqrt(29)|2}.', 'x = 1.19 or x = -4.19.'] },
       { id: 'qd10', level: 'standard', prompt: 'x^2 + 10x + 3 = (x + a)^2 + b.',
         parts: [{ label: '(a)', prompt: 'Find a.', answer: 5, marks: 1 }, { label: '(b)', prompt: 'Find b.', answer: -22, marks: 1 },
                 { label: '(c)', prompt: 'Hence solve x^2 + 10x + 3 = 0. Give the smaller solution correct to 2 decimal places.', answer: -9.690416, dp: 2, marks: 2 }],
@@ -76,7 +76,16 @@
         parts: [{ label: '(a)', prompt: 'Find the x-coordinate of the turning point.', answer: 3, marks: 1 }, { label: '(b)', prompt: 'Find the y-coordinate of the turning point.', answer: -4, marks: 2 }],
         hint: 'The roots are 1 and 5. The turning point is halfway between them.', solution: ['x^2 - 6x + 5 = (x - 1)(x - 5), so the roots are 1 and 5.', 'The line of symmetry is x = 3.', 'y = 9 - 18 + 5 = -4.'] },
       { id: 'qd16', level: 'challenge', marks: 4, prompt: 'A rectangular garden is 14 m by 9 m. A path of uniform width x m is built around the outside, and the area of the path is 50 m^2. Find x.', answer: 1, unit: 'm',
-        hint: 'The new rectangle is (14 + 2x) by (9 + 2x).', solution: ['(14 + 2x)(9 + 2x) - 14 × 9 = 50.', '4x^2 + 46x = 50, so 2x^2 + 23x - 25 = 0.', '(2x + 25)(x - 1) = 0, so x = 1 (x cannot be negative).'] }
+        hint: 'The new rectangle is (14 + 2x) by (9 + 2x).', solution: ['(14 + 2x)(9 + 2x) - 14 × 9 = 50.', '4x^2 + 46x = 50, so 2x^2 + 23x - 25 = 0.', '(2x + 25)(x - 1) = 0, so x = 1 (x cannot be negative).'] },
+
+      // Sec 4 style: word problems that form quadratics
+      { id: 'qd17', level: 'challenge', prompt: 'In March, oranges cost $x per kg. In April the price fell by $1.50 per kg, so $120 buys 4 kg more oranges than in March. The equation reduces to 2x^2 - 3x - 90 = 0.',
+        parts: [{ label: '(a)', prompt: 'Solve the equation to find the March price per kg.', answer: 7.5, unit: '$', marks: 3 }, { label: '(b)', prompt: 'Find the April price per kg.', answer: 6, unit: '$', marks: 1 }, { label: '(c)', prompt: 'Find the percentage decrease in price.', answer: 20, unit: '%', marks: 2 }],
+        hint: 'The mass in March is {120|x} kg and in April is {120|x - 1.5} kg.', solution: ['{120|x - 1.5} - {120|x} = 4 gives 180 = 4x(x - 1.5), so 2x^2 - 3x - 90 = 0.', 'x = {3 ± sqrt(729)|4} = {3 ± 27|4}, so x = 7.5 (rejecting -6).', 'April price = 7.5 - 1.5 = $6.', '{1.5|7.5} × 100% = 20%.'] },
+      { id: 'qd18', level: 'challenge', prompt: 'Pipe A alone takes x hours to fill a tank. Pipe B alone takes 3 hours longer. Together they fill the tank in 4 hours, which gives x^2 - 5x - 12 = 0.',
+        parts: [{ label: '(a)', prompt: 'Solve x^2 - 5x - 12 = 0 and write down the positive solution, correct to 2 decimal places.', answer: (5 + Math.sqrt(73)) / 2, dp: 2, unit: 'hours', marks: 3 },
+                { label: '(b)', prompt: 'Pipe B alone takes ___ hours and ___ minutes. Find the number of minutes, to the nearest minute.', answer: Math.round((((5 + Math.sqrt(73)) / 2) + 3) % 1 * 60), marks: 1 }],
+        hint: '{1|x} + {1|x + 3} = {1|4}.', solution: ['4(x + 3) + 4x = x(x + 3), so x^2 - 5x - 12 = 0.', 'x = {5 ± sqrt(73)|2}, so x = 6.77 hours (the other solution is negative).', 'Pipe B: 6.77 + 3 = 9.77 hours = 9 hours 46 minutes.'] }
     ],
     generators: [
       { id: 'factorise-solve', level: 'foundation', make: function (r) {
