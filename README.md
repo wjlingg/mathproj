@@ -35,7 +35,7 @@ data/                 syllabus, glossary, formulae, topics/<id>.js
 
 ## Topics
 
-Ready: Ratio and Proportion, Percentage, Algebraic Manipulation and Linear Equations, Pythagoras' Theorem, Probability. The remaining syllabus topics appear as "Coming soon".
+Ready: Ratio and Proportion, Percentage, Algebraic Manipulation and Linear Equations, Pythagoras' Theorem, Probability, Primes/HCF/LCM, Integers and Rational Numbers, Approximation and Estimation, Angles/Lines/Polygons, Perimeter/Area/Volume, Data Handling. The remaining syllabus topics appear as "Coming soon".
 
 ## Notes
 
