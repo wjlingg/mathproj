@@ -40,3 +40,7 @@ Ready: Ratio and Proportion, Percentage, Algebraic Manipulation and Linear Equat
 ## Notes
 
 Progress is stored in `localStorage` on the learner's device only; nothing is sent to a server.
+
+## For AI agents and contributors
+
+See [AGENTS.md](AGENTS.md) (architecture, conventions, adding topics). Run `tests/selfcheck.js` in the browser console to verify the answer checker against every question.
