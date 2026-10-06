@@ -3,9 +3,9 @@
 
   EMATH.registerTopic({
     id: 'algebra', title: 'Algebraic Manipulation and Linear Equations',
-    strand: 'number-algebra', levels: [1, 2, 3],
-    syllabusNote: 'Sec 1-2 (Math syllabus); factorisation and manipulation continue in O-Level 4052 Sec 3',
-    verified: false,
+    strand: 'number-algebra', levels: [1, 2, 3, 4],
+    syllabusNote: 'O-Level syllabus N5 and N7 (Sec 1-2). Completing the square and fractional equations that reduce to quadratics are Sec 3/4 (N7.11-7.12).',
+    verified: true,
     objectives: [
       'Simplify, expand and factorise algebraic expressions.',
       'Solve linear equations, including brackets and fractions.',
@@ -60,7 +60,6 @@
       { id: 'a9', level: 'standard', prompt: 'Solve {x|3} + {x|2} = 10.', answer: 12, hint: 'Multiply every term by 6.', solution: ['Multiply by 6: 2x + 3x = 60.', '5x = 60, so x = 12.'] },
       { id: 'a10', level: 'standard', prompt: 'Solve {3x - 1|4} = {x + 5|2}.', answer: 11, solution: ['Multiply by 4: 3x - 1 = 2(x + 5).', '3x - 1 = 2x + 10.', 'x = 11.'] },
       { id: 'a11', level: 'standard', type: 'expression', prompt: 'Make x the subject of y = 3x - 5.', answer: '(y+5)/3', solution: ['Add 5 to both sides: y + 5 = 3x.', 'Divide by 3: x = {y + 5|3}.'] },
-      { id: 'a12', level: 'standard', type: 'mcq', prompt: 'Which is the solution of 2x - 5 > 7?', options: ['x > 6', 'x < 6', 'x > 1', 'x > 12'], answer: 0, solution: ['Add 5: 2x > 12.', 'Divide by 2 (positive, so the sign stays): x > 6.'] },
       { id: 'a13', level: 'standard', prompt: 'A taxi charges a $4 flag-down fee plus $0.60 for every km. Mei pays $13.00. How many km did she travel?', answer: 15, unit: 'km',
         hint: 'Let the distance be d km and form an equation: 4 + 0.6d = 13.', solution: ['4 + 0.6d = 13.', '0.6d = 9.', 'd = 15 km.'] },
       { id: 'a14', level: 'challenge', prompt: 'Consider the expression (x + 4)^2 - (x - 2)^2.',
@@ -98,15 +97,8 @@
         hint: 'In (b), factorise 9x^2 - 16 as a difference of two squares.', solution: ['6x^2 - 7x - 20 = (3x + 4)(2x - 5).', '9x^2 - 16 = (3x + 4)(3x - 4).', 'Cancel (3x + 4): {2x - 5|3x - 4}.'] },
       { id: 'ax8', level: 'challenge', marks: 3, prompt: 'Make m the subject of the formula {3|n} - 4 = {6|m}.', type: 'expression', answer: '6n/(3-4n)',
         hint: 'Combine the left-hand side into one fraction first.', solution: ['{3|n} - 4 = {3 - 4n|n}.', '{3 - 4n|n} = {6|m}.', 'Cross-multiply: m(3 - 4n) = 6n.', 'm = {6n|3 - 4n}.'] },
-      { id: 'ax9', level: 'standard', marks: 3, prompt: 'Solve 2x - 5 < {3x|2}. Write down the greatest integer that satisfies the inequality.', answer: 9,
-        hint: 'Multiply both sides by 2, a positive number, so the inequality sign does not change.', solution: ['Multiply by 2: 4x - 10 < 3x.', 'x < 10.', 'The greatest integer less than 10 is 9.'] },
       { id: 'ax10', level: 'challenge', marks: 3, prompt: 'Express {3|x - 1} - {2|x + 2} as a single fraction in its simplest form.', type: 'expression', answer: '(x+8)/((x-1)(x+2))',
         hint: 'Use the common denominator (x - 1)(x + 2).', solution: ['{3(x + 2) - 2(x - 1)|(x - 1)(x + 2)}.', '3x + 6 - 2x + 2 = x + 8.', 'Answer: {x + 8|(x - 1)(x + 2)}.'] },
-      { id: 'ax11', level: 'challenge', prompt: 'The expression x^2 + 6x - 2 can be written as (x + a)^2 + b.',
-        parts: [{ label: '(a)', prompt: 'Find the value of a.', answer: 3, marks: 1 },
-                { label: '(b)', prompt: 'Find the value of b.', answer: -11, marks: 1 },
-                { label: '(c)', prompt: 'Hence solve x^2 + 6x - 2 = 0. Give the positive solution correct to 2 decimal places.', answer: 0.3166, dp: 2, marks: 2 }],
-        hint: 'a is half of the coefficient of x.', solution: ['(x + 3)^2 = x^2 + 6x + 9, so a = 3.', 'x^2 + 6x - 2 = (x + 3)^2 - 9 - 2 = (x + 3)^2 - 11, so b = -11.', '(x + 3)^2 = 11, so x + 3 = ±sqrt(11).', 'x = -3 + 3.3166 = 0.32 (2 d.p.) for the positive solution.'] },
       { id: 'ax12', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise completely 2a^2 - 98b^2.', answer: '2(a+7b)(a-7b)',
         hint: 'Take out the common factor 2 first, then use the difference of two squares.', solution: ['2a^2 - 98b^2 = 2(a^2 - 49b^2).', '= 2(a + 7b)(a - 7b).'] },
       { id: 'ax13', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise 15y^2 - 17y - 4.', answer: '(3y-4)(5y+1)',
@@ -115,8 +107,6 @@
         hint: 'Group the terms in pairs: 5y(2z - 3) and 4x(2z - 3).', solution: ['10yz - 15y = 5y(2z - 3) and 8xz - 12x = 4x(2z - 3).', 'Together: (2z - 3)(5y + 4x).'] },
       { id: 'ax15', level: 'standard', type: 'expression', marks: 2, prompt: 'Express {4x - 28|x^2 - 7x} as a fraction in its simplest form.', answer: '4/x',
         hint: 'Factorise the top and the bottom.', solution: ['4x - 28 = 4(x - 7) and x^2 - 7x = x(x - 7).', 'Cancel (x - 7): {4|x}.'] },
-      { id: 'ax16', level: 'challenge', type: 'expression', marks: 3, prompt: 'Make t the subject of the formula V = {k|1 + t}.', answer: '(k-V)/V',
-        hint: 'Multiply both sides by (1 + t) first.', solution: ['V(1 + t) = k.', '1 + t = {k|V}.', 't = {k|V} - 1 = {k - V|V}.'] },
       { id: 'ax17', level: 'challenge', prompt: 'It is given that x = 3 is one solution of 2x^2 - bx - 3 = 0, where b is a constant.',
         parts: [{ label: '(a)', prompt: 'Find the value of b.', answer: 5, marks: 2 }, { label: '(b)', prompt: 'Find the other solution of the equation.', answer: -0.5, marks: 2 }],
         hint: 'Substitute x = 3 to find b, then factorise.', solution: ['2(9) - 3b - 3 = 0, so 15 = 3b and b = 5.', '2x^2 - 5x - 3 = (2x + 1)(x - 3) = 0.', 'The other solution is x = -{1|2} = -0.5.'] },
@@ -127,15 +117,8 @@
         hint: 'Write the second fraction over x^2 - 9 = (x + 3)(x - 3), then compare the numerators.', solution: ['{q|x + 3} = {q(x - 3)|x^2 - 9}.', 'Numerators: p + q(x - 3) = 5x - 7, so qx + (p - 3q) = 5x - 7.', 'q = 5, and p - 15 = -7, so p = 8.'] },
 
       // Sec 4 style
-      { id: 'ax20', level: 'challenge', type: 'expression', marks: 3, prompt: 'Express {2x - 1|x + 3} - {3|x - 2} as a single fraction in its simplest form.', answer: '(2x^2-8x-7)/((x+3)(x-2))',
-        hint: 'The common denominator is (x + 3)(x - 2).', solution: ['{(2x - 1)(x - 2) - 3(x + 3)|(x + 3)(x - 2)}.', '(2x - 1)(x - 2) = 2x^2 - 5x + 2, and 3(x + 3) = 3x + 9.', 'Numerator = 2x^2 - 8x - 7.'] },
       { id: 'ax21', level: 'challenge', type: 'expression', marks: 3, prompt: 'Rearrange m = {3k + 2|k - 1} to make k the subject.', answer: '(m+2)/(m-3)',
         hint: 'Multiply out, then collect the terms in k on one side.', solution: ['m(k - 1) = 3k + 2, so mk - m = 3k + 2.', 'mk - 3k = m + 2, so k(m - 3) = m + 2.', 'k = {m + 2|m - 3}.'] },
-      { id: 'ax22', level: 'standard', type: 'expression', form: 'factorised', marks: 2, prompt: 'Factorise ab - 2b - 3a + 6.', answer: '(a-2)(b-3)',
-        hint: 'Group as b(a - 2) - 3(a - 2).', solution: ['ab - 2b - 3a + 6 = b(a - 2) - 3(a - 2).', '= (a - 2)(b - 3).'] },
-      { id: 'ax23', level: 'challenge', prompt: 'Express x^2 - 7x + 15 in the form p + (x + q)^2.',
-        parts: [{ label: '(a)', prompt: 'Find q.', answer: -3.5, marks: 1 }, { label: '(b)', prompt: 'Find p.', answer: 2.75, marks: 2 }],
-        solution: ['x^2 - 7x = (x - 3.5)^2 - 12.25.', 'x^2 - 7x + 15 = (x - 3.5)^2 + 2.75.', 'So q = -3.5 and p = 2.75.'] }
     ],
     generators: [
       { id: 'linear', level: 'foundation', make: function (r) {

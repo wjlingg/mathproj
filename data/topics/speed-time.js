@@ -1,8 +1,8 @@
 (function () {
   EMATH.registerTopic({
     id: 'speed-time', title: 'Speed-Time Graphs',
-    strand: 'number-algebra', levels: [3],
-    syllabusNote: 'Level placement to be confirmed; the Sec 3 papers I read test it',
+    strand: 'number-algebra', levels: [3, 4],
+    syllabusNote: 'The syllabus lists distance-time and speed-time graphs as a real-world context in every year, not as a separate content item. Placed at Sec 3/4 as a teaching choice.',
     verified: false,
     objectives: [
       'Read and interpret speed-time graphs made of straight lines.',
@@ -47,9 +47,7 @@
     viz: null,
     questions: [
       { id: 'sp1', level: 'foundation', prompt: 'A car speeds up uniformly from rest to 12 m/s in 4 s. Find its acceleration.', answer: 3, unit: 'm/s²', solution: ['Acceleration = {12 - 0|4} = 3 m/s^2.'] },
-      { id: 'sp2', level: 'foundation', prompt: 'A cyclist travels at a constant 8 m/s for 15 s. How far does the cyclist travel?', answer: 120, unit: 'm', solution: ['Distance = 8 × 15 = 120 m.'] },
       { id: 'sp3', level: 'foundation', prompt: 'A speed-time graph is a triangle with base 10 s and height 6 m/s. Find the distance travelled.', answer: 30, unit: 'm', solution: ['Area = {1|2} × 10 × 6 = 30 m.'] },
-      { id: 'sp4', level: 'foundation', prompt: 'A train slows down uniformly from 15 m/s to 5 m/s in 5 s. Find its deceleration (as a positive number).', answer: 2, unit: 'm/s²', solution: ['Deceleration = {15 - 5|5} = 2 m/s^2.'] },
       { id: 'sp5', level: 'foundation', type: 'mcq', prompt: 'On a speed-time graph, the gradient represents', options: ['acceleration', 'distance', 'speed', 'time'], answer: 0, solution: ['Gradient = change in speed ÷ time = acceleration.'] },
       { id: 'sp6', level: 'foundation', prompt: 'Convert 54 km/h to m/s.', answer: 15, unit: 'm/s', solution: ['54 × 1 000 ÷ 3 600 = 15 m/s.'] },
       { id: 'sp7', level: 'standard', prompt: 'A car accelerates uniformly from rest to 10 m/s in 20 s, travels at constant speed for 40 s, then decelerates uniformly to rest in 20 s.',
@@ -61,12 +59,6 @@
       { id: 'sp9', level: 'standard', prompt: 'A cyclist accelerates from rest to 12 m/s in 20 s. She then decelerates uniformly at 0.1 m/s^2 until t = 60 s, reaching a speed of v m/s, and then travels at v m/s until time T s.',
         parts: [{ label: '(a)', prompt: 'Find v.', answer: 8, unit: 'm/s', marks: 2 }, { label: '(b)', prompt: 'The total distance travelled is 1.2 km. Find T.', answer: 145, unit: 's', marks: 3 }],
         solution: ['(a) Speed falls by 0.1 × 40 = 4 m/s, so v = 12 - 4 = 8.', '(b) Distance: {1|2} × 20 × 12 = 120; {1|2}(12 + 8) × 40 = 400; then 8(T - 60).', '520 + 8(T - 60) = 1 200, so T - 60 = 85 and T = 145.'] },
-      { id: 'sp10', level: 'standard', prompt: 'A car accelerates from rest at 2 m/s^2 for 6 s.',
-        parts: [{ label: '(a)', prompt: 'Find its speed after 6 s.', answer: 12, unit: 'm/s', marks: 1 }, { label: '(b)', prompt: 'Find the distance travelled in the 6 s.', answer: 36, unit: 'm', marks: 2 }],
-        solution: ['Speed = 2 × 6 = 12 m/s.', 'Distance = {1|2} × 6 × 12 = 36 m.'] },
-      { id: 'sp11', level: 'standard', prompt: 'Convert units.',
-        parts: [{ label: '(a)', prompt: 'Convert 72 km/h to m/s.', answer: 20, unit: 'm/s', marks: 1 }, { label: '(b)', prompt: 'Convert 5 m/s to km/h.', answer: 18, unit: 'km/h', marks: 1 }],
-        solution: ['72 × 1 000 ÷ 3 600 = 20 m/s.', '5 × 3.6 = 18 km/h.'] },
       { id: 'sp12', level: 'standard', prompt: 'A lift\'s speed increases uniformly from 0 to 3 m/s in 4 s, stays at 3 m/s for 10 s, then falls uniformly to rest in 2 s.',
         parts: [{ label: '(a)', prompt: 'Find the total distance travelled.', answer: 39, unit: 'm', marks: 3 }, { label: '(b)', prompt: 'Find the average speed, correct to 2 decimal places.', answer: 39 / 16, dp: 2, unit: 'm/s', marks: 2 }],
         solution: ['Distance = {1|2} × 4 × 3 + 3 × 10 + {1|2} × 2 × 3 = 6 + 30 + 3 = 39 m.', 'Total time = 16 s. Average speed = 39 ÷ 16 = 2.44 m/s.'] },
@@ -77,8 +69,6 @@
       { id: 'sp15', level: 'challenge', prompt: 'A car travelling at 25 m/s brakes with a constant deceleration of 2.5 m/s^2 until it stops.',
         parts: [{ label: '(a)', prompt: 'How long does it take to stop?', answer: 10, unit: 's', marks: 1 }, { label: '(b)', prompt: 'How far does it travel while braking?', answer: 125, unit: 'm', marks: 2 }],
         solution: ['Time = 25 ÷ 2.5 = 10 s.', 'Distance = {1|2} × 10 × 25 = 125 m.'] },
-      { id: 'sp16', level: 'challenge', marks: 4, prompt: 'A car travels at 20 m/s for 30 s. It then slows uniformly to 8 m/s over the next 20 s. Find the average speed over these 50 s, correct to 2 decimal places.', answer: 880 / 50, dp: 2, unit: 'm/s',
-        solution: ['Distance 1 = 20 × 30 = 600 m.', 'Distance 2 = {1|2}(20 + 8) × 20 = 280 m.', 'Total = 880 m. Average speed = 880 ÷ 50 = 17.6 m/s.'] }
     ],
     generators: [
       { id: 'accel', level: 'foundation', make: function (r) {

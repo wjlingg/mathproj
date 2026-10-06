@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'quadratics', title: 'Quadratic Equations and Graphs',
-    strand: 'number-algebra', levels: [3, 4],
-    syllabusNote: 'Sec 3-4 (Math syllabus)',
-    verified: false,
+    strand: 'number-algebra', levels: [2, 3, 4],
+    syllabusNote: 'O-Level syllabus N6.6-6.7 and solving by factorisation (Sec 2); formula, completing the square, graphical method and problems N7.11-7.14 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Solve quadratic equations by factorisation, completing the square and the quadratic formula.',
       'Form and solve quadratic equations from word problems, and reject solutions that do not fit.',
@@ -49,7 +49,6 @@
       { id: 'qd1', level: 'foundation', prompt: 'Solve x^2 - 7x + 12 = 0. Write down the larger solution.', answer: 4, solution: ['(x - 3)(x - 4) = 0, so x = 3 or x = 4.', 'The larger solution is 4.'] },
       { id: 'qd2', level: 'foundation', type: 'mcq', prompt: 'Solve x^2 = 9.', options: ['x = 3', 'x = 3 or x = -3', 'x = 9', 'x = 9 or x = -9'], answer: 1, solution: ['x = ±sqrt(9) = ±3.'] },
       { id: 'qd3', level: 'foundation', prompt: 'Solve x^2 - 5x = 0. Write down the positive solution.', answer: 5, solution: ['x(x - 5) = 0, so x = 0 or x = 5.', 'The positive solution is 5.'] },
-      { id: 'qd4', level: 'foundation', prompt: 'The roots of x^2 - 7x + 12 = 0 are 3 and 4. What is the sum of the roots?', answer: 7, solution: ['3 + 4 = 7. (It equals -b when a = 1.)'] },
       { id: 'qd5', level: 'foundation', prompt: 'Find the larger x-intercept of the graph of y = x^2 - 4.', answer: 2, solution: ['y = 0: x^2 = 4, so x = 2 or x = -2.', 'The larger is 2.'] },
       { id: 'qd6', level: 'foundation', prompt: 'x = 2 is a solution of x^2 + kx - 10 = 0. Find k.', answer: 3, solution: ['Substitute x = 2: 4 + 2k - 10 = 0.', '2k = 6, so k = 3.'] },
       { id: 'qd7', level: 'standard', marks: 3, prompt: 'Solve x^2 - 5x - 14 = 0. Write down the larger solution.', answer: 7, solution: ['(x - 7)(x + 2) = 0.', 'x = 7 or x = -2. The larger is 7.'] },
@@ -68,8 +67,6 @@
         solution: ['x(x + 3) = 70, so x^2 + 3x - 70 = 0.', '(x + 10)(x - 7) = 0, so x = 7 (x cannot be negative).', 'Length = 10 cm. Perimeter = 2(7 + 10) = 34 cm.'] },
       { id: 'qd12', level: 'standard', marks: 3, prompt: 'The product of two consecutive positive integers is 156. Find the larger integer.', answer: 13,
         hint: 'Let the integers be x and x + 1.', solution: ['x(x + 1) = 156, so x^2 + x - 156 = 0.', '(x + 13)(x - 12) = 0, so x = 12 (positive).', 'The larger integer is 13.'] },
-      { id: 'qd13', level: 'standard', marks: 3, prompt: 'Ali is 4 years older than Ben. The product of their ages is 117. How old is Ben?', answer: 9, unit: 'years',
-        solution: ['Let Ben be x. Then x(x + 4) = 117, so x^2 + 4x - 117 = 0.', '(x + 13)(x - 9) = 0, so x = 9 (age is positive).'] },
       { id: 'qd14', level: 'standard', marks: 3, prompt: 'Solve {6|x} + 1 = x. Write down the positive solution.', answer: 3,
         hint: 'Multiply every term by x.', solution: ['6 + x = x^2, so x^2 - x - 6 = 0.', '(x - 3)(x + 2) = 0.', 'The positive solution is x = 3.'] },
       { id: 'qd15', level: 'standard', prompt: 'The graph of y = x^2 - 6x + 5 has a turning point.',

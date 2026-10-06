@@ -3,9 +3,9 @@
 
   EMATH.registerTopic({
     id: 'trig-rules', title: 'Sine and Cosine Rules, 3D Trigonometry',
-    strand: 'geometry', levels: [4],
-    syllabusNote: 'Level placement to be confirmed: the Sec 3 N(A) papers I read also test these rules. This bank covers the sine rule, cosine rule and area formula for any triangle',
-    verified: false,
+    strand: 'geometry', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus G4.5-4.7: area formula, sine and cosine rules, 2D and 3D problems (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use the sine rule to find a side or an angle in any triangle.',
       'Use the cosine rule to find a side from two sides and the included angle, or an angle from three sides.',
@@ -52,7 +52,6 @@
       { id: 'tz2', level: 'foundation', prompt: 'A triangle has two sides of 8 cm and 5 cm with an angle of 30° between them. Find its area.', answer: 10, unit: 'cm²', solution: ['Area = {1|2} × 8 × 5 × sin 30° = {1|2} × 40 × 0.5 = 10 cm^2.'] },
       { id: 'tz3', level: 'foundation', prompt: 'In triangle ABC, a = 10 cm, A = 30° and B = 90°. Find b.', answer: 20, unit: 'cm', solution: ['{b|sin 90°} = {10|sin 30°}, so b = {10|0.5} = 20 cm.'] },
       { id: 'tz4', level: 'foundation', type: 'mcq', prompt: 'In the formula Area = {1|2}ab sin C, C is', options: ['the angle between sides a and b', 'any angle in the triangle', 'always a right angle', 'always acute'], answer: 0, solution: ['C must be the angle between the two sides a and b.'] },
-      { id: 'tz5', level: 'foundation', prompt: 'A triangle has sides 6 cm and 8 cm with a 90° angle between them. Find its area.', answer: 24, unit: 'cm²', solution: ['{1|2} × 6 × 8 × sin 90° = 24 cm^2.'] },
       { id: 'tz6', level: 'foundation', prompt: 'In triangle ABC, a = 5 cm, b = 5 cm and C = 60°. Find c.', answer: 5, unit: 'cm', solution: ['c^2 = 25 + 25 - 2(5)(5)cos 60° = 50 - 25 = 25.', 'c = 5 cm.'] },
       { id: 'tz7', level: 'standard', marks: 3, prompt: 'In triangle ABC, A = 40°, B = 65° and a = 8 cm. Find b, correct to 2 decimal places.', answer: 8 * Math.sin(65 * rad) / Math.sin(40 * rad), dp: 2, unit: 'cm',
         solution: ['{b|sin 65°} = {8|sin 40°}.', 'b = 8 sin 65° ÷ sin 40° = 11.28 cm.'] },
@@ -70,8 +69,6 @@
         hint: 'Find the angle between the 7 cm and 8 cm sides using the cosine rule, then use {1|2}ab sin C.', solution: ['cos C = {49 + 64 - 81|2 × 7 × 8} = {32|112} = 0.2857, so C = 73.4°.', 'Area = {1|2} × 7 × 8 × sin 73.4° = 26.8 cm^2.'] },
       { id: 'tz14', level: 'standard', marks: 3, prompt: 'A triangle has sides 5 cm, 7 cm and 10 cm. Find the largest angle, correct to 1 decimal place.', answer: Math.acos(-26 / 70) / rad, dp: 1, unit: '°',
         hint: 'The largest angle is opposite the longest side.', solution: ['cos θ = {25 + 49 - 100|2 × 5 × 7} = {-26|70} = -0.3714.', 'θ = 111.8°.'] },
-      { id: 'tz15', level: 'challenge', marks: 3, prompt: 'In triangle ABC, A = 35°, B = 75° and a = 10 cm. Find c, correct to 2 decimal places.', answer: 10 * Math.sin(70 * rad) / Math.sin(35 * rad), dp: 2, unit: 'cm',
-        hint: 'First find angle C.', solution: ['C = 180° - 35° - 75° = 70°.', '{c|sin 70°} = {10|sin 35°}, so c = 10 sin 70° ÷ sin 35° = 16.38 cm.'] },
       { id: 'tz16', level: 'challenge', prompt: 'A triangle has sides 10 cm and 12 cm and its area is 30 cm².',
         parts: [{ label: '(a)', prompt: 'Find the acute angle between the two sides.', answer: 30, unit: '°', marks: 2 }, { label: '(b)', prompt: 'The angle between the sides could also be obtuse. Find it.', answer: 150, unit: '°', marks: 1 }],
         solution: ['{1|2} × 10 × 12 × sin θ = 30, so sin θ = 0.5.', 'θ = 30° or θ = 180° - 30° = 150°.'] },

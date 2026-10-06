@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'mensuration', title: 'Perimeter, Area and Volume',
-    strand: 'geometry', levels: [1, 2, 3],
-    syllabusNote: 'Sec 1-3 (Math syllabus); this bank covers plane figures, circles, cuboids and cylinders (Sec 1), plus cones, spheres and sectors (Sec 3)',
-    verified: false,
+    strand: 'geometry', levels: [1, 2, 3, 4],
+    syllabusNote: 'O-Level syllabus G5: prisms and cylinders (Sec 1); pyramid, cone and sphere (Sec 2); arc, sector, segment and radians (Sec 3/4).',
+    verified: true,
     objectives: [
       'Find the perimeter and area of rectangles, triangles, parallelograms, trapezia and circles.',
       'Find the area and perimeter of composite figures.',
@@ -48,7 +48,6 @@
     ],
     viz: null,
     questions: [
-      { id: 'me1', level: 'foundation', prompt: 'A rectangle is 14 cm long and 9 cm wide. Find its area.', answer: 126, unit: 'cm²', solution: ['Area = 14 × 9 = 126 cm^2.'] },
       { id: 'me2', level: 'foundation', prompt: 'A triangle has a base of 12 cm and a perpendicular height of 7 cm. Find its area.', answer: 42, unit: 'cm²', solution: ['Area = {1|2} × 12 × 7 = 42 cm^2.'] },
       { id: 'me3', level: 'foundation', prompt: 'A trapezium has parallel sides of 8 cm and 12 cm, and the distance between them is 5 cm. Find its area.', answer: 50, unit: 'cm²', solution: ['Area = {1|2}(8 + 12) × 5 = 50 cm^2.'] },
       { id: 'me4', level: 'foundation', prompt: 'A circle has radius 7 cm. Find its circumference, correct to 2 decimal places.', answer: 43.982297, dp: 2, unit: 'cm', solution: ['C = 2πr = 2 × π × 7 = 43.98 cm (2 d.p.).'] },

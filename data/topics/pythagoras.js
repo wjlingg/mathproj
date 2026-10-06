@@ -3,9 +3,9 @@
 
   EMATH.registerTopic({
     id: 'pythagoras', title: "Pythagoras' Theorem",
-    strand: 'geometry', levels: [2, 3],
-    syllabusNote: 'Sec 2 (Math syllabus); revisited in O-Level 4052 Sec 3/4',
-    verified: false,
+    strand: 'geometry', levels: [2],
+    syllabusNote: 'O-Level syllabus G4.1-4.2 (Sec 2).',
+    verified: true,
     objectives: [
       'State and use Pythagoras\' theorem to find a missing side of a right-angled triangle.',
       'Use the converse to test whether a triangle is right-angled.',
@@ -69,13 +69,11 @@
       { id: 'y11', level: 'standard', prompt: 'A 6.5 m ladder reaches 6 m up a vertical wall. How far is the foot of the ladder from the wall?', answer: 2.5, unit: 'm', solution: ['d^2 = 6.5^2 - 6^2 = 42.25 - 36 = 6.25.', 'd = 2.5 m.'] },
       { id: 'y12', level: 'standard', prompt: 'A rectangular field is 120 m by 90 m. Jun walks along the two sides from one corner to the opposite corner. His friend walks along the diagonal. How much shorter is the diagonal route?', answer: 60, unit: 'm',
         solution: ['Diagonal^2 = 120^2 + 90^2 = 14400 + 8100 = 22500, so the diagonal = 150 m.', 'Two sides: 120 + 90 = 210 m.', 'Difference = 210 - 150 = 60 m.'] },
-      { id: 'y13', level: 'standard', prompt: 'Find the distance between the points A(1, 2) and B(7, 10).', answer: 10, hint: 'Draw a right-angled triangle with horizontal and vertical sides.', solution: ['Horizontal distance = 7 - 1 = 6, vertical distance = 10 - 2 = 8.', 'AB^2 = 36 + 64 = 100, so AB = 10.'] },
       { id: 'y14', level: 'challenge', prompt: 'An equilateral triangle has side 10 cm.',
         parts: [{ label: '(a)', prompt: 'Find its height, correct to 2 decimal places.', answer: 8.6602540, dp: 2, unit: 'cm' }, { label: '(b)', prompt: 'Find its area, correct to 3 significant figures.', answer: 43.30127, sf: 3, unit: 'cm²' }],
         solution: ['The height splits the base into 5 cm and 5 cm.', 'h^2 = 10^2 - 5^2 = 75, so h = 8.66 cm.', 'Area = {1|2} × 10 × sqrt(75) = 43.3 cm² (3 s.f.).'] },
       { id: 'y15', level: 'challenge', prompt: 'A cuboid measures 3 cm by 4 cm by 12 cm. Find the length of its space diagonal.', answer: 13, unit: 'cm',
         hint: 'First find the diagonal of the 3 by 4 face, then use it with the height.', solution: ['Diagonal of the base: sqrt(3^2 + 4^2) = 5 cm.', 'Space diagonal: sqrt(5^2 + 12^2) = sqrt(169) = 13 cm.'] },
-      { id: 'y16', level: 'challenge', prompt: 'Ship A sails 24 km due east from a port and ship B sails 7 km due north from the same port. How far apart are the ships?', answer: 25, unit: 'km', solution: ['East and north are at right angles.', 'd^2 = 24^2 + 7^2 = 576 + 49 = 625.', 'd = 25 km.'] }
     ],
     generators: [
       { id: 'triple', level: 'standard', make: function (r) {

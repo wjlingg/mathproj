@@ -4,8 +4,8 @@
   EMATH.registerTopic({
     id: 'primes-hcf-lcm', title: 'Primes, HCF and LCM',
     strand: 'number-algebra', levels: [1],
-    syllabusNote: 'Sec 1 (Math syllabus); used again in simplifying fractions and ratios',
-    verified: false,
+    syllabusNote: 'O-Level syllabus N1.1-1.2 (Sec 1).',
+    verified: true,
     objectives: [
       'Identify prime numbers and write a number as a product of prime factors in index notation.',
       'Find the HCF and LCM using prime factorisation.',
@@ -63,8 +63,6 @@
         solution: ['HCF = 2^2 × 3 × 7 = 84.', 'LCM = 2^3 × 3^3 × 5 × 7^2 = 8 × 27 × 5 × 49 = 52 920.'] },
       { id: 'pl8', level: 'standard', marks: 3, prompt: 'Find the smallest positive integer k such that 540k is a perfect square.', answer: 15,
         hint: 'Write 540 as a product of primes first.', solution: ['540 = 2^2 × 3^3 × 5.', 'The indices of 3 and 5 are odd, so multiply by 3 × 5 = 15.', '540 × 15 = 8 100 = 90^2 ✓.'] },
-      { id: 'pl9', level: 'standard', marks: 3, prompt: 'Find the smallest positive integer n such that 252n is a perfect cube.', answer: 294,
-        hint: 'For a perfect cube every index must be a multiple of 3.', solution: ['252 = 2^2 × 3^2 × 7.', 'Make the indices 3, 3, 3: multiply by 2 × 3 × 7^2 = 294.', '252 × 294 = 74 088 = 42^3 ✓.'] },
       { id: 'pl10', level: 'standard', prompt: 'A school bell and a library alarm ring together at 9:00 am. The bell rings every 12 minutes and the alarm every 18 minutes.',
         parts: [{ label: '(a)', prompt: 'After how many minutes do they next ring together?', answer: 36, unit: 'min', marks: 2 },
                 { label: '(b)', prompt: 'How many times do they ring together from 9:00 am to 12:00 noon, counting both 9:00 am and 12:00 noon?', answer: 6, marks: 2 }],
@@ -72,20 +70,14 @@
       { id: 'pl11', level: 'standard', prompt: 'Two ropes, 168 cm and 252 cm long, are cut into pieces of equal length with no rope left over. The pieces are as long as possible.',
         parts: [{ label: '(a)', prompt: 'Find the length of each piece.', answer: 84, unit: 'cm', marks: 2 }, { label: '(b)', prompt: 'Find the total number of pieces.', answer: 5, marks: 1 }],
         hint: 'The longest equal piece that divides both lengths is the HCF.', solution: ['168 = 2^3 × 3 × 7 and 252 = 2^2 × 3^2 × 7.', 'HCF = 2^2 × 3 × 7 = 84 cm.', 'Pieces: 168 ÷ 84 = 2 and 252 ÷ 84 = 3, so 5 pieces.'] },
-      { id: 'pl12', level: 'standard', type: 'mcq', prompt: 'Express 756 as a product of its prime factors.', options: ['2^2 × 3^3 × 7', '2^3 × 3^2 × 7', '2^2 × 3^2 × 21', '4 × 27 × 7'], answer: 0, solution: ['756 = 2 × 378 = 2 × 2 × 189 = 2 × 2 × 3 × 63 = 2 × 2 × 3 × 3 × 21 = 2 × 2 × 3 × 3 × 3 × 7.', '= 2^2 × 3^3 × 7.'] },
       { id: 'pl13', level: 'standard', prompt: 'Find the smallest 3-digit number that is divisible by 6, 8 and 9.', answer: 144,
         hint: 'Find the LCM first, then look for its smallest multiple with 3 digits.', solution: ['6 = 2 × 3, 8 = 2^3, 9 = 3^2, so LCM = 2^3 × 3^2 = 72.', 'Multiples of 72: 72, 144, ...', 'The smallest 3-digit one is 144.'] },
-      { id: 'pl14', level: 'challenge', marks: 3, prompt: 'The HCF of two numbers is 12 and their LCM is 180. One of the numbers is 36. Find the other number.', answer: 60,
-        hint: 'HCF × LCM = product of the two numbers.', solution: ['12 × 180 = 36 × x.', 'x = 2 160 ÷ 36 = 60.', 'Check: HCF(36, 60) = 12 ✓ and LCM(36, 60) = 180 ✓.'] },
       { id: 'pl15', level: 'challenge', prompt: 'Written as a product of prime factors, 450 = 2 × 3^2 × 5^2.',
         parts: [{ label: '(a)', prompt: 'Find the smallest positive integer p such that 450p is a perfect cube.', answer: 60, marks: 2 },
                 { label: '(b)', prompt: 'Find the smallest positive integer q such that 450 ÷ q is a perfect square.', answer: 2, marks: 2 }],
         hint: 'In (b), divide away only the primes that have an odd index.', solution: ['(a) Make every index 3: multiply by 2^2 × 3 × 5 = 60. 450 × 60 = 27 000 = 30^3.', '(b) Only 2 has an odd index, so q = 2. 450 ÷ 2 = 225 = 15^2.'] },
 
       // Sec 4 style
-      { id: 'pl16', level: 'standard', prompt: '216 boys and 252 girls join a camp. They form as many groups as possible so that each group has the same number of boys and the same number of girls.',
-        parts: [{ label: '(a)', prompt: 'Find the greatest number of groups.', answer: 36, marks: 2 }, { label: '(b)', prompt: 'How many boys are in each group?', answer: 6, marks: 1 }, { label: '(c)', prompt: 'How many girls are in each group?', answer: 7, marks: 1 }],
-        solution: ['216 = 2^3 × 3^3 and 252 = 2^2 × 3^2 × 7, so HCF = 2^2 × 3^2 = 36 groups.', 'Boys: 216 ÷ 36 = 6. Girls: 252 ÷ 36 = 7.'] },
       { id: 'pl17', level: 'challenge', prompt: '440 = 2^3 × 5 × 11, and the LCM of 440 and B is 1 320.',
         parts: [{ label: '(a)', prompt: 'If B = 6, find the HCF of 440 and B.', answer: 2, marks: 1 }, { label: '(b)', prompt: 'If the HCF of 440 and B is 55, find B.', answer: 165, marks: 2 }],
         hint: 'HCF × LCM = 440 × B.', solution: ['HCF(440, 6) = 2.', '55 × 1 320 = 440 × B, so B = 72 600 ÷ 440 = 165.', 'Check: 165 = 3 × 5 × 11, so the LCM is 2^3 × 3 × 5 × 11 = 1 320 ✓.'] }

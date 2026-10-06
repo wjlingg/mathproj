@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'sets', title: 'Set Language and Notation',
-    strand: 'number-algebra', levels: [3],
-    syllabusNote: 'Sec 3 (Math syllabus); placement to be confirmed',
-    verified: false,
+    strand: 'number-algebra', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus N8 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use set notation: ∈, ∉, ⊂, ∪, ∩, the universal set ξ, the complement A′ and the empty set.',
       'List the elements of a set from a description, and count them.',
@@ -72,12 +72,6 @@
         parts: [{ label: '(a)', prompt: 'Find the greatest possible value of n(A ∩ B).', answer: 9, marks: 2 }, { label: '(b)', prompt: 'Find the least possible value of n(A ∩ B).', answer: 3, marks: 2 }],
         hint: 'The greatest overlap happens when B ⊂ A. The least is forced when A ∪ B is as big as ξ.', solution: ['(a) At most the size of the smaller set: 9.', '(b) n(A ∪ B) ≤ 18, so 21 - n(A ∩ B) ≤ 18 and n(A ∩ B) ≥ 3.'] },
       { id: 'st14', level: 'standard', marks: 2, prompt: 'A = {x : x is an integer, 2 < x ≤ 7}. Find n(A).', answer: 5, solution: ['A = {3, 4, 5, 6, 7}, so n(A) = 5.'] },
-      { id: 'st15', level: 'challenge', prompt: 'In a group of 50 people, everyone speaks at least one of English and Mandarin. 30 speak English and 28 speak Mandarin.',
-        parts: [{ label: '(a)', prompt: 'How many speak both languages?', answer: 8, marks: 2 }, { label: '(b)', prompt: 'How many speak English only?', answer: 22, marks: 1 }],
-        solution: ['50 = 30 + 28 - both, so both = 8.', 'English only = 30 - 8 = 22.'] },
-      { id: 'st16', level: 'challenge', marks: 3, prompt: 'Of 100 students, 60 read newspaper A, 50 read newspaper B and 30 read both. What percentage read neither?', answer: 20, unit: '%',
-        solution: ['n(A ∪ B) = 60 + 50 - 30 = 80.', 'Neither = 100 - 80 = 20, which is 20%.'] },
-
       // Sec 4 style: Venn diagrams with an unknown, and number sets
       { id: 'st17', level: 'standard', marks: 2, prompt: 'A Venn diagram for ξ shows 8 elements in A only, x elements in both A and B, 12 elements in B only and 5 elements in neither. n(ξ) = 35. Find x.', answer: 10,
         solution: ['8 + x + 12 + 5 = 35.', 'x + 25 = 35, so x = 10.'] },

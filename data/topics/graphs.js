@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'graphs', title: 'Linear Graphs and Simultaneous Equations',
-    strand: 'number-algebra', levels: [2, 3],
-    syllabusNote: 'Sec 2-3 (Math syllabus); this bank covers straight lines, simultaneous equations and values from graphs of simple quadratics',
-    verified: false,
+    strand: 'number-algebra', levels: [1, 2, 3, 4],
+    syllabusNote: 'O-Level syllabus N6.1-6.5 (Sec 1), graphs and simultaneous equations N7 (Sec 2), coordinate geometry G6 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Find the gradient, y-intercept and equation of a straight line.',
       'Recognise parallel lines and find where a line cuts the axes.',

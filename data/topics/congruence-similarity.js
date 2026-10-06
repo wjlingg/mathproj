@@ -2,8 +2,8 @@
   EMATH.registerTopic({
     id: 'congruence-similarity', title: 'Congruence and Similarity',
     strand: 'geometry', levels: [2, 3, 4],
-    syllabusNote: 'Sec 2-4 (Math syllabus); this bank covers the Sec 2 content: similar figures, scale factors, and area and volume ratios',
-    verified: false,
+    syllabusNote: 'O-Level syllabus G2: congruence and similarity (Sec 2); scale drawings and ratios of areas and volumes (Sec 3/4).',
+    verified: true,
     objectives: [
       'Decide whether two triangles are congruent (SSS, SAS, ASA, AAS, RHS) and use congruent figures to find lengths and angles.',
       'Use the scale factor of similar figures to find unknown lengths.',
@@ -51,7 +51,6 @@
       { id: 'cs3', level: 'foundation', prompt: 'Two rectangles are similar. The corresponding widths are 3 cm and 5 cm. The length of the smaller rectangle is 6 cm. Find the length of the larger one.', answer: 10, unit: 'cm', solution: ['Scale factor = {5|3}.', '6 × {5|3} = 10 cm.'] },
       { id: 'cs4', level: 'foundation', prompt: 'A figure has area 5 cm². It is enlarged with scale factor 3. Find the area of the enlarged figure.', answer: 45, unit: 'cm²', solution: ['Area scale factor = 3^2 = 9.', '5 × 9 = 45 cm^2.'] },
       { id: 'cs5', level: 'foundation', prompt: 'A model of a building is made to a scale of 1 : 50. The real building is 30 m tall. Find the height of the model in cm.', answer: 60, unit: 'cm', solution: ['30 m = 3 000 cm.', '3 000 ÷ 50 = 60 cm.'] },
-      { id: 'cs6', level: 'foundation', type: 'mcq', prompt: 'Are any two circles similar?', options: ['Yes', 'No'], answer: 0, solution: ['All circles have the same shape, so they are similar.'] },
       { id: 'cs7', level: 'standard', prompt: 'Triangles ABC and XYZ are similar, with A, B, C corresponding to X, Y, Z. AB = 6 cm, BC = 9 cm, AC = 12 cm and XY = 8 cm.',
         parts: [{ label: '(a)', prompt: 'Write down the scale factor from ABC to XYZ as a fraction.', answer: '4/3', marks: 1 },
                 { label: '(b)', prompt: 'Find the length of YZ.', answer: 12, unit: 'cm', marks: 2 },

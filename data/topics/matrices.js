@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'matrices', title: 'Matrices',
-    strand: 'number-algebra', levels: [4],
-    syllabusNote: 'Sec 4. Added because several 2026 Sec 4 prelim papers (4052) set matrix questions; inclusion in the syllabus is to be confirmed',
-    verified: false,
+    strand: 'number-algebra', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus N9 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Write information as a matrix and state the order (size) of a matrix.',
       'Add and subtract matrices, and multiply a matrix by a number.',
@@ -62,7 +62,7 @@
       { id: 'mx9', level: 'standard', prompt: 'The numbers of boys and girls in three events for two age groups are shown in E = mat(5,7;8,4;6,9) and F = mat(10,6;9,12;7,5). The columns are boys and girls and the rows are badminton, table tennis and floorball. T = E + F.',
         parts: [{ label: '(a)', prompt: 'How many girls are there altogether in table tennis (the second row of T)?', answer: 16, marks: 1 }, { label: '(b)', prompt: 'How many boys are there altogether in the three events?', answer: 45, marks: 2 }],
         solution: ['T = mat(15,13;17,16;13,14).', 'Girls in table tennis = 4 + 12 = 16.', 'Boys = 15 + 17 + 13 = 45.'] },
-      { id: 'mx10', level: 'standard', prompt: 'Using T = mat(15,13;17,16;13,14) from the previous question (boys and girls in badminton, table tennis and floorball), the entry fees are $30, $25 and $20. The fees form C = (30  25  20) and M = CT.',
+      { id: 'mx10', level: 'standard', prompt: 'The numbers of boys and girls in badminton, table tennis and floorball are shown in T = mat(15,13;17,16;13,14) (columns are boys and girls). The entry fees are $30, $25 and $20. The fees form C = (30  25  20) and M = CT.',
         parts: [{ label: '(a)', prompt: 'Find the total fees from the boys ($).', answer: 1135, marks: 2 }, { label: '(b)', prompt: 'Find the total fees from the girls ($).', answer: 1070, marks: 1 }, { label: '(c)', prompt: 'Find the total amount of fees collected ($).', answer: 2205, marks: 1 }],
         solution: ['Boys: 30 × 15 + 25 × 17 + 20 × 13 = 450 + 425 + 260 = 1 135.', 'Girls: 30 × 13 + 25 × 16 + 20 × 14 = 390 + 400 + 280 = 1 070.', 'Total = 1 135 + 1 070 = $2 205.'] },
       { id: 'mx11', level: 'standard', prompt: 'A shop sells two products at $120 and $80, shown in C = (120  80). During a sale there is a 10% discount, so the new prices are D = kC. The numbers sold on two days are N = mat(5,3;2,4) (rows are the products, columns are the days).',
@@ -72,9 +72,6 @@
         parts: [{ label: '(a)', prompt: 'Find x.', answer: 4, marks: 1 }, { label: '(b)', prompt: 'Find y.', answer: 4, marks: 1 }],
         solution: ['x + 2 = 6, so x = 4.', '3 + y = 7, so y = 4.'] },
       { id: 'mx13', level: 'standard', marks: 1, prompt: 'k × mat(1,2;3,1) = mat(3,6;9,3). Find k.', answer: 3, solution: ['3 = k × 1, so k = 3.'] },
-      { id: 'mx14', level: 'standard', prompt: 'A = mat(1,2;0,3) and B = mat(4,1;2,5). Find AB.',
-        parts: [{ label: '(a)', prompt: 'Element in row 1, column 2 of AB.', answer: 11, marks: 1 }, { label: '(b)', prompt: 'Element in row 2, column 2 of AB.', answer: 15, marks: 1 }],
-        solution: ['Row 1 × column 2: 1 × 1 + 2 × 5 = 11.', 'Row 2 × column 2: 0 × 1 + 3 × 5 = 15.'] },
       { id: 'mx15', level: 'challenge', prompt: 'P = mat(2,1;3,4) and Q = mat(x,2;1,y). The first row of PQ is (5  8).',
         parts: [{ label: '(a)', prompt: 'Find x.', answer: 2, marks: 2 }, { label: '(b)', prompt: 'Find y.', answer: 4, marks: 2 }],
         hint: 'Row 1 of P times column 1 of Q gives 2x + 1.', solution: ['Row 1 × column 1: 2x + 1 × 1 = 5, so x = 2.', 'Row 1 × column 2: 2 × 2 + 1 × y = 8, so y = 4.'] },

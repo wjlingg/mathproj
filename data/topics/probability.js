@@ -2,8 +2,8 @@
   EMATH.registerTopic({
     id: 'probability', title: 'Probability (simple, combined, tree diagrams)',
     strand: 'stats-prob', levels: [2, 3, 4],
-    syllabusNote: 'Sec 2 (simple probability); combined events and tree diagrams in O-Level 4052 Sec 3/4',
-    verified: false,
+    syllabusNote: 'O-Level syllabus S2: single events (Sec 2); combined events and tree diagrams (Sec 3/4).',
+    verified: true,
     objectives: [
       'List a sample space and find the probability of an event.',
       'Use P(not E) = 1 - P(E) and know that probabilities lie between 0 and 1.',

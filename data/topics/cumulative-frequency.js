@@ -2,8 +2,8 @@
   EMATH.registerTopic({
     id: 'cumulative-frequency', title: 'Cumulative Frequency and Box Plots',
     strand: 'stats-prob', levels: [3, 4],
-    syllabusNote: 'Level placement to be confirmed; the Sec 4 prelim papers set cumulative frequency, box plots, histograms and grouped standard deviation. Values read from a graph are given in the question',
-    verified: false,
+    syllabusNote: 'O-Level syllabus S1.11-1.16 (Sec 3/4). Values read from graphs are given in the question.',
+    verified: true,
     objectives: [
       'Read the median, quartiles, interquartile range and percentiles from a cumulative frequency curve.',
       'Read a box-and-whisker plot and use the quartiles to count and compare data.',
@@ -47,12 +47,10 @@
     ],
     viz: null,
     questions: [
-      { id: 'cf1', level: 'foundation', prompt: 'A box plot has minimum 12, Q1 = 20, median 26, Q3 = 35 and maximum 52. Find the range.', answer: 40, solution: ['Range = 52 - 12 = 40.'] },
       { id: 'cf2', level: 'foundation', prompt: 'For the same box plot, find the interquartile range.', answer: 15, solution: ['IQR = 35 - 20 = 15.'] },
       { id: 'cf3', level: 'foundation', prompt: 'On a cumulative frequency curve for 80 values, at what cumulative frequency is the median read?', answer: 40, solution: ['The median is at {80|2} = 40.'] },
       { id: 'cf4', level: 'foundation', type: 'mcq', prompt: 'What percentage of the data lies below the upper quartile?', options: ['25%', '50%', '75%', '100%'], answer: 2, solution: ['The upper quartile has 75% of the data below it.'] },
       { id: 'cf5', level: 'foundation', prompt: 'Frequencies for the classes 0 < x ≤ 10, 10 < x ≤ 20 and 20 < x ≤ 30 are 5, 12 and 20. Find the cumulative frequency at x = 20.', answer: 17, solution: ['5 + 12 = 17.'] },
-      { id: 'cf6', level: 'foundation', prompt: 'The classes have frequencies 5, 12, 20 and 8. What is the total number of values, and so the highest cumulative frequency?', answer: 45, solution: ['5 + 12 + 20 + 8 = 45.'] },
       { id: 'cf7', level: 'standard', prompt: 'A box plot for 80 students shows minimum 12, Q1 = 20, median 26, Q3 = 35 and maximum 52.',
         parts: [{ label: '(a)', prompt: 'How many students scored at most 35?', answer: 60, marks: 2 }, { label: '(b)', prompt: 'How many students scored between the median and the upper quartile?', answer: 20, marks: 1 }, { label: '(c)', prompt: 'How many students scored more than 20?', answer: 60, marks: 1 }],
         solution: ['35 is Q3, so 75% of 80 = 60 students scored at most 35.', 'Between the median and Q3 is a quarter of the data: 20 students.', 'More than Q1 = 20 means the top 75%: 60 students.'] },
@@ -69,8 +67,6 @@
       { id: 'cf12', level: 'standard', prompt: 'The times of 50 runners: 10 < t ≤ 20 (6 runners), 20 < t ≤ 30 (14), 30 < t ≤ 40 (18), 40 < t ≤ 50 (12).',
         parts: [{ label: '(a)', prompt: 'Estimate the mean time.', answer: 32.2, marks: 2 }, { label: '(b)', prompt: 'Estimate the standard deviation.', answer: 9.6, marks: 2 }],
         hint: 'Use the midpoints 15, 25, 35, 45.', solution: ['Σfx = 90 + 350 + 630 + 540 = 1 610, so mean = 32.2.', 'Σfx^2 = 1 350 + 8 750 + 22 050 + 24 300 = 56 450, so {Σfx^2|Σf} = 1 129.', 'SD = sqrt(1129 - 32.2^2) = sqrt(92.16) = 9.6.'] },
-      { id: 'cf13', level: 'standard', marks: 2, type: 'mcq', prompt: 'Group P has a mean time of 32.2 minutes and a standard deviation of 9.6 minutes. Group Q has a mean of 30.5 minutes and a standard deviation of 12 minutes. Which group has more consistent times?', options: ['Group P', 'Group Q'], answer: 0,
-        solution: ['The smaller standard deviation (9.6 < 12) means Group P is more consistent.'] },
       { id: 'cf14', level: 'standard', marks: 2, type: 'mcq', prompt: 'A bar chart of the number of students studying in a library over 3 years has a vertical axis that starts at 400 instead of 0. Why is this misleading?', options: ['Differences between the bars look much bigger than they are', 'The bars look smaller than they are', 'The years are in the wrong order', 'It hides the units'], answer: 0,
         solution: ['Starting the axis at 400 cuts off the bottom of the bars, so small differences look like large changes.'] },
       { id: 'cf15', level: 'standard', prompt: 'A histogram shows the times taken by 100 participants in a challenge: 0-2 min (10), 2-4 min (25), 4-6 min (40), 6-8 min (20) and 8-10 min (5). A participant who takes at most 4 minutes is a fast finisher.',

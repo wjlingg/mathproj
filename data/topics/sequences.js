@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'sequences', title: 'Number Patterns and Sequences',
-    strand: 'number-algebra', levels: [2, 3],
-    syllabusNote: 'Sec 1-3 (Math syllabus); placement to be confirmed',
-    verified: false,
+    strand: 'number-algebra', levels: [1],
+    syllabusNote: 'O-Level syllabus N5.5: patterns and the nth term (Sec 1).',
+    verified: true,
     objectives: [
       'Continue a number pattern and describe the rule.',
       'Find the nth term of an arithmetic sequence and use it to find terms.',
@@ -14,7 +14,7 @@
       'A **sequence** is a list of numbers that follows a rule. In an **arithmetic sequence** the same number d (the **common difference**) is added each time. If the first term is a, the nth term is **a + (n - 1)d**, which simplifies to dn + (a - d).',
       { term: 'Finding the nth term', def: 'Find the common difference d. The nth term starts as dn. Compare dn with the first term to find what to add or subtract. 5, 9, 13, ... has d = 4, so 4n + 1.' },
       { term: 'Is it a term?', def: 'Set the nth-term formula equal to the number and solve for n. If n is a positive whole number, it is a term; otherwise it is not.' },
-      { term: 'Other sequences', def: 'Square numbers n^2: 1, 4, 9, 16, ... Triangle numbers {n(n + 1)|2}: 1, 3, 6, 10, ... Each term as the sum of the previous two: 2, 3, 5, 8, 13, ... Each term multiplied by a constant r (a geometric sequence): 3, 6, 12, 24, ...' },
+      { term: 'Other sequences', def: 'Square numbers n^2: 1, 4, 9, 16, ... Triangle numbers {n(n + 1)|2}: 1, 3, 6, 10, ... Each term as the sum of the previous two: 2, 3, 5, 8, 13, ...' },
       { term: 'Patterns from shapes', def: 'Draw the first few figures, count, and look at how much is added each time. 5, 9, 13 matchsticks add 4 each time, so figure n needs 4n + 1.' },
       { term: 'Number of terms', def: 'To find how many terms are in 7, 10, 13, ..., 100, solve the nth-term formula = 100 for n.' }
     ],
@@ -36,7 +36,7 @@
     formulae: [
       { name: 'Arithmetic sequence', text: 'nth term = a + (n - 1)d' },
       { name: 'Triangle numbers', text: '{n(n + 1)|2}' },
-      { name: 'Sum of first n terms', text: '{n|2}[2a + (n - 1)d]' }
+      { name: 'Number of terms', text: 'n = {last term - a|d} + 1' }
     ],
     summary: [
       'Find the common difference d; the nth term is dn + (a - d).',
@@ -76,13 +76,8 @@
         hint: 'From the 4th term to the 9th term there are 5 steps.', solution: ['5d = 42 - 17 = 25, so d = 5.', 'First term = 17 - 3 × 5 = 2.', '20th term = 2 + 19 × 5 = 97.'] },
       { id: 'sq13', level: 'standard', prompt: 'In the sequence 2, 3, 5, 8, 13, ... each term after the second is the sum of the two terms before it. Find the 8th term.', answer: 55,
         solution: ['2, 3, 5, 8, 13, 21, 34, 55.', 'The 8th term is 55.'] },
-      { id: 'sq14', level: 'challenge', marks: 2, prompt: 'The sequence 3, 6, 12, 24, ... is formed by multiplying by 2 each time. Find the 8th term.', answer: 384,
-        solution: ['The nth term is 3 × 2^(n - 1).', '8th term = 3 × 2^7 = 3 × 128 = 384.'] },
       { id: 'sq15', level: 'challenge', marks: 3, prompt: 'How many terms are there in the sequence 7, 10, 13, ..., 100?', answer: 32,
         solution: ['The nth term is 3n + 4.', '3n + 4 = 100, so n = 32.'] },
-      { id: 'sq16', level: 'challenge', marks: 3, prompt: 'Find the sum of the first 10 terms of 3, 7, 11, 15, ...', answer: 210,
-        hint: 'Sum = {n|2}[2a + (n - 1)d].', solution: ['a = 3, d = 4, n = 10.', 'Sum = {10|2}[2 × 3 + 9 × 4] = 5 × 42 = 210.'] },
-
       // Sec 4 style: quadratic nth term and odd-number pattern
       { id: 'sq17', level: 'challenge', prompt: 'The first four terms of a sequence are 3, 8, 15, 24, ... The nth term is n^2 + 2n.',
         parts: [{ label: '(a)', prompt: 'Find the 5th term.', answer: 35, marks: 1 }, { label: '(b)', prompt: 'Find and simplify T(k + 1) - T(k) in terms of k. T(k + 1) - T(k) =', type: 'expression', answer: '2k+3', marks: 2 },

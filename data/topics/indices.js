@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'indices', title: 'Indices and Standard Form',
-    strand: 'number-algebra', levels: [2, 3],
-    syllabusNote: 'Sec 2-3 (Math syllabus); standard form is also in the Sec 1 approximation topic',
-    verified: false,
+    strand: 'number-algebra', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus N1.8-1.10 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use the laws of indices with integer and fractional indices.',
       'Evaluate zero, negative and fractional indices.',
@@ -62,20 +62,22 @@
         solution: ['3 × 4 = 12 and 10^5 × 10^(-2) = 10^3, so the answer = 12 × 10^3 = 12 000.', 'In standard form: 1.2 × 10^4, so n = 4.'] },
       { id: 'ix12', level: 'standard', marks: 3, type: 'expression', prompt: 'Simplify (2a^(-1)b)^(-2), leaving your answer with positive indices.', answer: 'a^2/(4b^2)',
         solution: ['(2a^(-1)b)^(-2) = 2^(-2) a^2 b^(-2).', '= {a^2|4b^2}.'] },
-      { id: 'ix13', level: 'standard', marks: 2, prompt: 'Solve 2^(x + 1) = 32.', answer: 4, solution: ['32 = 2^5, so x + 1 = 5.', 'x = 4.'] },
       { id: 'ix14', level: 'standard', marks: 2, prompt: 'Evaluate 16^(3/4).', answer: 8, solution: ['Fourth root of 16 = 2.', '2^3 = 8.'] },
       { id: 'ix15', level: 'challenge', marks: 3, prompt: 'Solve 2^(2x - 1) = 8^(x - 2).', answer: 5,
         hint: 'Write 8 as 2^3.', solution: ['8^(x - 2) = 2^(3x - 6).', '2x - 1 = 3x - 6, so x = 5.'] },
-      { id: 'ix16', level: 'challenge', marks: 2, prompt: '3^n + 3^(n + 1) = k × 3^n. Find the value of k.', answer: 4,
-        hint: 'Take 3^n out as a common factor.', solution: ['3^(n + 1) = 3 × 3^n.', '3^n + 3 × 3^n = 4 × 3^n, so k = 4.'] },
-
       // Sec 4 style
       { id: 'ix17', level: 'challenge', marks: 3, prompt: 'Use the laws of indices to find k when {2^k|8} = 4^(k - 1).', answer: -1,
         hint: 'Write 8 as 2^3 and 4 as 2^2.', solution: ['2^(k - 3) = 2^(2k - 2).', 'k - 3 = 2k - 2, so k = -1.'] },
       { id: 'ix18', level: 'challenge', marks: 3, prompt: 'Given that 5^(2n - 1) = 5^2026 - 4 × 5^2025, find n.', answer: 1013,
         hint: 'Take 5^2025 out as a common factor on the right.', solution: ['5^2026 = 5 × 5^2025, so the right side = 5^2025(5 - 4) = 5^2025.', '2n - 1 = 2025, so n = 1013.'] },
       { id: 'ix19', level: 'challenge', marks: 2, type: 'expression', prompt: 'Given a = 3^x, express 9^(x - 1) in terms of a.', answer: 'a^2/9',
-        solution: ['9^(x - 1) = 3^(2x - 2) = {(3^x)^2|3^2} = {a^2|9}.'] }
+        solution: ['9^(x - 1) = 3^(2x - 2) = {(3^x)^2|3^2} = {a^2|9}.'] },
+
+      // Standard form (moved here from Approximation: N1.8 is Sec 3/4)
+      { id: 'ix20', level: 'foundation', marks: 1, prompt: 'Write 5.3 × 10^4 as an ordinary number.', answer: 53000, solution: ['10^4 = 10 000.', '5.3 × 10 000 = 53 000.'] },
+      { id: 'ix21', level: 'standard', marks: 2, prompt: 'Write 0.000 042 in the form 4.2 × 10^n. Find n.', answer: -5, solution: ['Move the decimal point 5 places to the right to get 4.2.', 'So 0.000 042 = 4.2 × 10^(-5), and n = -5.'] },
+      { id: 'ix22', level: 'challenge', marks: 3, prompt: 'Light travels at 3.0 × 10^8 m/s. The Sun is 1.5 × 10^11 m from Earth. How many minutes does light from the Sun take to reach Earth? Give your answer correct to 2 decimal places.', answer: 500 / 60, dp: 2, unit: 'min',
+        hint: 'Time = distance ÷ speed. Change the seconds to minutes at the end.', solution: ['Time = {1.5 × 10^11|3.0 × 10^8} = 500 s.', '500 ÷ 60 = 8.33 minutes (2 d.p.).'] }
     ],
     generators: [
       { id: 'index-add', level: 'foundation', make: function (r) {

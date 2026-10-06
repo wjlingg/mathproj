@@ -2,8 +2,8 @@
   EMATH.registerTopic({
     id: 'data-handling', title: 'Data Handling and Statistical Diagrams',
     strand: 'stats-prob', levels: [1, 2],
-    syllabusNote: 'Sec 1-2 (Math syllabus); mean, median and mode are revisited in the averages topic',
-    verified: false,
+    syllabusNote: 'O-Level syllabus S1.1-1.10 (Sec 1-2).',
+    verified: true,
     objectives: [
       'Read and interpret tables, bar charts, pie charts, dot diagrams and stem-and-leaf diagrams.',
       'Calculate the mean, median, mode and range, including from a frequency table.',
@@ -51,7 +51,6 @@
       { id: 'dh2', level: 'foundation', prompt: 'Find the median of 3, 9, 4, 7, 12, 5.', answer: 6, hint: 'Put the numbers in order first.', solution: ['In order: 3, 4, 5, 7, 9, 12.', 'There are 6 values, so the median is the mean of the 3rd and 4th: (5 + 7) ÷ 2 = 6.'] },
       { id: 'dh3', level: 'foundation', prompt: 'Find the mode of 2, 5, 3, 5, 4, 2, 5.', answer: 5, solution: ['5 appears 3 times, more than any other value.'] },
       { id: 'dh4', level: 'foundation', prompt: 'In a survey of 120 students, 30 chose basketball. What angle represents basketball on a pie chart?', answer: 90, unit: '°', solution: ['{30|120} × 360° = 90°.'] },
-      { id: 'dh5', level: 'foundation', prompt: 'Find the range of 12, 5, 19 and 8.', answer: 14, solution: ['Range = 19 - 5 = 14.'] },
       { id: 'dh6', level: 'foundation', type: 'mcq', prompt: 'Which diagram is best for showing how a whole is divided into parts?', options: ['Pie chart', 'Line graph', 'Scatter graph', 'Histogram'], answer: 0, solution: ['A pie chart shows each category as a fraction of the whole.'] },
       { id: 'dh7', level: 'standard', marks: 2, prompt: 'The mean of 8 numbers is 12.5. A ninth number is added and the mean becomes 13. Find the ninth number.', answer: 17,
         solution: ['Total of 8 numbers = 8 × 12.5 = 100.', 'Total of 9 numbers = 9 × 13 = 117.', 'Ninth number = 117 - 100 = 17.'] },
@@ -66,17 +65,11 @@
         solution: ['Art = 360 - 150 - 90 = 120°.', 'Music = {90|360} × 240 = 60.', 'Sports = {150|360} × 240 = 100.'] },
       { id: 'dh11', level: 'standard', marks: 3, prompt: 'The mean of 5 numbers is 14 and the mean of 3 other numbers is 6. Find the mean of all 8 numbers.', answer: 11,
         hint: 'Find the total of each group.', solution: ['Total of 5 numbers = 70.', 'Total of 3 numbers = 18.', 'Mean of all 8 = 88 ÷ 8 = 11.'] },
-      { id: 'dh12', level: 'standard', marks: 2, prompt: 'The mean of five numbers is 7. Four of the numbers are 3, 9, 6 and 10. Find the fifth number.', answer: 7,
-        solution: ['Total = 5 × 7 = 35.', '3 + 9 + 6 + 10 = 28.', 'Fifth number = 35 - 28 = 7.'] },
       { id: 'dh13', level: 'standard', prompt: 'A bar chart shows the number of books borrowed from a library in one week: Monday 24, Tuesday 18, Wednesday 30, Thursday 12, Friday 36.',
         parts: [{ label: '(a)', prompt: 'Find the total number of books borrowed.', answer: 120, marks: 1 }, { label: '(b)', prompt: 'What percentage were borrowed on Friday?', answer: 30, unit: '%', marks: 2 }, { label: '(c)', prompt: 'On a pie chart, what angle would Wednesday have?', answer: 90, unit: '°', marks: 2 }],
         solution: ['24 + 18 + 30 + 12 + 36 = 120.', '{36|120} × 100% = 30%.', '{30|120} × 360° = 90°.'] },
-      { id: 'dh14', level: 'challenge', marks: 3, prompt: 'The mean of 10 numbers is 15. When one number x is removed, the mean of the remaining 9 numbers is 14. Find x.', answer: 24,
-        solution: ['Total of 10 = 150 and total of 9 = 126.', 'x = 150 - 126 = 24.'] },
       { id: 'dh15', level: 'challenge', marks: 3, prompt: 'Five numbers in ascending order are 3, 5, x, 9 and 12. Their mean is equal to their median. Find x.', answer: 7.25,
         hint: 'The median of five numbers in order is the third one, x.', solution: ['The median is x.', 'Mean = {3 + 5 + x + 9 + 12|5} = {29 + x|5}.', '{29 + x|5} = x, so 29 + x = 5x and 4x = 29.', 'x = 7.25, which fits between 5 and 9 ✓.'] },
-      { id: 'dh16', level: 'challenge', marks: 3, prompt: 'Class A has 30 students with a mean test mark of 62. Class B has 20 students with a mean test mark of 72. Find the mean mark of all 50 students.', answer: 66,
-        hint: 'Do not simply average 62 and 72. Find each class total first.', solution: ['Class A total = 30 × 62 = 1 860.', 'Class B total = 20 × 72 = 1 440.', 'Mean = (1 860 + 1 440) ÷ 50 = 66.'] }
     ],
     generators: [
       { id: 'mean', level: 'foundation', make: function (r) {

@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'curve-graphs', title: 'Graphs of Functions and Their Features',
-    strand: 'number-algebra', levels: [4],
-    syllabusNote: 'Sec 4 (Math syllabus); placement to be confirmed. Drawing and tangent questions are given as values to calculate',
-    verified: false,
+    strand: 'number-algebra', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus N6.8-6.11 (Sec 3/4). Drawing and tangent questions give the values to use.',
+    verified: true,
     objectives: [
       'Complete tables of values for quadratic, cubic and reciprocal functions.',
       'Recognise the shape and key features of the graphs of y = ax^n and of y = {a|x}.',
@@ -50,7 +50,6 @@
       { id: 'cg2', level: 'foundation', prompt: 'Find y when x = 4 on the curve y = {12|x}.', answer: 3, solution: ['y = {12|4} = 3.'] },
       { id: 'cg3', level: 'foundation', type: 'mcq', prompt: 'What does the graph of y = {1|x} look like?', options: ['Two separate curves, in the 1st and 3rd quadrants', 'A parabola', 'A straight line through the origin', 'An S-shaped cubic'], answer: 0, solution: ['y = {1|x} is a hyperbola with two branches, and x and y always have the same sign.'] },
       { id: 'cg4', level: 'foundation', prompt: 'Write down the x-coordinate of the line of symmetry of y = (x - 2)^2 + 1.', answer: 2, solution: ['The turning point is (2, 1), so the line of symmetry is x = 2.'] },
-      { id: 'cg5', level: 'foundation', prompt: 'Find y when x = -2 on the curve y = x^3.', answer: -8, solution: ['(-2)^3 = -8.'] },
       { id: 'cg6', level: 'foundation', type: 'mcq', prompt: 'The curve y = x^2 + c has its turning point at', options: ['(0, c)', '(c, 0)', '(0, 0)', '(-c, 0)'], answer: 0, solution: ['y = x^2 + c is y = x^2 moved up by c, so the turning point is (0, c).'] },
       { id: 'cg7', level: 'standard', prompt: 'A table is made for y = x + {4|x}.',
         parts: [{ label: '(a)', prompt: 'Find y when x = 0.5.', answer: 8.5, marks: 1 }, { label: '(b)', prompt: 'Find y when x = -2.', answer: -4, marks: 1 },
@@ -73,10 +72,6 @@
         solution: ['y = 0 when x = 0, x = 3 or x = -2. The largest is 3.', 'x = -1: -1 - 1 + 6 = 4.'] },
       { id: 'cg13', level: 'standard', marks: 2, prompt: 'A tangent is drawn to a curve at the point where x = 1.5. It passes through (1.5, 2.1) and (3.5, 5.3). Find the gradient of the curve at x = 1.5.', answer: 1.6,
         solution: ['Gradient = {5.3 - 2.1|3.5 - 1.5} = {3.2|2} = 1.6.'] },
-      { id: 'cg14', level: 'standard', marks: 3, prompt: 'y = {24|x}. The value of x is increased by 50%. Find the percentage decrease in y, correct to 1 decimal place.', answer: 100 / 3, dp: 1, unit: '%',
-        solution: ['New x = 1.5x, so new y = {24|1.5x} = {y|1.5} = 0.667y.', 'Decrease = 1 - 0.667 = 0.333 = 33.3%.'] },
-      { id: 'cg15', level: 'standard', type: 'mcq', marks: 1, prompt: 'The graph of y = -x^2 + 4 is', options: ['an ∩ shape with maximum point (0, 4)', 'a U shape with minimum point (0, 4)', 'an ∩ shape with maximum point (4, 0)', 'a straight line'], answer: 0,
-        solution: ['The coefficient of x^2 is negative, so the parabola is ∩-shaped, and the turning point is (0, 4).'] },
       { id: 'cg16', level: 'challenge', prompt: 'The curve y = ax^2 + bx + c passes through (0, -3), (1, 0) and (3, 12).',
         parts: [{ label: '(a)', prompt: 'Find a.', answer: 1, marks: 2 }, { label: '(b)', prompt: 'Find b.', answer: 2, marks: 2 }],
         hint: 'Substitute each point and solve simultaneously.', solution: ['(0, -3) gives c = -3.', '(1, 0): a + b - 3 = 0, so a + b = 3.', '(3, 12): 9a + 3b - 3 = 12, so 3a + b = 5.', 'Subtract: 2a = 2, so a = 1 and b = 2.'] }

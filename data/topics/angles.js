@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'angles', title: 'Angles, Lines and Polygons',
-    strand: 'geometry', levels: [1, 2],
-    syllabusNote: 'Sec 1-2 (Math syllabus)',
-    verified: false,
+    strand: 'geometry', levels: [1],
+    syllabusNote: 'O-Level syllabus G1 (Sec 1).',
+    verified: true,
     objectives: [
       'Use angle facts: angles on a straight line, at a point, vertically opposite angles.',
       'Use the angle properties of parallel lines: corresponding, alternate and co-interior angles.',
@@ -52,7 +52,6 @@
       { id: 'an4', level: 'foundation', type: 'mcq', prompt: 'Two parallel lines are crossed by a third line. Which pair of angles is always equal?', options: ['Co-interior angles', 'Alternate angles', 'Angles that add up to 180°', 'Adjacent angles on a straight line'], answer: 1, solution: ['Alternate angles are equal when the lines are parallel.', 'Co-interior angles add up to 180° instead.'] },
       { id: 'an5', level: 'foundation', prompt: 'Find the sum of the interior angles of a hexagon.', answer: 720, unit: '°', solution: ['n = 6, so (6 - 2) × 180 = 720°.'] },
       { id: 'an6', level: 'foundation', prompt: 'Find each exterior angle of a regular octagon.', answer: 45, unit: '°', solution: ['An octagon has 8 sides: 360 ÷ 8 = 45°.'] },
-      { id: 'an7', level: 'standard', prompt: 'Each exterior angle of a regular polygon is 20°. How many sides does the polygon have?', answer: 18, hint: 'The exterior angles add up to 360°.', solution: ['n = 360 ÷ 20 = 18.'] },
       { id: 'an8', level: 'standard', marks: 2, prompt: 'Four angles of a pentagon are 105°, 118°, 96° and 127°. Find the fifth angle.', answer: 94, unit: '°',
         solution: ['Sum of interior angles of a pentagon = (5 - 2) × 180 = 540°.', '105 + 118 + 96 + 127 = 446.', 'Fifth angle = 540 - 446 = 94°.'] },
       { id: 'an9', level: 'standard', prompt: 'AB and CD are parallel lines, with A, P, B in a line and C, Q, D in a line, in that order from left to right and with AB above CD. The line PQ crosses both lines. Angle BPQ = 110°.',

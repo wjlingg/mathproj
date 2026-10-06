@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'percentage', title: 'Percentage',
-    strand: 'number-algebra', levels: [1, 2],
-    syllabusNote: 'Sec 1-2 (Math syllabus); applied throughout O-Level 4052',
-    verified: false,
+    strand: 'number-algebra', levels: [1],
+    syllabusNote: 'O-Level syllabus N3 (Sec 1). Compound interest and other finance contexts are in Money Matters.',
+    verified: true,
     objectives: [
       'Convert between fractions, decimals and percentages.',
       'Find a percentage of a quantity, and express one quantity as a percentage of another.',
@@ -56,16 +56,9 @@
       { id: 'p6', level: 'foundation', prompt: 'Express each as a percentage.',
         parts: [{ label: '(a)', prompt: '0.375', answer: 37.5, unit: '%' }, { label: '(b)', prompt: '{7|20}', answer: 35, unit: '%' }],
         solution: ['0.375 × 100 = 37.5%.', '{7|20} = {35|100} = 35%.'] },
-      { id: 'p7', level: 'standard', prompt: 'A meal costs $40 before any charges. A 10% service charge is added, then 9% GST is charged on the total. Find the final bill.', answer: 47.96, dp: 2, unit: '$',
-        hint: 'Multiply by 1.10, then by 1.09.', solution: ['After service charge: 40 × 1.10 = $44.', 'After GST: 44 × 1.09 = $47.96.'] },
-      { id: 'p8', level: 'standard', prompt: 'A phone is sold for $480 after a 20% discount. Find its original price.', answer: 600, unit: '$', hint: '$480 is 80% of the original.', solution: ['80% = $480, so 1% = $6.', 'Original price = 100% = $600.'] },
       { id: 'p9', level: 'standard', prompt: 'Aisha scored 36 out of 45 in Test A and 52 out of 80 in Test B.',
         parts: [{ label: '(a)', prompt: 'Her percentage in Test A', answer: 80, unit: '%' }, { label: '(b)', prompt: 'Her percentage in Test B', answer: 65, unit: '%' }],
         solution: ['Test A: {36|45} × 100% = 80%.', 'Test B: {52|80} × 100% = 65%.'] },
-      { id: 'p10', level: 'standard', prompt: 'A town\'s population grew from 4.2 million to 5.46 million. Find the percentage increase.', answer: 30, unit: '%', solution: ['Increase = 5.46 - 4.2 = 1.26 million.', '{1.26|4.2} × 100% = 30%.'] },
-      { id: 'p11', level: 'standard', prompt: 'Mr Lim invests $5 000 at 2.5% simple interest per year for 3 years.',
-        parts: [{ label: '(a)', prompt: 'Find the interest earned.', answer: 375, unit: '$' }, { label: '(b)', prompt: 'Find the total amount after 3 years.', answer: 5375, unit: '$' }],
-        solution: ['I = {5000 × 2.5 × 3|100} = $375.', 'Total = 5 000 + 375 = $5 375.'] },
       { id: 'p12', level: 'standard', prompt: 'A school has 800 students; 45% are girls. 60% of the girls take part in a dance CCA.',
         parts: [{ label: '(a)', prompt: 'How many girls take part in the dance CCA?', answer: 216 }, { label: '(b)', prompt: 'What percentage of all students is this?', answer: 27, unit: '%' }],
         solution: ['Girls = 0.45 × 800 = 360.', 'Dance CCA = 0.60 × 360 = 216.', '{216|800} × 100% = 27%.'] },
@@ -101,14 +94,6 @@
         hint: 'After a 27% discount the selling price is 73% of the original.', solution: ['73% = $584, so 1% = $8 and 100% = $800.', 'Loss = 640 - 584 = $56.', '{56|640} × 100% = 8.75%.'] },
       { id: 'px7', level: 'standard', marks: 3, prompt: 'Ravi\'s monthly salary is $3 200. He spends 25% of it on rent, {1|8} of it on food and $1 120 on transport. He saves the rest. What percentage of his salary does he save?', answer: 27.5, unit: '%',
         hint: 'Work out each amount in dollars, then subtract from the salary.', solution: ['Rent = 0.25 × 3 200 = $800. Food = 3 200 ÷ 8 = $400.', 'Spent = 800 + 400 + 1 120 = $2 320.', 'Saved = 3 200 - 2 320 = $880.', '{880|3200} × 100% = 27.5%.'] },
-      { id: 'px8', level: 'challenge', prompt: 'Mr Tan deposits $5 000 in a bank that pays 2% interest per year, compounded yearly.',
-        parts: [{ label: '(a)', prompt: 'Find the total amount in the account after 3 years.', answer: 5306.04, dp: 2, unit: '$', marks: 3 },
-                { label: '(b)', prompt: 'The same sum earns simple interest at 2% per year for 3 years. How much more interest does compound interest give?', answer: 6.04, dp: 2, unit: '$', marks: 2 }],
-        hint: 'Total amount = P(1 + r/100)^n.', solution: ['Total = 5 000 × 1.02^3 = 5 000 × 1.061208 = $5 306.04.', 'Compound interest = $306.04.', 'Simple interest = 5 000 × 2 × 3 ÷ 100 = $300.', 'Difference = $6.04.'] },
-      { id: 'px9', level: 'challenge', marks: 3, prompt: 'A sum of money was invested at 2.5% per year, compounded yearly. After 3 years the amount is $8 610. Find the sum invested, correct to the nearest dollar.', answer: 8610 / Math.pow(1.025, 3), dp: 0, unit: '$',
-        hint: 'Total = P × 1.025^3. Divide to get P.', solution: ['1.025^3 = 1.076890625.', 'P = 8 610 ÷ 1.076890625 = 7 995.24.', 'To the nearest dollar: $7 995.'] },
-      { id: 'px10', level: 'challenge', marks: 2, prompt: 'A car costs $60 000 and its value falls by 10% each year. Find its value after 3 years.', answer: 43740, unit: '$',
-        solution: ['Each year the value is multiplied by 0.9.', '60 000 × 0.9^3 = 60 000 × 0.729 = $43 740.'] }
     ],
     generators: [
       { id: 'percent-of', level: 'foundation', make: function (r) {

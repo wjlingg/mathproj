@@ -4,8 +4,8 @@
   EMATH.registerTopic({
     id: 'integers-rationals', title: 'Integers, Rational Numbers and Real Numbers',
     strand: 'number-algebra', levels: [1],
-    syllabusNote: 'Sec 1 (Math syllabus)',
-    verified: false,
+    syllabusNote: 'O-Level syllabus N1.3-1.6 (Sec 1).',
+    verified: true,
     objectives: [
       'Calculate with negative numbers and apply the order of operations.',
       'Add, subtract, multiply and divide fractions and mixed numbers.',

@@ -2,8 +2,8 @@
   EMATH.registerTopic({
     id: 'circles', title: 'Properties of Circles',
     strand: 'geometry', levels: [3, 4],
-    syllabusNote: 'Sec 3-4 (Math syllabus); placement to be confirmed',
-    verified: false,
+    syllabusNote: 'O-Level syllabus G3 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use the angle properties of circles: angle at the centre, angles in the same segment, angle in a semicircle and angles in a cyclic quadrilateral.',
       'Use tangent properties: a tangent is perpendicular to the radius, and tangents from an external point are equal.',
@@ -49,7 +49,6 @@
       { id: 'ci1', level: 'foundation', prompt: 'A and B are points on a circle with centre O. C is another point on the major arc. Angle ACB = 40°. Find angle AOB.', answer: 80, unit: '°', solution: ['Angle at the centre = 2 × 40° = 80°.'] },
       { id: 'ci2', level: 'foundation', prompt: 'AB is a diameter of a circle and C is on the circle. Angle CAB = 35°. Find angle CBA.', answer: 55, unit: '°', solution: ['Angle ACB = 90° (angle in a semicircle).', 'Angle CBA = 180° - 90° - 35° = 55°.'] },
       { id: 'ci3', level: 'foundation', prompt: 'ABCD is a cyclic quadrilateral with angle ABC = 105°. Find angle ADC.', answer: 75, unit: '°', solution: ['Opposite angles of a cyclic quadrilateral add up to 180°.', '180° - 105° = 75°.'] },
-      { id: 'ci4', level: 'foundation', prompt: 'A tangent touches a circle at A and O is the centre. Find angle between the tangent and the radius OA.', answer: 90, unit: '°', solution: ['A tangent is perpendicular to the radius at the point of contact.'] },
       { id: 'ci5', level: 'foundation', prompt: 'PA and PB are tangents to a circle from the point P. PA = 9 cm. Find PB.', answer: 9, unit: 'cm', solution: ['Tangents from the same external point are equal in length.'] },
       { id: 'ci6', level: 'foundation', type: 'mcq', prompt: 'Angles in the same segment of a circle are', options: ['equal', 'supplementary', 'complementary', 'double each other'], answer: 0, solution: ['Angles in the same segment, standing on the same arc, are equal.'] },
       { id: 'ci7', level: 'standard', prompt: 'A, B and C are points on a circle with centre O. Angle AOB = 124° and C is on the major arc AB.',

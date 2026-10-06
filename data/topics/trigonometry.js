@@ -3,9 +3,9 @@
 
   EMATH.registerTopic({
     id: 'trigonometry', title: 'Trigonometry (right-angled)',
-    strand: 'geometry', levels: [3],
-    syllabusNote: 'Sec 3 (Math syllabus)',
-    verified: false,
+    strand: 'geometry', levels: [2, 3, 4],
+    syllabusNote: 'O-Level syllabus G4.3 right-angled triangles (Sec 2); obtuse angles G4.4 and elevation and depression G4.7 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use sine, cosine and tangent to find sides and angles of right-angled triangles.',
       'Solve problems on angles of elevation and depression.',
@@ -52,8 +52,6 @@
       { id: 'tr2', level: 'foundation', prompt: 'In a right-angled triangle, the side opposite angle θ is 6 cm and the hypotenuse is 10 cm. Find sin θ as a fraction in its simplest form.', answer: '3/5', solution: ['sin θ = {6|10} = {3|5}.'] },
       { id: 'tr3', level: 'foundation', prompt: 'Write down the value of cos 60°.', answer: 0.5, solution: ['cos 60° = 0.5.'] },
       { id: 'tr4', level: 'foundation', prompt: 'A right-angled triangle has hypotenuse 14 cm and an angle of 30°. Find the side opposite the 30° angle.', answer: 7, unit: 'cm', solution: ['sin 30° = 0.5, so opposite = 14 × 0.5 = 7 cm.'] },
-      { id: 'tr5', level: 'foundation', prompt: 'Write down the value of tan 45°.', answer: 1, solution: ['tan 45° = 1.'] },
-      { id: 'tr6', level: 'foundation', prompt: 'Write down the value of sin 90°.', answer: 1, solution: ['sin 90° = 1.'] },
       { id: 'tr7', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the hypotenuse is 12 cm and one angle is 35°. Find the length of the side opposite the 35° angle, correct to 2 decimal places.', answer: 12 * Math.sin(35 * rad), dp: 2, unit: 'cm',
         solution: ['sin 35° = {x|12}, so x = 12 sin 35° = 6.88 cm.'] },
       { id: 'tr8', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the side opposite angle θ is 5 cm and the adjacent side is 8 cm. Find θ, correct to 1 decimal place.', answer: Math.atan(5 / 8) / rad, dp: 1, unit: '°',

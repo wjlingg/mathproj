@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'inequalities', title: 'Linear Inequalities',
-    strand: 'number-algebra', levels: [2],
-    syllabusNote: 'Sec 2 (Math syllabus)',
-    verified: false,
+    strand: 'number-algebra', levels: [2, 3, 4],
+    syllabusNote: 'O-Level syllabus N7.6 (Sec 2); simultaneous inequalities N7.13 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Solve linear inequalities, including those with brackets and fractions.',
       'Reverse the inequality sign when multiplying or dividing by a negative number.',
@@ -66,14 +66,10 @@
         solution: ['3x < 47, so x < 15.67.', 'The primes below 15.67 are 2, 3, 5, 7, 11, 13.', 'The largest is 13.'] },
       { id: 'in13', level: 'standard', marks: 3, prompt: 'Mei has $50. She buys 5 pens at $1.40 each and some notebooks at $3.20 each. What is the greatest number of notebooks she can buy?', answer: 13,
         hint: 'Let the number of notebooks be n, and write 7 + 3.2n ≤ 50.', solution: ['Pens cost 5 × 1.40 = $7.', '7 + 3.2n ≤ 50, so 3.2n ≤ 43 and n ≤ 13.44.', 'She can buy at most 13 notebooks.'] },
-      { id: 'in14', level: 'standard', marks: 3, prompt: 'A taxi charges $4 flag-down plus $0.60 per km. Aisha has at most $15 to spend. What is the greatest whole number of km she can travel?', answer: 18, unit: 'km',
-        solution: ['4 + 0.6d ≤ 15.', '0.6d ≤ 11, so d ≤ 18.33.', 'The greatest whole number of km is 18.'] },
       { id: 'in15', level: 'challenge', marks: 4, prompt: 'How many integers x satisfy 2x - 5 < 3x + 1 ≤ x + 11?', answer: 11,
         hint: 'Solve the two parts separately: 2x - 5 < 3x + 1, and 3x + 1 ≤ x + 11.', solution: ['2x - 5 < 3x + 1 gives -6 < x.', '3x + 1 ≤ x + 11 gives 2x ≤ 10, so x ≤ 5.', 'So -6 < x ≤ 5. The integers are -5, -4, ..., 5.', 'There are 11.'] },
       { id: 'in16', level: 'challenge', marks: 3, prompt: 'The sum of three consecutive integers is less than 50. What is the greatest possible value of the largest of the three integers?', answer: 17,
         hint: 'Let the integers be n, n + 1, n + 2.', solution: ['n + (n + 1) + (n + 2) < 50, so 3n + 3 < 50 and n < 15.67.', 'The greatest n is 15, so the integers are 15, 16, 17 (sum 48).', 'The largest is 17.'] },
-      { id: 'in17', level: 'challenge', marks: 3, prompt: 'Find the sum of all the integers x that satisfy 3 < 2x - 5 ≤ 9.', answer: 18,
-        solution: ['Add 5: 8 < 2x ≤ 14, so 4 < x ≤ 7.', 'The integers are 5, 6 and 7, with sum 18.'] }
     ],
     generators: [
       { id: 'one-step', level: 'foundation', make: function (r) {

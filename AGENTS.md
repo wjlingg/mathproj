@@ -23,7 +23,7 @@ Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS
 
 1. Copy `data/topics/ratio.js` to `data/topics/<id>.js`; the `id` must match the entry in `data/syllabus.js`.
 2. Add `<script src="data/topics/<id>.js">` to `index.html` (before the views).
-3. Meet the content bar: 3+ worked examples, 15+ questions across `foundation | standard | challenge`, multi-part and Singapore-context items, a "common mistakes" list, formulae, summary.
+3. Meet the content bar: 3+ worked examples, 10+ hand-written questions across `foundation | standard | challenge` (quality over count: no near-duplicates, no pure recall unless it builds a skill), multi-part and Singapore-context items, a "common mistakes" list, formulae, summary, and 2 generators.
 
 Question shape: `{id, level, type?, prompt, answer | parts:[{label, prompt, answer, unit, dp, sf, tol, marks}], hint, solution:[steps]}`. A part's `answer` may be a number or a fraction string such as `"2/15"`. Unit `'$'` renders as a prefix. `solution` steps use the same markup as prompts.
 
@@ -32,7 +32,8 @@ Question shape: `{id, level, type?, prompt, answer | parts:[{label, prompt, answ
 - **Randomised questions: compute answers in code**, never hand-type them. Generators return `{prompt, answer, solution, ...}` from `make(rng)`.
 - Use `const`/`let` for variables captured by closures inside loops. A `var` here caused infinite recursion in the expression compiler once.
 - Question ids must be unique per topic and stable (progress is keyed by id). Ids starting `gen-` are not recorded as "solved".
-- **Syllabus accuracy is unverified.** Every topic is `verified: false` and uncertain placements carry a `check` note shown in the UI. Do not mark `verified: true` or invent syllabus placement without checking MOE documents. Surds are believed out of 4052 and are deliberately omitted. Matrices were also believed to be out, but several 2026 Sec 4 prelim papers set matrix questions, so a Matrices topic exists with a `check` note; confirm against the MOE syllabus. Question text cannot show diagrams, so figure-based and graph-reading questions give the values to use.
+- **Syllabus placement was checked against the MOE document** "Mathematics Syllabuses, Secondary One to Four" (O-Level Mathematics, Section 3; kept locally in the git-ignored `papers/` folder). That document groups content as Sec 1, Sec 2 and "Sec 3/4", so a Sec 3/4 topic lists levels `[3, 4]`. Each topic's `syllabusNote` cites the strand reference (for example N7.11, G3). Keep `verified: true` only where the content matches a listed item. Two topics (Speed-Time Graphs, Money Matters) are real-world contexts in the syllabus rather than content items; they stay `verified: false` with a `check` note. Do not add content that is not in the syllabus (for example geometric sequences, sums of sequences, surds). Matrices (N9) and vectors (G7) are in the O-Level syllabus. Question text cannot show diagrams, so figure-based and graph-reading questions give the values to use.
+- Keep the banks lean: before adding a question, check that no existing question already tests the same skill at the same level.
 - Keep everything accessible: labelled inputs, `aria-live` feedback, visible focus, works at phone width, respects `prefers-reduced-motion` and dark mode (colours come from CSS tokens in `css/tokens.css`).
 - Match the existing style: ES5-leaning IIFEs, no frameworks, comments only where the reason is not obvious.
 

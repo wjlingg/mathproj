@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'vectors', title: 'Vectors',
-    strand: 'geometry', levels: [4],
-    syllabusNote: 'Sec 4 (Math syllabus); placement to be confirmed',
-    verified: false,
+    strand: 'geometry', levels: [3, 4],
+    syllabusNote: 'O-Level syllabus G7 (Sec 3/4).',
+    verified: true,
     objectives: [
       'Use column vectors for translations and position vectors, and find the magnitude of a vector.',
       'Add, subtract and multiply vectors by a scalar.',
@@ -52,12 +52,7 @@
         parts: [{ label: '(a)', prompt: 'The top component of a + b.', answer: 1 }, { label: '(b)', prompt: 'The bottom component of a + b.', answer: 7 }],
         solution: ['a + b = vec(2 - 1, 3 + 4) = vec(1, 7).'] },
       { id: 'vc2', level: 'foundation', prompt: 'Find the magnitude of the vector vec(6, 8).', answer: 10, solution: ['sqrt(6^2 + 8^2) = sqrt(100) = 10.'] },
-      { id: 'vc3', level: 'foundation', prompt: 'a = vec(3, -2). Find the top and bottom components of 2a.',
-        parts: [{ label: '(a)', prompt: 'Top component.', answer: 6 }, { label: '(b)', prompt: 'Bottom component.', answer: -4 }], solution: ['2a = vec(6, -4).'] },
       { id: 'vc4', level: 'foundation', type: 'mcq', prompt: 'Which vector is parallel to vec(2, 4)?', options: ['vec(1, 2)', 'vec(4, 2)', 'vec(-2, 4)', 'vec(3, 5)'], answer: 0, solution: ['vec(2, 4) = 2 × vec(1, 2), so they are parallel.'] },
-      { id: 'vc5', level: 'foundation', prompt: 'A is the point (1, 2) and B is the point (4, 6). Find the length of AB.', answer: 5, solution: ['AB = vec(3, 4).', '|AB| = sqrt(9 + 16) = 5.'] },
-      { id: 'vc6', level: 'foundation', prompt: 'A is (2, 6) and B is (8, 2). Find the coordinates of the midpoint M of AB.',
-        parts: [{ label: '(a)', prompt: 'x-coordinate of M.', answer: 5 }, { label: '(b)', prompt: 'y-coordinate of M.', answer: 4 }], solution: ['M = ({2 + 8|2}, {6 + 2|2}) = (5, 4).'] },
       { id: 'vc7', level: 'standard', prompt: 'The position vector of X is vec(8, -4) and the position vector of Y is vec(6, 4).',
         parts: [{ label: '(a)', prompt: 'XY = vec(p, q). Find q.', answer: 8, marks: 1 }, { label: '(b)', prompt: 'Find the magnitude of XY, correct to 2 decimal places.', answer: Math.sqrt(68), dp: 2, unit: 'units', marks: 2 }],
         solution: ['XY = vec(6 - 8, 4 + 4) = vec(-2, 8), so q = 8.', '|XY| = sqrt(4 + 64) = sqrt(68) = 8.25.'] },
@@ -78,7 +73,6 @@
       { id: 'vc12', level: 'standard', prompt: 'A is the point (-1, 4) and B is the point (9, -1). The point P is on AB with AP : AB = 2 : 5.',
         parts: [{ label: '(a)', prompt: 'x-coordinate of P.', answer: 3, marks: 2 }, { label: '(b)', prompt: 'y-coordinate of P.', answer: 2, marks: 1 }],
         solution: ['AB = vec(10, -5).', 'AP = {2|5}AB = vec(4, -2).', 'OP = OA + AP = vec(-1 + 4, 4 - 2) = vec(3, 2).'] },
-      { id: 'vc13', level: 'standard', marks: 2, prompt: 'k > 0 and the vector k × vec(3, 4) has magnitude 15. Find k.', answer: 3, solution: ['|vec(3, 4)| = 5, so 5k = 15 and k = 3.'] },
       { id: 'vc14', level: 'standard', marks: 3, prompt: 'A boat is displaced by vec(6, 8) and then by vec(-2, 4) (units in km). Find its distance from the start, correct to 2 decimal places.', answer: Math.sqrt(160), dp: 2, unit: 'km',
         solution: ['Total displacement = vec(6 - 2, 8 + 4) = vec(4, 12).', 'Distance = sqrt(16 + 144) = sqrt(160) = 12.65 km.'] },
       { id: 'vc15', level: 'challenge', marks: 3, prompt: 'A is (1, 2), B is (4, 8) and C is (6, 12). AC = k AB. Find k as a fraction, and hence the three points are collinear.', answer: '5/3',

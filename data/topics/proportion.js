@@ -1,9 +1,9 @@
 (function () {
   EMATH.registerTopic({
     id: 'proportion', title: 'Direct and Inverse Proportion',
-    strand: 'number-algebra', levels: [2, 3],
-    syllabusNote: 'Sec 2-3 (Math syllabus); placement to be confirmed',
-    verified: false,
+    strand: 'number-algebra', levels: [2],
+    syllabusNote: 'O-Level syllabus N2.5 (Sec 2).',
+    verified: true,
     objectives: [
       'Write and use equations for direct proportion (y = kx) and inverse proportion (y = k/x).',
       'Handle proportions involving squares, cubes and square roots.',
@@ -49,7 +49,6 @@
     questions: [
       { id: 'pr1', level: 'foundation', prompt: 'y is directly proportional to x. When x = 3, y = 15. Find y when x = 8.', answer: 40, solution: ['y = kx, and 15 = 3k so k = 5.', 'When x = 8: y = 5 × 8 = 40.'] },
       { id: 'pr2', level: 'foundation', type: 'mcq', prompt: 'Which equation shows y inversely proportional to x?', options: ['y = 5x', 'y = {12|x}', 'y = x + 3', 'y = x^2'], answer: 1, solution: ['In inverse proportion, xy is a constant. Only y = {12|x} has xy = 12.'] },
-      { id: 'pr3', level: 'foundation', prompt: '6 pens cost $4.50. Find the cost of 10 such pens.', answer: 7.5, unit: '$', solution: ['1 pen = 4.50 ÷ 6 = $0.75.', '10 pens = $7.50.'] },
       { id: 'pr4', level: 'foundation', prompt: 'y is inversely proportional to x. When x = 4, y = 6. Find y when x = 8.', answer: 3, hint: 'xy is constant.', solution: ['xy = 4 × 6 = 24.', 'When x = 8: y = 24 ÷ 8 = 3.'] },
       { id: 'pr5', level: 'foundation', type: 'mcq', prompt: 'y is directly proportional to x^2. If x is doubled, y is', options: ['doubled', 'tripled', 'multiplied by 4', 'increased by 2'], answer: 2, solution: ['y = kx^2. With 2x: k(2x)^2 = 4kx^2, so y is multiplied by 4.'] },
       { id: 'pr6', level: 'foundation', prompt: '5 workers take 12 days to paint a school. How many days would 3 workers take?', answer: 20, unit: 'days', solution: ['Workers × days = 5 × 12 = 60.', '60 ÷ 3 = 20 days.'] },
@@ -68,16 +67,10 @@
         hint: 'y = k × sqrt(x).', solution: ['12 = k × sqrt(16) = 4k, so k = 3 and y = 3 sqrt(x).', 'x = 64: y = 3 × 8 = 24.', '21 = 3 sqrt(x), so sqrt(x) = 7 and x = 49.'] },
       { id: 'pr10', level: 'standard', marks: 3, prompt: 'y is directly proportional to x^2. If x is increased by 50%, find the percentage increase in y.', answer: 125, unit: '%',
         solution: ['New x = 1.5x, so new y = k(1.5x)^2 = 2.25 kx^2 = 2.25y.', 'Increase = 1.25 = 125%.'] },
-      { id: 'pr11', level: 'standard', marks: 2, prompt: 'The surface area of a sphere is directly proportional to the square of its radius. The radius is decreased by 10%. Find the percentage decrease in the surface area.', answer: 19, unit: '%',
-        solution: ['New radius = 0.9r, so new area = 0.9^2 × area = 0.81 × area.', 'Decrease = 1 - 0.81 = 0.19 = 19%.'] },
       { id: 'pr12', level: 'standard', marks: 2, prompt: 'A car travels a journey at 80 km/h and takes 3 hours. How many hours would the same journey take at 60 km/h?', answer: 4, unit: 'hours',
         hint: 'Speed × time = distance, which stays the same.', solution: ['Distance = 80 × 3 = 240 km.', 'Time at 60 km/h = 240 ÷ 60 = 4 hours.'] },
-      { id: 'pr13', level: 'standard', marks: 2, prompt: 'S$1 = RM 3.40. Mei changes RM 255 into Singapore dollars. How much does she get?', answer: 75, unit: '$',
-        solution: ['S$ = RM ÷ 3.40 = 255 ÷ 3.40 = 75.'] },
       { id: 'pr14', level: 'challenge', marks: 3, prompt: 'y is inversely proportional to x^2. When x = 3, y = 2. Find y when x = 6.', answer: 0.5,
         hint: 'y = k ÷ x^2.', solution: ['2 = k ÷ 9, so k = 18.', 'x = 6: y = 18 ÷ 36 = 0.5.'] },
-      { id: 'pr15', level: 'challenge', marks: 2, type: 'ratio', prompt: 'The volume of a sphere is directly proportional to the cube of its radius. Two spheres have radii 4 cm and 6 cm. Find the ratio of their volumes in its simplest form.', answer: '8:27',
-        solution: ['Ratio of radii = 4 : 6 = 2 : 3.', 'Ratio of volumes = 2^3 : 3^3 = 8 : 27.'] },
       { id: 'pr16', level: 'challenge', marks: 3, prompt: 'A model of a statue is made to a scale of 1 : 20 using the same material. The model has a mass of 2.5 kg. Find the mass of the statue in kg.', answer: 20000, unit: 'kg',
         hint: 'Mass is proportional to volume, and volume to length cubed.', solution: ['Length scale factor from model to statue = 20.', 'Volume (and mass) scale factor = 20^3 = 8 000.', 'Mass of statue = 2.5 × 8 000 = 20 000 kg.'] }
     ],

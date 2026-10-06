@@ -10,7 +10,7 @@
   EMATH.registerTopic({
     id: 'money-maths', title: 'Money Matters: Interest, Hire Purchase and Exchange Rates',
     strand: 'number-algebra', levels: [3, 4],
-    syllabusNote: 'Added from the Sec 3-4 papers (consumer arithmetic); level placement to be confirmed',
+    syllabusNote: 'The syllabus lists simple and compound interest, instalments and money exchange as real-world contexts in every year. Placed at Sec 3/4 as a teaching choice.',
     verified: false,
     objectives: [
       'Use simple and compound interest, including finding the rate, the principal or the time.',

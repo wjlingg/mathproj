@@ -20,7 +20,7 @@ Question parts accept `answer`, `unit`, `dp` / `sf` (rounding rules), `type: num
 
 ## Syllabus accuracy
 
-Nothing in `data/syllabus.js` has been checked against the MOE documents. Every topic is `verified: false` and uncertain placements show a "Check against MOE" flag. Verify, then set `verified: true`. In particular, confirm whether Matrices belongs in 4052 (it appears in 2026 Sec 4 prelims) and the levels of Vectors, Bearings, Circles, Sine and Cosine Rules and Cumulative Frequency.
+Topic levels in `data/syllabus.js` were checked against the MOE "Mathematics Syllabuses, Secondary One to Four" (O-Level Mathematics). The syllabus groups content as Sec 1, Sec 2 and Sec 3/4, so Sec 3/4 topics appear under both Sec 3 and Sec 4. Each topic's note cites the syllabus strand (for example N9 for Matrices, G7 for Vectors). Two topics, Speed-Time Graphs and Money Matters, are listed in the syllabus only as real-world contexts, so their level is a teaching choice and they keep a "Check against MOE" flag.
 
 ## Project layout
 
@@ -35,7 +35,7 @@ data/                 syllabus, glossary, formulae, topics/<id>.js
 
 ## Topics
 
-All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked examples, 15 to 17 questions (foundation, standard, challenge) with exam-style mark allocations, common mistakes, formulae and randomised generators:
+All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked examples, 10 to 32 hand-written questions (foundation, standard, challenge; about 475 in total) with exam-style mark allocations, common mistakes, formulae and randomised generators. Redundant, trivial or out-of-syllabus questions have been removed:
 
 - **Number and algebra:** Ratio and Proportion, Percentage, Algebraic Manipulation, Primes/HCF/LCM, Integers and Rational Numbers, Approximation and Estimation, Direct and Inverse Proportion, Indices and Standard Form, Linear Inequalities, Number Patterns and Sequences, Linear Graphs and Simultaneous Equations, Quadratic Equations and Graphs, Set Language, Speed-Time Graphs, Matrices, Money Matters (interest, hire purchase, exchange rates), Graphs of Functions.
 - **Geometry and measurement:** Angles/Lines/Polygons, Perimeter/Area/Volume, Congruence and Similarity, Pythagoras' Theorem, Trigonometry, Sine and Cosine Rules, Properties of Circles, Bearings, Vectors.
@@ -43,7 +43,7 @@ All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked example
 
 ## Where the questions come from
 
-The questions are original. They were written to match the topic spread, style and mark allocations of Sec 1 to Sec 4 school exam papers (a local, git-ignored `papers/` folder holds the source PDFs). No exam question text is copied. Diagrams cannot be shown, so figure-based and graph-reading questions state the values to use. The level each topic is placed at is unverified (see above); several were added or adjusted because the papers set them (for example Matrices, Speed-Time Graphs and Money Matters).
+The questions are original. They were written to match the topic spread, style and mark allocations of Sec 1 to Sec 4 school exam papers (a local, git-ignored `papers/` folder holds the source PDFs). No exam question text is copied. Diagrams cannot be shown, so figure-based and graph-reading questions state the values to use. Topic levels follow the MOE syllabus (see above).
 
 ## Notes
 
