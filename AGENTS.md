@@ -2,6 +2,8 @@
 
 Guide for AI coding agents working on this repo. Humans: see README.md.
 
+**Before large changes, read [docs/PROGRESS.md](docs/PROGRESS.md)** (how the content was built, audit rules, gotchas, open items). Add a dated line to its Log when something significant changes.
+
 ## What this is
 
 Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS/JS, **no build step, no modules, no dependencies**. Works from `file://` and GitHub Pages.
@@ -39,6 +41,6 @@ Question shape: `{id, level, type?, prompt, answer | parts:[{label, prompt, answ
 
 ## Testing
 
-No test runner. Serve the folder (`python -m http.server 5173`), open the site, then paste `tests/selfcheck.js` into the browser console. It feeds each question's own answer (plus many generated variants) through the checker and prints any failures. It must report `bad: 0`. Also click through each route at phone width and confirm the console is clean.
+No test runner. Serve the folder (`python -m http.server 5173`), open the site, then paste `tests/selfcheck.js` into the browser console. It feeds each question's own answer (plus many generated variants) through the checker, scans every authored string for unrendered markup, checks for duplicate ids and stress-tests the generators. It must report `bad: 0` with empty `leftovers`, `dupIds` and `generatorBad`. Hard-reload first, because the dev server lets the browser cache `.js` files. Also click through each route at phone width and confirm the console is clean.
 
 Do not commit `.claude/` (local tooling). Do not force-push.

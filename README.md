@@ -51,4 +51,4 @@ Progress is stored in `localStorage` on the learner's device only; nothing is se
 
 ## For AI agents and contributors
 
-See [AGENTS.md](AGENTS.md) (architecture, conventions, adding topics). Run `tests/selfcheck.js` in the browser console to verify the answer checker against every question.
+See [AGENTS.md](AGENTS.md) (architecture, conventions, adding topics) and [docs/PROGRESS.md](docs/PROGRESS.md) (project history, decisions and open items). `tools/render-pdf.ps1` renders scanned exam PDFs to images. Run `tests/selfcheck.js` in the browser console to verify the answer checker against every question.
