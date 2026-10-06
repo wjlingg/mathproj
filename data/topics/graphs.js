@@ -84,7 +84,20 @@
         parts: [{ label: '(a)', prompt: 'Find its equation. y =', type: 'expression', answer: '3x+3', marks: 2 }, { label: '(b)', prompt: 'Find the x-coordinate of the point where it crosses the x-axis.', answer: -1, marks: 2 }],
         solution: ['The gradient is 3: y = 3x + c. At (2, 9): 9 = 6 + c, so c = 3.', 'y = 0: 3x + 3 = 0, so x = -1.'] },
       { id: 'gr16', level: 'challenge', marks: 4, prompt: 'The lines 2x + y = 10 and x - y = -1 meet at P. Each line also meets the x-axis. Find the area of the triangle formed by the two lines and the x-axis.', answer: 12, unit: 'units²',
-        hint: 'Find P, then the two x-intercepts.', solution: ['Add the equations: 3x = 9, so x = 3, and y = 4. P = (3, 4).', '2x + y = 10 meets the x-axis at (5, 0). x - y = -1 meets it at (-1, 0).', 'Base = 5 - (-1) = 6, height = 4.', 'Area = {1|2} × 6 × 4 = 12.'] }
+        hint: 'Find P, then the two x-intercepts.', solution: ['Add the equations: 3x = 9, so x = 3, and y = 4. P = (3, 4).', '2x + y = 10 meets the x-axis at (5, 0). x - y = -1 meets it at (-1, 0).', 'Base = 5 - (-1) = 6, height = 4.', 'Area = {1|2} × 6 × 4 = 12.'] },
+
+      // Sec 3 content: coordinate geometry
+      { id: 'gr17', level: 'standard', prompt: 'The points P(1, 2) and Q(7, 10) lie on a straight line.',
+        parts: [{ label: '(a)', prompt: 'Find the length of PQ.', answer: 10, marks: 2 }, { label: '(b)', prompt: 'Find the y-coordinate of the midpoint of PQ.', answer: 6, marks: 1 }],
+        solution: ['PQ^2 = (7 - 1)^2 + (10 - 2)^2 = 36 + 64 = 100, so PQ = 10.', 'Midpoint y = {2 + 10|2} = 6.'] },
+      { id: 'gr18', level: 'standard', prompt: 'A line passes through (1, -2) and (5, 6).',
+        parts: [{ label: '(a)', prompt: 'Find its equation. y =', type: 'expression', answer: '2x-4', marks: 2 }, { label: '(b)', prompt: 'Find the x-intercept.', answer: 2, marks: 1 },
+                { label: '(c)', prompt: 'Find the area of the triangle formed by the line and the two axes.', answer: 4, unit: 'units²', marks: 2 }],
+        solution: ['Gradient = {6 - (-2)|5 - 1} = 2. Using (1, -2): -2 = 2 + c, so c = -4. y = 2x - 4.', 'y = 0: x = 2.', 'The triangle has base 2 and height 4: area = {1|2} × 2 × 4 = 4.'] },
+      { id: 'gr19', level: 'standard', prompt: 'A(-2, 7), D(-2, 0) and C(6, 0) are three points. AD is parallel to the y-axis.',
+        parts: [{ label: '(a)', prompt: 'Find the gradient of the line AC.', answer: -0.875, marks: 2 }, { label: '(b)', prompt: 'Find the length of AC, correct to 2 decimal places.', answer: Math.sqrt(113), dp: 2, marks: 2 },
+                { label: '(c)', prompt: 'Find the area of triangle ADC.', answer: 28, unit: 'units²', marks: 2 }],
+        solution: ['Gradient AC = {0 - 7|6 - (-2)} = -{7|8} = -0.875.', 'AC^2 = 8^2 + 7^2 = 113, so AC = 10.63.', 'AD = 7 and DC = 8: area = {1|2} × 7 × 8 = 28.'] }
     ],
     generators: [
       { id: 'gradient', level: 'foundation', make: function (r) {

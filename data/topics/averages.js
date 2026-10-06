@@ -75,7 +75,17 @@
       { id: 'av15', level: 'challenge', marks: 3, prompt: 'The mean of 4 numbers is 9. A fifth number is added and the mean becomes 10. A sixth number y is then added and the mean becomes 11. Find y.', answer: 16,
         solution: ['Total of 4 = 36. Total of 5 = 50 (fifth number = 14).', 'Total of 6 = 66.', 'y = 66 - 50 = 16.'] },
       { id: 'av16', level: 'challenge', marks: 3, prompt: 'The values 2, 4, 6 and 8 have frequencies 3, 5, k and 2. The mean is 5. Find k.', answer: 8,
-        solution: ['Σfx = 6 + 20 + 6k + 16 = 42 + 6k, and Σf = 10 + k.', '(42 + 6k) ÷ (10 + k) = 5, so 42 + 6k = 50 + 5k.', 'k = 8.'] }
+        solution: ['Σfx = 6 + 20 + 6k + 16 = 42 + 6k, and Σf = 10 + k.', '(42 + 6k) ÷ (10 + k) = 5, so 42 + 6k = 50 + 5k.', 'k = 8.'] },
+
+      // Sec 3 content: standard deviation (formula is given in the exam)
+      { id: 'av17', level: 'challenge', marks: 3, prompt: 'Find the standard deviation of 2, 4, 4, 4, 5, 5, 7, 9. Use SD = sqrt({Σx^2|n} - mean^2).', answer: 2,
+        solution: ['Mean = 40 ÷ 8 = 5.', 'Σx^2 = 4 + 16 + 16 + 16 + 25 + 25 + 49 + 81 = 232, so {Σx^2|n} = 29.', 'SD = sqrt(29 - 25) = 2.'] },
+      { id: 'av18', level: 'challenge', marks: 2, type: 'mcq', prompt: 'Class A has a mean mark of 65 and a standard deviation of 4. Class B has a mean mark of 65 and a standard deviation of 10. Which class has more consistent marks?', options: ['Class A', 'Class B'], answer: 0,
+        solution: ['A smaller standard deviation means the marks are closer to the mean, so Class A is more consistent.'] },
+      { id: 'av19', level: 'challenge', marks: 3, prompt: 'The values 1, 2 and 3 have frequencies 2, 5 and 3. Find the standard deviation.', answer: 0.7,
+        hint: 'SD = sqrt({Σfx^2|Σf} - ({Σfx|Σf})^2).', solution: ['Σf = 10, Σfx = 2 + 10 + 9 = 21, so the mean = 2.1.', 'Σfx^2 = 2 + 20 + 27 = 49, so {Σfx^2|Σf} = 4.9.', 'SD = sqrt(4.9 - 4.41) = sqrt(0.49) = 0.7.'] },
+      { id: 'av20', level: 'challenge', marks: 3, prompt: 'Five numbers have a mean of 10 and a standard deviation of 3. Find the sum of the squares of the five numbers, Σx^2.', answer: 545,
+        solution: ['SD^2 = {Σx^2|n} - mean^2.', '9 = {Σx^2|5} - 100, so {Σx^2|5} = 109.', 'Σx^2 = 545.'] }
     ],
     generators: [
       { id: 'median', level: 'foundation', make: function (r) {

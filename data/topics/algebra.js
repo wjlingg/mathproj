@@ -119,7 +119,12 @@
         hint: 'Multiply both sides by (1 + t) first.', solution: ['V(1 + t) = k.', '1 + t = {k|V}.', 't = {k|V} - 1 = {k - V|V}.'] },
       { id: 'ax17', level: 'challenge', prompt: 'It is given that x = 3 is one solution of 2x^2 - bx - 3 = 0, where b is a constant.',
         parts: [{ label: '(a)', prompt: 'Find the value of b.', answer: 5, marks: 2 }, { label: '(b)', prompt: 'Find the other solution of the equation.', answer: -0.5, marks: 2 }],
-        hint: 'Substitute x = 3 to find b, then factorise.', solution: ['2(9) - 3b - 3 = 0, so 15 = 3b and b = 5.', '2x^2 - 5x - 3 = (2x + 1)(x - 3) = 0.', 'The other solution is x = -{1|2} = -0.5.'] }
+        hint: 'Substitute x = 3 to find b, then factorise.', solution: ['2(9) - 3b - 3 = 0, so 15 = 3b and b = 5.', '2x^2 - 5x - 3 = (2x + 1)(x - 3) = 0.', 'The other solution is x = -{1|2} = -0.5.'] },
+      { id: 'ax18', level: 'challenge', marks: 4, prompt: 'Solve {4|x - 1} = {x + 2|2}. Give the positive solution correct to 2 decimal places.', answer: (-1 + Math.sqrt(41)) / 2, dp: 2,
+        hint: 'Cross-multiply, then form a quadratic equation equal to 0.', solution: ['8 = (x + 2)(x - 1) = x^2 + x - 2.', 'x^2 + x - 10 = 0.', 'x = {-1 ± sqrt(41)|2}, so the positive solution is x = 2.70.'] },
+      { id: 'ax19', level: 'challenge', prompt: '{p|x^2 - 9} + {q|x + 3} = {5x - 7|x^2 - 9}. Find p and q.',
+        parts: [{ label: '(a)', prompt: 'Find q.', answer: 5, marks: 2 }, { label: '(b)', prompt: 'Find p.', answer: 8, marks: 2 }],
+        hint: 'Write the second fraction over x^2 - 9 = (x + 3)(x - 3), then compare the numerators.', solution: ['{q|x + 3} = {q(x - 3)|x^2 - 9}.', 'Numerators: p + q(x - 3) = 5x - 7, so qx + (p - 3q) = 5x - 7.', 'q = 5, and p - 15 = -7, so p = 8.'] }
     ],
     generators: [
       { id: 'linear', level: 'foundation', make: function (r) {

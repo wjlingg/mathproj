@@ -104,7 +104,11 @@
       { id: 'px8', level: 'challenge', prompt: 'Mr Tan deposits $5 000 in a bank that pays 2% interest per year, compounded yearly.',
         parts: [{ label: '(a)', prompt: 'Find the total amount in the account after 3 years.', answer: 5306.04, dp: 2, unit: '$', marks: 3 },
                 { label: '(b)', prompt: 'The same sum earns simple interest at 2% per year for 3 years. How much more interest does compound interest give?', answer: 6.04, dp: 2, unit: '$', marks: 2 }],
-        hint: 'Total amount = P(1 + r/100)^n.', solution: ['Total = 5 000 × 1.02^3 = 5 000 × 1.061208 = $5 306.04.', 'Compound interest = $306.04.', 'Simple interest = 5 000 × 2 × 3 ÷ 100 = $300.', 'Difference = $6.04.'] }
+        hint: 'Total amount = P(1 + r/100)^n.', solution: ['Total = 5 000 × 1.02^3 = 5 000 × 1.061208 = $5 306.04.', 'Compound interest = $306.04.', 'Simple interest = 5 000 × 2 × 3 ÷ 100 = $300.', 'Difference = $6.04.'] },
+      { id: 'px9', level: 'challenge', marks: 3, prompt: 'A sum of money was invested at 2.5% per year, compounded yearly. After 3 years the amount is $8 610. Find the sum invested, correct to the nearest dollar.', answer: 8610 / Math.pow(1.025, 3), dp: 0, unit: '$',
+        hint: 'Total = P × 1.025^3. Divide to get P.', solution: ['1.025^3 = 1.076890625.', 'P = 8 610 ÷ 1.076890625 = 7 995.24.', 'To the nearest dollar: $7 995.'] },
+      { id: 'px10', level: 'challenge', marks: 2, prompt: 'A car costs $60 000 and its value falls by 10% each year. Find its value after 3 years.', answer: 43740, unit: '$',
+        solution: ['Each year the value is multiplied by 0.9.', '60 000 × 0.9^3 = 60 000 × 0.729 = $43 740.'] }
     ],
     generators: [
       { id: 'percent-of', level: 'foundation', make: function (r) {

@@ -33,6 +33,7 @@ EMATH.syllabus = {
     { id: 'graphs', title: 'Linear Graphs and Simultaneous Equations', strand: 'number-algebra', levels: [2, 3] },
     { id: 'quadratics', title: 'Quadratic Equations and Graphs', strand: 'number-algebra', levels: [3, 4] },
     { id: 'sets', title: 'Set Language and Notation', strand: 'number-algebra', levels: [3], check: 'Unsure whether this sits in Sec 2 or Sec 3.' },
+    { id: 'speed-time', title: 'Speed-Time Graphs', strand: 'number-algebra', levels: [3], check: 'Added from the Sec 3 papers; level placement to be confirmed.' },
 
     { id: 'angles', title: 'Angles, Lines and Polygons', strand: 'geometry', levels: [1, 2] },
     { id: 'mensuration', title: 'Perimeter, Area and Volume', strand: 'geometry', levels: [1, 2, 3] },

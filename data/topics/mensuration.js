@@ -2,7 +2,7 @@
   EMATH.registerTopic({
     id: 'mensuration', title: 'Perimeter, Area and Volume',
     strand: 'geometry', levels: [1, 2, 3],
-    syllabusNote: 'Sec 1-3 (Math syllabus); this bank covers the Sec 1 content: plane figures, circles, cuboids and cylinders',
+    syllabusNote: 'Sec 1-3 (Math syllabus); this bank covers plane figures, circles, cuboids and cylinders (Sec 1), plus cones, spheres and sectors (Sec 3)',
     verified: false,
     objectives: [
       'Find the perimeter and area of rectangles, triangles, parallelograms, trapezia and circles.',
@@ -70,7 +70,29 @@
       { id: 'me15', level: 'challenge', marks: 4, prompt: 'A cuboid tank 80 cm by 50 cm by 60 cm is filled with water to {3|4} of its height. All the water is poured into an empty cylindrical bucket of radius 20 cm. Find the height of water in the bucket, correct to 1 decimal place.', answer: 143.239449, dp: 1, unit: 'cm',
         hint: 'The volume of water stays the same. Then use V = πr^2h for the bucket.', solution: ['Water height in the tank = {3|4} × 60 = 45 cm.', 'Volume = 80 × 50 × 45 = 180 000 cm^3.', 'In the bucket: π × 20^2 × h = 180 000, so h = 180 000 ÷ (400π) = 143.2 cm (1 d.p.).'] },
       { id: 'me16', level: 'challenge', marks: 3, prompt: 'A ring-shaped metal washer has outer radius 10 cm and inner radius 6 cm. Find the area of the metal, correct to 2 decimal places.', answer: 201.06193, dp: 2, unit: 'cm²',
-        solution: ['Area = π × 10^2 - π × 6^2 = π(100 - 36) = 64π.', '= 201.06 cm^2 (2 d.p.).'] }
+        solution: ['Area = π × 10^2 - π × 6^2 = π(100 - 36) = 64π.', '= 201.06 cm^2 (2 d.p.).'] },
+
+      // Sec 3 content: cones, spheres, sectors
+      { id: 'me17', level: 'standard', prompt: 'A cone has base radius 6 cm and vertical height 8 cm.',
+        parts: [{ label: '(a)', prompt: 'Find its slant height.', answer: 10, unit: 'cm', marks: 1 },
+                { label: '(b)', prompt: 'Find its volume, correct to 2 decimal places.', answer: 96 * Math.PI, dp: 2, unit: 'cm³', marks: 2 },
+                { label: '(c)', prompt: 'Find its curved surface area, correct to 2 decimal places.', answer: 60 * Math.PI, dp: 2, unit: 'cm²', marks: 2 }],
+        hint: 'Volume = {1|3}πr^2h. Curved surface area = πrl.', solution: ['Slant height l = sqrt(6^2 + 8^2) = 10 cm.', 'V = {1|3} × π × 36 × 8 = 96π = 301.59 cm^3.', 'Curved surface area = π × 6 × 10 = 60π = 188.50 cm^2.'] },
+      { id: 'me18', level: 'standard', prompt: 'A sphere has radius 9 cm.',
+        parts: [{ label: '(a)', prompt: 'Find its volume, correct to 2 decimal places.', answer: 972 * Math.PI, dp: 2, unit: 'cm³', marks: 2 },
+                { label: '(b)', prompt: 'Find its surface area, correct to 2 decimal places.', answer: 324 * Math.PI, dp: 2, unit: 'cm²', marks: 2 }],
+        hint: 'V = {4|3}πr^3 and surface area = 4πr^2.', solution: ['V = {4|3} × π × 729 = 972π = 3 053.63 cm^3.', 'Surface area = 4 × π × 81 = 324π = 1 017.88 cm^2.'] },
+      { id: 'me19', level: 'standard', prompt: 'A sector of a circle has radius 12 cm and angle 150°.',
+        parts: [{ label: '(a)', prompt: 'Find the arc length, correct to 2 decimal places.', answer: 10 * Math.PI, dp: 2, unit: 'cm', marks: 2 },
+                { label: '(b)', prompt: 'Find the area of the sector, correct to 2 decimal places.', answer: 60 * Math.PI, dp: 2, unit: 'cm²', marks: 2 }],
+        hint: 'The sector is {150|360} of the whole circle.', solution: ['Arc length = {150|360} × 2π × 12 = 10π = 31.42 cm.', 'Area = {150|360} × π × 12^2 = 60π = 188.50 cm^2.'] },
+      { id: 'me20', level: 'standard', prompt: 'A sector has radius 8 cm and angle 1.2 radians. Use arc length = rθ and sector area = {1|2}r^2θ.',
+        parts: [{ label: '(a)', prompt: 'Find the arc length.', answer: 9.6, unit: 'cm', marks: 1 }, { label: '(b)', prompt: 'Find the area of the sector.', answer: 38.4, unit: 'cm²', marks: 2 }],
+        solution: ['Arc length = 8 × 1.2 = 9.6 cm.', 'Area = {1|2} × 8^2 × 1.2 = 38.4 cm^2.'] },
+      { id: 'me21', level: 'challenge', marks: 4, prompt: 'A solid is made of a cone on top of a hemisphere, both with radius 6 cm. The height of the cone is 8 cm. Find the volume of the solid, correct to 2 decimal places.', answer: 240 * Math.PI, dp: 2, unit: 'cm³',
+        hint: 'Volume of a hemisphere = {2|3}πr^3.', solution: ['Hemisphere: {2|3} × π × 216 = 144π.', 'Cone: {1|3} × π × 36 × 8 = 96π.', 'Total = 240π = 753.98 cm^3.'] },
+      { id: 'me22', level: 'challenge', marks: 4, prompt: 'A solid metal cone of radius 6 cm and height 8 cm is melted and recast into a solid sphere. Find the radius of the sphere, correct to 2 decimal places.', answer: Math.cbrt(72), dp: 2, unit: 'cm',
+        solution: ['Volume of the cone = 96π.', '{4|3}πr^3 = 96π, so r^3 = 72.', 'r = 4.16 cm.'] }
     ],
     generators: [
       { id: 'rect-area', level: 'foundation', make: function (r) {
