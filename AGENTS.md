@@ -4,6 +4,15 @@ Guide for AI coding agents working on this repo. Humans: see README.md.
 
 **Before large changes, read [docs/PROGRESS.md](docs/PROGRESS.md)** (how the content was built, audit rules, gotchas, open items). Add a dated line to its Log when something significant changes.
 
+## Working preferences (from the project owner)
+
+- **Never push unless asked.** The owner says "push to github" explicitly. Commit only when asked or when pushing. Work on `main`, never force-push.
+- **Original questions only.** Model new questions on the exam papers' topics, style and mark allocations, but never copy their text.
+- **Check against the MOE syllabus** (`papers/Olevel_Syllabus.pdf`, local only) before adding or moving content.
+- **Keep banks lean and accurate.** Remove duplicates, pure recall and out-of-syllabus items. Verify every worked answer by hand or in code.
+- **Be honest in reports.** State limits, errors found and anything unverified. Keep summaries short and specific.
+- **The repo is the memory.** Do not rely on chat history or tool memory: record decisions in `docs/PROGRESS.md` and rules here.
+
 ## What this is
 
 Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS/JS, **no build step, no modules, no dependencies**. Works from `file://` and GitHub Pages.

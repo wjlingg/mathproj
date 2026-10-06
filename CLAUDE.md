@@ -1,1 +1,3 @@
-See [AGENTS.md](AGENTS.md) for architecture, conventions, how to add a topic, and how to test. It is the single source of truth for this repo; keep it updated rather than duplicating it here.
+@AGENTS.md
+
+Project history, decisions and next steps are in [docs/PROGRESS.md](docs/PROGRESS.md). Read it before large changes, and keep it and AGENTS.md updated instead of relying on chat history.

@@ -28,6 +28,22 @@ Remove a question when it is any of:
 
 Keep multi-step, real-world and "explain/compare" items, and one clean example of each skill.
 
+## Next steps (suggested, in priority order)
+
+1. **Spot-check answers against a trusted key.** Worked answers were verified by hand or in code, not against a published key. Review a sample from each topic.
+2. **Add generators for Probability** (the only topic with `generators: []`).
+3. **Support diagrams.** Add SVG visuals (for example via `js/viz/viz.js`) so constructions, circle and angle figures, graph reading and box plots can be shown instead of described. This would also allow constructions and graph drawing.
+4. **Decide the level of Speed-Time Graphs and Money Matters** (see above), then set `verified: true` or remove the flag.
+5. **Check balance of difficulty.** Some banks have few challenge items (for example Approximation, Sets, Data Handling, Cumulative Frequency).
+6. **Add a quiz or exam-paper mode** that mixes topics by level with a paper-style mark total (Paper 1 about 26 short questions, Paper 2 about 9 to 10 longer questions, 90 marks each).
+7. **Optional: glossary and formula sheet** (`data/glossary.js`, `data/formulae.js`) were written early and have not been rechecked against the full topic list.
+
+## Restarting in a new session
+
+The `papers/` folder is git-ignored and local only. On a new machine, copy it separately (it holds the exam PDFs and the MOE syllabus). Then start the session with:
+
+> Continue the E-Math SG project. Read AGENTS.md and docs/PROGRESS.md first, then run tests/selfcheck.js before changing anything.
+
 ## Known limits and open items
 
 - The site cannot show diagrams. Figure-based and graph-reading questions state the values to use. **Constructions, graph drawing and "explain in words" parts are not covered.**
