@@ -52,6 +52,8 @@
       { id: 'cs4', level: 'foundation', prompt: 'A figure has area 5 cm². It is enlarged with scale factor 3. Find the area of the enlarged figure.', answer: 45, unit: 'cm²', solution: ['Area scale factor = 3^2 = 9.', '5 × 9 = 45 cm^2.'] },
       { id: 'cs5', level: 'foundation', prompt: 'A model of a building is made to a scale of 1 : 50. The real building is 30 m tall. Find the height of the model in cm.', answer: 60, unit: 'cm', solution: ['30 m = 3 000 cm.', '3 000 ÷ 50 = 60 cm.'] },
       { id: 'cs7', level: 'standard', prompt: 'Triangles ABC and XYZ are similar, with A, B, C corresponding to X, Y, Z. AB = 6 cm, BC = 9 cm, AC = 12 cm and XY = 8 cm.',
+        figure: { type: 'multi', parts: [{ type: 'triangle', shape: 'sss', sides: [6, 9, 12], v: ['A', 'B', 'C'], side: { AB: '6 cm', BC: '9 cm', AC: '12 cm' } }, { type: 'triangle', shape: 'sss', sides: [6, 9, 12], k: 4 / 3, v: ['X', 'Y', 'Z'], side: { XY: '8 cm' } }],
+          alt: 'Two similar triangles. Triangle ABC has AB 6 cm, BC 9 cm and AC 12 cm. Triangle XYZ is larger, with XY 8 cm.' },
         parts: [{ label: '(a)', prompt: 'Write down the scale factor from ABC to XYZ as a fraction.', answer: '4/3', marks: 1 },
                 { label: '(b)', prompt: 'Find the length of YZ.', answer: 12, unit: 'cm', marks: 2 },
                 { label: '(c)', prompt: 'Find the length of XZ.', answer: 16, unit: 'cm', marks: 1 }],
@@ -65,14 +67,21 @@
       { id: 'cs10', level: 'standard', marks: 3, prompt: 'Two similar bottles hold 250 ml and 2 000 ml. The smaller bottle is 12 cm tall. How tall is the larger bottle?', answer: 24, unit: 'cm',
         hint: 'Volume ratio 250 : 2 000 = 1 : 8, so the length ratio is 1 : 2.', solution: ['Volume ratio = 1 : 8, so length ratio = 1 : 2 (cube root of 8).', 'Height = 12 × 2 = 24 cm.'] },
       { id: 'cs11', level: 'standard', prompt: 'In triangle ABC, D is on AB and E is on AC, with DE parallel to BC. AD = 4 cm, DB = 6 cm and DE = 5 cm.',
+        figure: { type: 'triangle', shape: 'scalene', w: 5, h: 4, v: ['A', 'B', 'C'], divide: [{ name: 'D', a: 'A', b: 'B', t: 0.4 }, { name: 'E', a: 'A', b: 'C', t: 0.4 }], lines: [{ a: 'D', b: 'E', label: '5 cm' }], side: { AD: '4 cm', DB: '6 cm' }, par: [['D', 'E'], ['B', 'C']], dots: ['D', 'E'],
+          alt: 'Triangle ABC with D on AB and E on AC. DE is parallel to BC. AD is 4 cm, DB is 6 cm and DE is 5 cm.' },
         parts: [{ label: '(a)', prompt: 'Find the length of BC.', answer: 12.5, unit: 'cm', marks: 3 }, { label: '(b)', prompt: 'Write down the ratio of the area of triangle ADE to the area of triangle ABC in its simplest form.', type: 'ratio', answer: '4:25', marks: 2 }],
         solution: ['AB = 10 cm, scale factor from ADE to ABC = {10|4} = 2.5.', 'BC = 5 × 2.5 = 12.5 cm.', 'Area ratio = (4 : 10)^2 = 4 : 25.'] },
-      { id: 'cs12', level: 'standard', marks: 2, prompt: 'A 1.5 m pole casts a shadow 2 m long. At the same time, a tree casts a shadow 12 m long. Find the height of the tree.', answer: 9, unit: 'm',
+      { id: 'cs12', level: 'standard', marks: 2, prompt: 'A 1.5 m pole casts a shadow 2 m long. At the same time, a tree casts a shadow 12 m long. Find the height of the tree.',
+        figure: { type: 'multi', names: false, parts: [{ type: 'triangle', shape: 'right', w: 2.4, h: 1.8, v: ['A', 'B', 'C'], side: { AB: '1.5 m', BC: '2 m' } }, { type: 'triangle', shape: 'right', w: 7.2, h: 5.4, v: ['P', 'Q', 'R'], side: { PQ: 'h', QR: '12 m' } }],
+          alt: 'Two right-angled triangles. The pole is 1.5 m tall with a 2 m shadow. The tree has height h and a 12 m shadow.' }, answer: 9, unit: 'm',
         solution: ['The triangles are similar: {height|shadow} is the same.', '{1.5|2} × 12 = 9 m.'] },
       { id: 'cs13', level: 'standard', prompt: 'A model ship is made to a scale of 1 : 200. The model is 0.75 m long and its deck has area 0.3 m².',
         parts: [{ label: '(a)', prompt: 'Find the length of the real ship in metres.', answer: 150, unit: 'm', marks: 1 }, { label: '(b)', prompt: 'Find the area of the real deck in m².', answer: 12000, unit: 'm²', marks: 2 }],
         solution: ['Length = 0.75 × 200 = 150 m.', 'Area scale factor = 200^2 = 40 000.', 'Area = 0.3 × 40 000 = 12 000 m^2.'] },
-      { id: 'cs14', level: 'standard', prompt: 'Triangle ABC is congruent to triangle DEF, with A, B, C matching D, E, F. AB = 8 cm, BC = 11 cm, angle ABC = 64° and angle ACB = 51°.',
+      { id: 'cs14', level: 'standard', prompt: 'Triangle ABC is congruent to triangle DEF, with A, B, C matching D, E, F. BC = 11 cm, angle ABC = 64° and angle ACB = 51°.',
+        figure: { type: 'multi', parts: [{ type: 'triangle', shape: 'scalene', pts: [[11 * Math.sin(51 * Math.PI / 180) / Math.sin(65 * Math.PI / 180) * Math.cos(64 * Math.PI / 180), 11 * Math.sin(51 * Math.PI / 180) / Math.sin(65 * Math.PI / 180) * Math.sin(64 * Math.PI / 180)], [0, 0], [11, 0]], v: ['A', 'B', 'C'], side: { BC: '11 cm' }, angle: { B: '64°', C: '51°' } },
+          { type: 'triangle', shape: 'scalene', pts: [[11 * Math.sin(51 * Math.PI / 180) / Math.sin(65 * Math.PI / 180) * Math.cos(64 * Math.PI / 180), 11 * Math.sin(51 * Math.PI / 180) / Math.sin(65 * Math.PI / 180) * Math.sin(64 * Math.PI / 180)], [0, 0], [11, 0]], v: ['D', 'E', 'F'] }],
+          alt: 'Two congruent triangles ABC and DEF. In triangle ABC, BC is 11 cm, angle B is 64 degrees and angle C is 51 degrees.' },
         parts: [{ label: '(a)', prompt: 'Find the length of EF.', answer: 11, unit: 'cm', marks: 1 }, { label: '(b)', prompt: 'Find angle DEF.', answer: 64, unit: '°', marks: 1 }, { label: '(c)', prompt: 'Find angle EDF.', answer: 65, unit: '°', marks: 2 }],
         solution: ['EF = BC = 11 cm.', 'Angle DEF = angle ABC = 64°.', 'Angle BAC = 180 - 64 - 51 = 65°, so angle EDF = 65°.'] },
       { id: 'cs15', level: 'challenge', marks: 3, prompt: 'Two similar triangles have areas 18 cm² and 50 cm². The perimeter of the smaller triangle is 24 cm. Find the perimeter of the larger triangle.', answer: 40, unit: 'cm',
@@ -83,7 +92,10 @@
     generators: [
       { id: 'scale-length', level: 'foundation', make: function (r) {
         var small = r.int(2, 9), k = r.pick([2, 3, 4, 5]), side = r.int(3, 12);
+        var third = Math.max(small, side), vk = Math.min(k, 2);
         return { prompt: 'Two similar triangles have corresponding sides of ' + small + ' cm and ' + small * k + ' cm. A side of the smaller triangle is ' + side + ' cm. Find the corresponding side of the larger triangle.', answer: side * k, unit: 'cm',
+          figure: { type: 'multi', parts: [{ type: 'triangle', shape: 'sss', sides: [small, side, third], v: ['A', 'B', 'C'], side: { AB: small + ' cm', BC: side + ' cm' } }, { type: 'triangle', shape: 'sss', sides: [small, side, third], k: vk, v: ['X', 'Y', 'Z'], side: { XY: small * k + ' cm', YZ: 'x' } }],
+            alt: 'Two similar triangles. In the smaller triangle AB is ' + small + ' cm and BC is ' + side + ' cm. In the larger triangle the corresponding side XY is ' + small * k + ' cm and YZ is marked x.' },
           hint: 'Find the scale factor first.', solution: ['Scale factor = ' + small * k + ' ÷ ' + small + ' = ' + k + '.', side + ' × ' + k + ' = ' + side * k + ' cm.'] };
       } },
       { id: 'area-scale', level: 'standard', make: function (r) {

@@ -41,6 +41,7 @@ EMATH.questionForm = function (q, opts) {
     h('span', { class: 'chip lvl-' + q.level }, EMATH.LEVELS[q.level] || q.level),
     h('span', { class: 'muted' }, '[' + marks + (marks === 1 ? ' mark' : ' marks') + ']')));
   if (q.prompt) form.appendChild(h('p', { class: 'q-prompt', html: rm(q.prompt) }));
+  if (q.figure) form.appendChild(EMATH.fig.render(q.figure));
 
   q.parts.forEach(function (p, i) {
     var fb = h('div', { class: 'fb', 'aria-live': 'polite' });
@@ -64,6 +65,7 @@ EMATH.questionForm = function (q, opts) {
         p.label ? h('span', { class: 'part-label' }, p.label) : null,
         p.prompt ? h('span', { html: rm(p.prompt) }) : null,
         h('span', { class: 'muted part-marks' }, q.parts.length > 1 ? '[' + p.marks + ']' : '')),
+      p.figure ? EMATH.fig.render(p.figure) : null,
       h('div', { class: 'part-in' }, control, fb));
     form.appendChild(row);
     rows.push({ part: p, row: row, fb: fb, get: getVal });

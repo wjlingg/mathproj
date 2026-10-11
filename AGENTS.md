@@ -19,7 +19,7 @@ Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS
 
 ## Architecture
 
-- `index.html` loads every script with plain `<script>` tags, **in dependency order** into one global namespace, `EMATH`. A new script file needs a new tag, in the right place (util, store, render-math, math, walkthrough, viz, data, views/question, views/bank, other views, app last).
+- `index.html` loads every script with plain `<script>` tags, **in dependency order** into one global namespace, `EMATH`. A new script file needs a new tag, in the right place (util, store, render-math, math, walkthrough, viz, figures, data, views/question, views/bank, other views, app last).
 - `js/app.js`: hash router. `#/home`, `#/topic/<id>`, `#/practice/<id>`, `#/quiz[/<id>]`, `#/reference`, `#/dashboard`. The route name is looked up in `EMATH.views[name](container, arg)`.
 - `js/util.js`: `h()` DOM builder (`html:` attr = trusted innerHTML), seeded `rng`, `gcd`, `shuffle`.
 - `js/render-math.js`: `EMATH.rm(str)` turns authored text into safe HTML. Markup: `{a|b}` fraction, `x^2` / `x^(-3)` superscript, `sqrt(expr)` (no nested parentheses inside), `**bold**`, `mat(1,2;3,4)` matrix (commas between columns, semicolons between rows) and `vec(3,-2)` column vector (no brackets, quotes or `&` inside; use decimals, not fractions). Input is HTML-escaped first. Do not use `{...|...}` for anything else.
@@ -28,6 +28,7 @@ Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS
 - `js/views/bank.js`: `EMATH.bank(topic)` = hand-written questions + 3 fixed-seed generated per generator; `EMATH.generate()` makes fresh ones.
 - `js/store.js`: localStorage wrapper (all access in try/catch, memory fallback). Key `emath-sg:v1`.
 - `js/viz/viz.js`: `EMATH.viz[name](container)` interactive SVG demos, referenced by a topic's `viz` field.
+- `js/figures.js`: `EMATH.fig.render(spec)` draws a static question diagram as inline SVG from numbers and labels. A question or a part carries `figure: {type, ..., alt}`. Types: `triangle`, `polygon`, `parallel`, `fan` (angles on a line or at a point), `grid` (coordinate grid), `cuboid`, `circle` (chords, tangents), `bearing` (true-to-bearing legs and north lines) and `multi` (several figures side by side). The header comment of the file lists every key. Generators may return a `figure` built from their random values.
 - `data/syllabus.js`: index of all topics. A topic is "ready" when a matching `data/topics/<id>.js` registers itself; otherwise it shows "Coming soon".
 
 ## Adding a topic
@@ -36,7 +37,7 @@ Static site for Singapore Sec 1-4 Math / O-Level E-Math (4052). Vanilla HTML/CSS
 2. Add `<script src="data/topics/<id>.js">` to `index.html` (before the views).
 3. Meet the content bar: 3+ worked examples, 10+ hand-written questions across `foundation | standard | challenge` (quality over count: no near-duplicates, no pure recall unless it builds a skill), multi-part and Singapore-context items, a "common mistakes" list, formulae, summary, and 2 generators.
 
-Question shape: `{id, level, type?, prompt, answer | parts:[{label, prompt, answer, unit, dp, sf, tol, marks}], hint, solution:[steps]}`. A part's `answer` may be a number or a fraction string such as `"2/15"`. Unit `'$'` renders as a prefix. `solution` steps use the same markup as prompts.
+Question shape: `{id, level, type?, prompt, figure?, answer | parts:[{label, prompt, answer, unit, dp, sf, tol, marks, figure?}], hint, solution:[steps]}`. A part's `answer` may be a number or a fraction string such as `"2/15"`. Unit `'$'` renders as a prefix. `solution` steps use the same markup as prompts.
 
 ## Rules and gotchas
 
@@ -44,12 +45,13 @@ Question shape: `{id, level, type?, prompt, answer | parts:[{label, prompt, answ
 - Use `const`/`let` for variables captured by closures inside loops. A `var` here caused infinite recursion in the expression compiler once.
 - Question ids must be unique per topic and stable (progress is keyed by id). Ids starting `gen-` are not recorded as "solved".
 - **Syllabus placement was checked against the MOE document** "Mathematics Syllabuses, Secondary One to Four" (O-Level Mathematics, Section 3; kept locally in the git-ignored `papers/` folder). That document groups content as Sec 1, Sec 2 and "Sec 3/4", so a Sec 3/4 topic lists levels `[3, 4]`. Each topic's `syllabusNote` cites the strand reference (for example N7.11, G3). Keep `verified: true` only where the content matches a listed item. Two topics (Speed-Time Graphs, Money Matters) are real-world contexts in the syllabus rather than content items; they stay `verified: false` with a `check` note. Do not add content that is not in the syllabus (for example geometric sequences, sums of sequences, surds). Matrices (N9) and vectors (G7) are in the O-Level syllabus. Question text cannot show diagrams, so figure-based and graph-reading questions give the values to use.
+- **Figures**: give every `figure` an `alt` that describes it fully (screen readers, and the prompt may say "in the diagram"). Figures are marked "not drawn to scale" unless `scale: true`, so the numbers in the labels must be right but the drawing need not be exact. Polygons must be convex, listed anticlockwise from the bottom-left. Names starting `_` are hidden helper points. Keep the prompt text self-sufficient where cheap: the figure supports it, it should not be the only place a value appears.
 - Keep the banks lean: before adding a question, check that no existing question already tests the same skill at the same level.
 - Keep everything accessible: labelled inputs, `aria-live` feedback, visible focus, works at phone width, respects `prefers-reduced-motion` and dark mode (colours come from CSS tokens in `css/tokens.css`).
 - Match the existing style: ES5-leaning IIFEs, no frameworks, comments only where the reason is not obvious.
 
 ## Testing
 
-No test runner. Serve the folder (`python -m http.server 5173`), open the site, then paste `tests/selfcheck.js` into the browser console. It feeds each question's own answer (plus many generated variants) through the checker, scans every authored string for unrendered markup, checks for duplicate ids and stress-tests the generators. It must report `bad: 0` with empty `leftovers`, `dupIds` and `generatorBad`. Hard-reload first, because the dev server lets the browser cache `.js` files. Also click through each route at phone width and confirm the console is clean.
+No test runner. Serve the folder (`python -m http.server 5173`), open the site, then paste `tests/selfcheck.js` into the browser console. It feeds each question's own answer (plus many generated variants) through the checker, scans every authored string for unrendered markup, checks for duplicate ids and stress-tests the generators. It must report `bad: 0` with empty `leftovers`, `dupIds`, `generatorBad` and `figBad` (every figure renders an SVG and has `alt`). Hard-reload first, because the dev server lets the browser cache `.js` files. Also click through each route at phone width and confirm the console is clean.
 
 Do not commit `.claude/` (local tooling). Do not force-push.

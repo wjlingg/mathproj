@@ -49,16 +49,22 @@
     viz: null,
     questions: [
       { id: 'tr1', level: 'foundation', type: 'mcq', prompt: 'In a right-angled triangle, sin θ equals', options: ['opposite ÷ hypotenuse', 'adjacent ÷ hypotenuse', 'opposite ÷ adjacent', 'hypotenuse ÷ opposite'], answer: 0, solution: ['SOH: sine = opposite ÷ hypotenuse.'] },
-      { id: 'tr2', level: 'foundation', prompt: 'In a right-angled triangle, the side opposite angle θ is 6 cm and the hypotenuse is 10 cm. Find sin θ as a fraction in its simplest form.', answer: '3/5', solution: ['sin θ = {6|10} = {3|5}.'] },
+      { id: 'tr2', level: 'foundation', prompt: 'In a right-angled triangle, the side opposite angle θ is 6 cm and the hypotenuse is 10 cm. Find sin θ as a fraction in its simplest form.',
+        figure: { type: 'triangle', shape: 'right', w: 8, h: 6, side: { AB: '6 cm', AC: '10 cm' }, angle: { C: 'θ' }, alt: 'Right-angled triangle ABC with the right angle at B. The hypotenuse AC is 10 cm, the side AB opposite angle C is 6 cm, and angle C is marked θ.' }, answer: '3/5', solution: ['sin θ = {6|10} = {3|5}.'] },
       { id: 'tr3', level: 'foundation', prompt: 'Write down the value of cos 60°.', answer: 0.5, solution: ['cos 60° = 0.5.'] },
-      { id: 'tr4', level: 'foundation', prompt: 'A right-angled triangle has hypotenuse 14 cm and an angle of 30°. Find the side opposite the 30° angle.', answer: 7, unit: 'cm', solution: ['sin 30° = 0.5, so opposite = 14 × 0.5 = 7 cm.'] },
-      { id: 'tr7', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the hypotenuse is 12 cm and one angle is 35°. Find the length of the side opposite the 35° angle, correct to 2 decimal places.', answer: 12 * Math.sin(35 * rad), dp: 2, unit: 'cm',
+      { id: 'tr4', level: 'foundation', prompt: 'A right-angled triangle has hypotenuse 14 cm and an angle of 30°. Find the side opposite the 30° angle.',
+        figure: { type: 'triangle', shape: 'right', w: 12.1, h: 7, side: { AC: '14 cm', AB: 'x' }, angle: { C: '30°' }, alt: 'Right-angled triangle ABC with the right angle at B, hypotenuse AC 14 cm, angle C 30 degrees and the side AB opposite it marked x.' }, answer: 7, unit: 'cm', solution: ['sin 30° = 0.5, so opposite = 14 × 0.5 = 7 cm.'] },
+      { id: 'tr7', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the hypotenuse is 12 cm and one angle is 35°. Find the length of the side opposite the 35° angle, correct to 2 decimal places.',
+        figure: { type: 'triangle', shape: 'right', w: 9.8, h: 6.9, side: { AC: '12 cm', AB: 'x' }, angle: { C: '35°' }, alt: 'Right-angled triangle ABC with the right angle at B, hypotenuse AC 12 cm, angle C 35 degrees and the side AB opposite it marked x.' }, answer: 12 * Math.sin(35 * rad), dp: 2, unit: 'cm',
         solution: ['sin 35° = {x|12}, so x = 12 sin 35° = 6.88 cm.'] },
-      { id: 'tr8', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the side opposite angle θ is 5 cm and the adjacent side is 8 cm. Find θ, correct to 1 decimal place.', answer: Math.atan(5 / 8) / rad, dp: 1, unit: '°',
+      { id: 'tr8', level: 'standard', marks: 2, prompt: 'In a right-angled triangle the side opposite angle θ is 5 cm and the adjacent side is 8 cm. Find θ, correct to 1 decimal place.',
+        figure: { type: 'triangle', shape: 'right', w: 8, h: 5, side: { AB: '5 cm', BC: '8 cm' }, angle: { C: 'θ' }, alt: 'Right-angled triangle ABC with the right angle at B, AB 5 cm opposite angle C, BC 8 cm adjacent to it, and angle C marked θ.' }, answer: Math.atan(5 / 8) / rad, dp: 1, unit: '°',
         solution: ['tan θ = {5|8}.', 'θ = tan⁻¹(0.625) = 32.0°.'] },
-      { id: 'tr9', level: 'standard', marks: 2, prompt: 'A tower is 40 m high. From a point 60 m from its base on level ground, find the angle of elevation of the top of the tower, correct to 1 decimal place.', answer: Math.atan(40 / 60) / rad, dp: 1, unit: '°',
+      { id: 'tr9', level: 'standard', marks: 2, prompt: 'A tower is 40 m high. From a point 60 m from its base on level ground, find the angle of elevation of the top of the tower, correct to 1 decimal place.',
+        figure: { type: 'triangle', shape: 'right', w: 6, h: 4, names: false, side: { AB: '40 m', BC: '60 m' }, angle: { C: 'θ' }, alt: 'A vertical tower 40 m high, with a point on level ground 60 m from its base. The angle of elevation of the top from that point is marked θ.' }, answer: Math.atan(40 / 60) / rad, dp: 1, unit: '°',
         solution: ['tan θ = {40|60}.', 'θ = 33.7°.'] },
-      { id: 'tr10', level: 'standard', marks: 2, prompt: 'A 6.5 m ladder leans against a vertical wall and reaches 6 m up the wall. Find the angle the ladder makes with the ground, correct to 1 decimal place.', answer: Math.asin(6 / 6.5) / rad, dp: 1, unit: '°',
+      { id: 'tr10', level: 'standard', marks: 2, prompt: 'A 6.5 m ladder leans against a vertical wall and reaches 6 m up the wall. Find the angle the ladder makes with the ground, correct to 1 decimal place.',
+        figure: { type: 'triangle', shape: 'right', w: 2.5, h: 6, names: false, side: { AB: '6 m', AC: '6.5 m' }, angle: { C: 'θ' }, alt: 'A 6.5 m ladder leaning against a vertical wall and reaching 6 m up. The angle between the ladder and the ground is marked θ.' }, answer: Math.asin(6 / 6.5) / rad, dp: 1, unit: '°',
         solution: ['The wall height is opposite the angle, and the ladder is the hypotenuse.', 'sin θ = {6|6.5}, so θ = 67.4°.'] },
       { id: 'tr11', level: 'standard', prompt: 'In a right-angled triangle, θ is an acute angle and cos θ = {12|13}.',
         parts: [{ label: '(a)', prompt: 'Find sin θ as a fraction.', answer: '5/13', marks: 2 }, { label: '(b)', prompt: 'Find tan θ as a fraction.', answer: '5/12', marks: 1 }],
@@ -66,9 +72,12 @@
       { id: 'tr12', level: 'standard', prompt: 'It is given that 0° ≤ θ ≤ 180°.',
         parts: [{ label: '(a)', prompt: 'Find the larger value of θ for sin θ = 0.5.', answer: 150, unit: '°', marks: 2 }, { label: '(b)', prompt: 'Find θ for cos θ = -0.5.', answer: 120, unit: '°', marks: 2 }],
         solution: ['sin⁻¹(0.5) = 30° and 180° - 30° = 150°.', 'cos⁻¹(-0.5) = 120°.'] },
-      { id: 'tr13', level: 'standard', marks: 3, prompt: 'From the top of a 50 m building, the angle of depression of a car on level ground is 28°. How far is the car from the foot of the building? Give your answer correct to 1 decimal place.', answer: 50 / Math.tan(28 * rad), dp: 1, unit: 'm',
+      { id: 'tr13', level: 'standard', marks: 3, prompt: 'From the top of a 50 m building, the angle of depression of a car on level ground is 28°. How far is the car from the foot of the building? Give your answer correct to 1 decimal place.',
+        figure: { type: 'triangle', shape: 'right', w: 9.4, h: 5, names: false, side: { AB: '50 m', BC: 'd' }, rays: [{ from: 'A', angle: 0, len: 10, name: '_h' }], arcs: [{ at: 'A', from: '_h', to: 'C', label: '28°' }],
+          alt: 'A building 50 m high with a car on level ground at distance d from its foot. A horizontal line from the top and the line of sight to the car make an angle of depression of 28 degrees.' }, answer: 50 / Math.tan(28 * rad), dp: 1, unit: 'm',
         hint: 'The angle at the car, inside the triangle, is also 28° (alternate angles).', solution: ['tan 28° = {50|d}, so d = {50|tan 28°}.', 'd = 94.0 m.'] },
-      { id: 'tr14', level: 'standard', marks: 3, prompt: 'An isosceles triangle has a base of 10 cm and two equal sides of 13 cm. Find a base angle, correct to 1 decimal place.', answer: Math.acos(5 / 13) / rad, dp: 1, unit: '°',
+      { id: 'tr14', level: 'standard', marks: 3, prompt: 'An isosceles triangle has a base of 10 cm and two equal sides of 13 cm. Find a base angle, correct to 1 decimal place.',
+        figure: { type: 'triangle', shape: 'isosceles', w: 10, h: 12, side: { BC: '10 cm', AB: '13 cm' }, angle: { B: 'θ' }, alt: 'Isosceles triangle ABC with AB = AC = 13 cm and base BC 10 cm. Base angle B is marked θ.' }, answer: Math.acos(5 / 13) / rad, dp: 1, unit: '°',
         hint: 'The height splits the base into two halves of 5 cm.', solution: ['Half the base = 5 cm, hypotenuse = 13 cm.', 'cos θ = {5|13}, so θ = 67.4°.'] },
       { id: 'tr15', level: 'challenge', marks: 4, prompt: 'From a point A on level ground the angle of elevation of the top of a pole is 40°. After walking 20 m towards the pole, the angle of elevation is 60°. Find the height of the pole to the nearest metre.', answer: 20 * Math.tan(60 * rad) / (Math.tan(60 * rad) / Math.tan(40 * rad) - 1) , dp: 0, unit: 'm',
         hint: 'Let the pole be h m high and the first distance d m. Then h = d tan 40° and h = (d - 20) tan 60°.', solution: ['d tan 40° = (d - 20) tan 60°.', 'd = {20 tan 60°|tan 60° - tan 40°} = 38.79 m.', 'h = 38.79 × tan 40° = 32.55 ≈ 33 m.'] },
@@ -80,6 +89,7 @@
       { id: 'find-side', level: 'foundation', make: function (r) {
         var h = r.int(6, 30), a = r.pick([20, 25, 30, 35, 40, 50, 55, 65]), v = h * Math.sin(a * rad);
         return { prompt: 'In a right-angled triangle the hypotenuse is ' + h + ' cm and one angle is ' + a + '°. Find the side opposite this angle, correct to 2 decimal places.', answer: v, dp: 2, unit: 'cm',
+          figure: { type: 'triangle', shape: 'right', w: h * Math.cos(a * rad), h: v, side: { AC: h + ' cm', AB: 'x' }, angle: { C: a + '°' }, alt: 'Right-angled triangle ABC with the right angle at B, hypotenuse AC ' + h + ' cm, angle C ' + a + ' degrees and the side AB opposite it marked x.' },
           hint: 'Use sin θ = opposite ÷ hypotenuse.', solution: ['opposite = ' + h + ' × sin ' + a + '° = ' + v.toFixed(2) + ' cm.'] };
       } },
       { id: 'find-angle', level: 'standard', make: function (r) {
@@ -87,6 +97,7 @@
         while (o === a) a = r.int(3, 15);
         var v = Math.atan(o / a) / rad;
         return { prompt: 'In a right-angled triangle, the side opposite angle θ is ' + o + ' cm and the adjacent side is ' + a + ' cm. Find θ, correct to 1 decimal place.', answer: v, dp: 1, unit: '°',
+          figure: { type: 'triangle', shape: 'right', w: a, h: o, side: { AB: o + ' cm', BC: a + ' cm' }, angle: { C: 'θ' }, alt: 'Right-angled triangle ABC with the right angle at B, AB ' + o + ' cm opposite angle C, BC ' + a + ' cm adjacent to it, and angle C marked θ.' },
           hint: 'tan θ = opposite ÷ adjacent.', solution: ['tan θ = ' + o + '/' + a + ', so θ = ' + v.toFixed(1) + '°.'] };
       } }
     ]

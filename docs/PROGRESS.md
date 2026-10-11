@@ -32,7 +32,7 @@ Keep multi-step, real-world and "explain/compare" items, and one clean example o
 
 1. **Spot-check answers against a trusted key.** Worked answers were verified by hand or in code, not against a published key. Review a sample from each topic.
 2. **Add generators for Probability** (the only topic with `generators: []`).
-3. **Support diagrams.** Add SVG visuals (for example via `js/viz/viz.js`) so constructions, circle and angle figures, graph reading and box plots can be shown instead of described. This would also allow constructions and graph drawing.
+3. **Roll diagrams out to the remaining topics.** The figure engine (`js/figures.js`) is done, with figures in Angles, Pythagoras, Trigonometry, Circles, Bearings and Congruence & Similarity (2026-10-12). Still to draw: vectors and matrices on a grid, curve and linear graphs, speed-time graphs, Venn diagrams, box plots, histograms, cumulative frequency curves, probability trees, mensuration solids. New figure types are added as a preset in `js/figures.js`. Constructions and graph drawing still need an interactive plot/draw input.
 4. **Decide the level of Speed-Time Graphs and Money Matters** (see above), then set `verified: true` or remove the flag.
 5. **Check balance of difficulty.** Some banks have few challenge items (for example Approximation, Sets, Data Handling, Cumulative Frequency).
 6. **Add a quiz or exam-paper mode** that mixes topics by level with a paper-style mark total (Paper 1 about 26 short questions, Paper 2 about 9 to 10 longer questions, 90 marks each).
@@ -46,7 +46,7 @@ The `papers/` folder is git-ignored and local only. On a new machine, copy it se
 
 ## Known limits and open items
 
-- The site cannot show diagrams. Figure-based and graph-reading questions state the values to use. **Constructions, graph drawing and "explain in words" parts are not covered.**
+- Diagrams exist only for Angles, Pythagoras, Trigonometry, Circles, Bearings and Congruence & Similarity so far (see Next steps #3). Other figure-based and graph-reading questions still state the values to use. Diagrams are schematic ("not drawn to scale"); the trig elevation question with two sightings (`tr15`) has no figure yet. **Constructions, graph drawing and "explain in words" parts are not covered.**
 - Speed-Time Graphs and Money Matters levels are a judgement (see above).
 - No generator exists for Probability (`generators: []`); its bank is hand-written only.
 - Answers were worked by hand or computed in code. Errors found and fixed during the work (for example a wrong median, a wrong profit total, a wrong average speed) show that fixed-answer questions deserve a spot-check against a trusted key before wider use.
@@ -67,3 +67,5 @@ Serve the folder (`python -m http.server 5173`), open the site and paste `tests/
 ## Log
 
 - **2026-10-06**: Built all 30 topics from the Sec 1 to 4 papers; added `mat()`/`vec()` markup; checked topic levels against the MOE syllabus and set `verified`; removed 82 redundant or out-of-syllabus questions; added this file, `tools/render-pdf.ps1` and the extended self-check.
+- **2026-10-12**: Added question diagrams. New `js/figures.js` (`EMATH.fig.render`, types triangle/polygon/parallel/fan/grid/cuboid), `figure` field on questions and parts, shown in practice, quiz and quiz review; CSS in `components.css`; `selfcheck.js` now renders every figure and requires `alt`. Piloted on 9 Angles, 12 Pythagoras and 8 Trigonometry questions plus the generators; added Pythagoras `y16` (distance on a grid).
+- **2026-10-12 (2)**: Figures for Circles (16 questions + generators), Bearings (8 + generators) and Congruence & Similarity (4 + a generator). New figure types `circle`, `bearing` and `multi` (side-by-side shapes); triangle `shape:'sss'`; `divide`, `par`, `texts` keys. **Data fix found while drawing:** `cs14` gave AB = 8 cm, BC = 11 cm, angle ABC = 64° and angle ACB = 51°, which cannot all hold in one triangle; AB was not needed by any part, so it was removed (answers unchanged).

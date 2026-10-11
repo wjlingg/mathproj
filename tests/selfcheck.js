@@ -7,10 +7,11 @@
  *      nested brackets, an unmatched {a|b}, or an unrendered mat( / vec( ).
  *   3. Question ids must be unique within each topic.
  *   4. A wider run of generator seeds must all mark themselves correct and be finite.
+ *   5. Every `figure` (question or part, including generated ones) must render an SVG with alt text.
  * Tip: the dev server lets the browser cache .js files, so hard-reload after editing data.
  */
 (function () {
-  var E = window.EMATH, bad = [], n = 0, leftovers = [], dupIds = [], generatorBad = [];
+  var E = window.EMATH, bad = [], n = 0, leftovers = [], dupIds = [], generatorBad = [], figBad = [], figs = 0;
 
   function selfAnswer(p) {
     if (p.type === 'mcq') return String(p.answer);
@@ -40,6 +41,14 @@
       for (var s = 1; s <= 60; s++) qs.push(E.generate(t, g, s, true));
     });
     qs.forEach(function (q) {
+      var specs = [q.figure].concat((q.parts || []).map(function (p) { return p.figure; })).filter(Boolean);
+      specs.forEach(function (sp) {
+        figs++;
+        var el = null, err = null;
+        try { el = E.fig.render(sp); } catch (e) { err = String(e); }
+        var svg = el && el.querySelector('svg');
+        if (err || !svg || !sp.alt || /NaN|undefined|Infinity/.test(svg.outerHTML)) figBad.push({ id: q.id, err: err || (!sp.alt ? 'no alt' : 'bad svg') });
+      });
       E.normQ(q).parts.forEach(function (p) {
         n++;
         var r = E.math.gradePart(p, selfAnswer(p));
@@ -63,7 +72,7 @@
     });
   });
 
-  var out = { checked: n, bad: bad, leftovers: leftovers, dupIds: dupIds, generatorBad: generatorBad.slice(0, 10) };
-  console.log('checked: ' + n + ', bad: ' + bad.length + ', leftovers: ' + leftovers.length + ', dupIds: ' + dupIds.length + ', generatorBad: ' + generatorBad.length, out);
+  var out = { checked: n, bad: bad, leftovers: leftovers, dupIds: dupIds, generatorBad: generatorBad.slice(0, 10), figures: figs, figBad: figBad };
+  console.log('checked: ' + n + ', bad: ' + bad.length + ', leftovers: ' + leftovers.length + ', dupIds: ' + dupIds.length + ', generatorBad: ' + generatorBad.length + ', figures: ' + figs + ', figBad: ' + figBad.length, out);
   return out;
 })();

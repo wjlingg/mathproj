@@ -111,6 +111,23 @@ sup { font-size: .72em; line-height: 0; }
 .pt { fill: var(--bad); stroke: var(--surface); stroke-width: 2; }
 .branch { stroke: var(--ink); stroke-width: 1.5; }
 
+/* ---- question figures (js/figures.js) ---- */
+.q-figure { margin: 10px 0 12px; }
+.q-figure figcaption { font-size: .85rem; margin-top: 4px; }
+.fig-svg { width: 100%; max-width: 360px; height: auto; display: block; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; }
+.f-line { stroke: var(--ink); stroke-width: 2; fill: none; stroke-linecap: round; }
+.f-line.f-dash { stroke-dasharray: 6 4; stroke-width: 1.6; }
+.f-line.f-faint { stroke: var(--muted); }
+.f-line.f-acc { stroke: var(--accent); stroke-width: 2.4; }
+.f-arc { stroke: var(--accent); stroke-width: 1.6; fill: none; }
+.f-grid { stroke: var(--line); stroke-width: .8; }
+.f-axis { stroke: var(--muted); stroke-width: 1.5; }
+.f-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 1.5; }
+.f-t { font-family: var(--font); font-size: 14px; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.f-vt { font-weight: 700; }
+.f-ang { fill: var(--accent); font-weight: 600; }
+.f-tick { fill: var(--muted); font-size: 11px; }
+
 @media (max-width: 560px) {
   .site-header { position: static; }
   .nav { margin-left: 0; }

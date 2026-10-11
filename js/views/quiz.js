@@ -72,6 +72,7 @@ EMATH.views.quiz = function (root, preset) {
         host.appendChild(h('article', { class: 'review ' + (r.all ? 'ok' : 'bad') },
           h('h3', {}, 'Question ' + (k + 1) + (r.all ? ' ✓' : ' ✗') + '  (' + r.got + '/' + r.total + ')'),
           q.prompt ? h('p', { class: 'q-prompt', html: rm(q.prompt) }) : null,
+          q.figure ? EMATH.fig.render(q.figure) : null,
           EMATH.normQ(q).parts.map(function (p) { return p.prompt ? h('p', { html: (p.label || '') + ' ' + rm(p.prompt) }) : null; }),
           EMATH.solutionBlock(q, false)));
       });
