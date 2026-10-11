@@ -122,6 +122,11 @@ sup { font-size: .72em; line-height: 0; }
 .f-arc { stroke: var(--accent); stroke-width: 1.6; fill: none; }
 .f-grid { stroke: var(--line); stroke-width: .8; }
 .f-axis { stroke: var(--muted); stroke-width: 1.5; }
+.f-curve { stroke: var(--ink); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.f-curve.f-acc { stroke: var(--accent); }
+.f-curve.f-dash { stroke-dasharray: 6 4; }
+.f-head { fill: var(--ink); }
+.f-axl { font-style: italic; }
 .f-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 1.5; }
 .f-t { font-family: var(--font); font-size: 14px; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
 .f-vt { font-weight: 700; }

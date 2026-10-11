@@ -10,7 +10,9 @@
  *   polygon   v shape:'parallelogram'|'rectangle'|'regular'|'general' n w h pts   (convex only)
  *   parallel  top:['A','B'] bottom:['C','D'] cross:['P','Q'] or ['R','P','Q','S'] theta lean:'right'|'left'
  *   fan       total:180|360 parts:[{deg,label,name}] start      (angles on a line or at a point)
- *   grid      x:[min,max] y:[min,max] points:{A:[x,y]} lines segments dots
+ *   grid      x:[min,max] y:[min,max] points:{A:[x,y]} segments:[['A','B','accent'|'dash'|'arrow']] dots
+ *             curves:[{f:function(x){...}, from, to, accent, dash}]  paths:[{pts:[[x,y],...], accent, dash}]
+ *             free:true h:220 (axes scaled separately, for speed-time and other graphs) xstep ystep step every xlabel ylabel
  *   cuboid    dims:[l,w,h]  (base ABCD, top EFGH, D is the hidden corner)
  *   circle    on:{A:angleDeg,...} o:'O' (or false) radii:['A'] chords:[['A','B']] poly:['A','B','C','D']
  *             ext:{name:'P', angle, dist, touch:['A','B']} (tangents from P, radius 1)  tangentAt:[{at:'A', names:['T','U']}]
@@ -22,7 +24,7 @@
  *   rays:[{from,angle,len,name,dash}]  arcs:[{at,from,to,label,r,big}]  lines:[{a,b,dash,label,side,accent}]
  *   points:{name:[x,y]} (names starting "_" are hidden)  dots:[names]  names:false  hide:[names]  nameAt:{A:[dx,dy]}
  *   divide:[{name:'D', a:'A', b:'B', t:0.4}] (a point part-way along a line)  par:[['D','E'],['B','C']] (parallel arrows)
- *   texts:[{at:'A', text:'N', dx, dy}]
+ *   texts:[{at:'A' | [x,y] in graph units, text:'N', dx, dy}]   arrow:['OA','OB'] (arrowhead at the middle of that side, pointing away from the first letter)
  */
 EMATH.fig = (function () {
   var esc = EMATH.util.esc;
@@ -124,10 +126,13 @@ EMATH.fig = (function () {
       return sc;
     },
     grid: function (spec) {
-      var sc = { points: {}, lines: [], polygon: null, grid: { x: spec.x, y: spec.y }, centre: [0, 0] };
+      var sc = { points: {}, lines: [], polygon: null, centre: [0, 0], curves: spec.curves || [], paths: spec.paths || [] };
+      sc.grid = { x: spec.x, y: spec.y, free: spec.free, h: spec.h, step: spec.step, xstep: spec.xstep, ystep: spec.ystep, every: spec.every, xlabel: spec.xlabel, ylabel: spec.ylabel };
       var pts = spec.points || {};
       Object.keys(pts).forEach(function (n) { sc.points[n] = pts[n]; });
-      (spec.segments || []).forEach(function (s) { sc.lines.push({ a: s[0], b: s[1], accent: s[2] === 'accent', dash: s[2] === 'dash' }); });
+      (spec.segments || []).forEach(function (s) {
+        sc.lines.push({ a: s[0], b: s[1], accent: s[2] === 'accent' || s[2] === 'arrow', dash: s[2] === 'dash', arrowFrom: s[2] === 'arrow' ? s[0] : null, arrowEnd: true });
+      });
       sc.dotsDefault = Object.keys(pts).filter(function (n) { return n.charAt(0) !== '_'; });
       sc.pointLabels = spec.pointLabels || {};
       return sc;
@@ -231,6 +236,9 @@ EMATH.fig = (function () {
     });
     (spec.lines || []).forEach(function (l) { sc.lines.push(Object.assign({}, l)); });
     (spec.segments || []).forEach(function (s) { if (spec.type !== 'grid') sc.lines.push({ a: s[0], b: s[1] }); });
+    (spec.arrow || []).forEach(function (k) {
+      var ab = key2(k); lineFor(sc, ab[0], ab[1]).arrowFrom = ab[0];
+    });
     Object.keys(spec.side || {}).forEach(function (k) {
       var ab = key2(k); lineFor(sc, ab[0], ab[1]).label = spec.side[k];
     });
@@ -269,16 +277,19 @@ EMATH.fig = (function () {
     var maxH = g ? 350 : MAXH;
     var s = Math.min((W - 2 * PADX) / spanX, (maxH - 2 * PAD) / spanY);
     if (g) s = Math.min(s, 34);
-    var H = Math.max(110, spanY * s + 2 * PAD), ox = (W - spanX * s) / 2 - minx * s;
-    function X(x) { return ox + x * s; }
-    function Y(y) { return H - PAD - (y - miny) * s; }
+    var sx = s, sy = s, H;
+    if (g && g.free) { sx = (W - 2 * PADX) / spanX; sy = (g.h || 220) / spanY; H = (g.h || 220) + 2 * PAD; }
+    else H = Math.max(110, spanY * s + 2 * PAD);
+    var ox = (W - spanX * sx) / 2 - minx * sx;
+    function X(x) { return ox + x * sx; }
+    function Y(y) { return H - PAD - (y - miny) * sy; }
     var PX = {};
     names.forEach(function (n) { PX[n] = [X(P[n][0]), Y(P[n][1])]; });
 
     var cen = sc.centre ? [X(sc.centre[0]), Y(sc.centre[1])] : (function () {
-      var sx = 0, sy = 0, k = 0;
-      names.forEach(function (n) { sx += PX[n][0]; sy += PX[n][1]; k++; });
-      return [sx / k, sy / k];
+      var cx = 0, cy = 0, k = 0;
+      names.forEach(function (n) { cx += PX[n][0]; cy += PX[n][1]; k++; });
+      return [cx / k, cy / k];
     })();
     function f(n) { return Math.round(n * 10) / 10; }
     function txt(x, y, t, cls) {
@@ -287,19 +298,41 @@ EMATH.fig = (function () {
     var out = [];
 
     if (g) {
-      var st = g.step || 1, ev = g.every || (g.x[1] - g.x[0] > 10 ? 2 : 1), v;
-      for (v = Math.ceil(g.x[0] / st) * st; v <= g.x[1] + 1e-9; v += st) out.push('<line class="f-grid" x1="' + f(X(v)) + '" y1="' + f(Y(g.y[0])) + '" x2="' + f(X(v)) + '" y2="' + f(Y(g.y[1])) + '"/>');
-      for (v = Math.ceil(g.y[0] / st) * st; v <= g.y[1] + 1e-9; v += st) out.push('<line class="f-grid" x1="' + f(X(g.x[0])) + '" y1="' + f(Y(v)) + '" x2="' + f(X(g.x[1])) + '" y2="' + f(Y(v)) + '"/>');
+      var nice = function (span) { return span <= 10 ? 1 : span <= 20 ? 2 : span <= 50 ? 5 : span <= 100 ? 10 : 20; };
+      var stx = g.xstep || g.step || nice(g.x[1] - g.x[0]), sty = g.ystep || g.step || nice(g.y[1] - g.y[0]);
+      var evx = g.every || stx, evy = g.every || sty, v;
+      for (v = Math.ceil(g.x[0] / stx) * stx; v <= g.x[1] + 1e-9; v += stx) out.push('<line class="f-grid" x1="' + f(X(v)) + '" y1="' + f(Y(g.y[0])) + '" x2="' + f(X(v)) + '" y2="' + f(Y(g.y[1])) + '"/>');
+      for (v = Math.ceil(g.y[0] / sty) * sty; v <= g.y[1] + 1e-9; v += sty) out.push('<line class="f-grid" x1="' + f(X(g.x[0])) + '" y1="' + f(Y(v)) + '" x2="' + f(X(g.x[1])) + '" y2="' + f(Y(v)) + '"/>');
       var ax = g.y[0] <= 0 && g.y[1] >= 0 ? 0 : g.y[0], ay = g.x[0] <= 0 && g.x[1] >= 0 ? 0 : g.x[0];
       out.push('<line class="f-axis" x1="' + f(X(g.x[0])) + '" y1="' + f(Y(ax)) + '" x2="' + f(X(g.x[1])) + '" y2="' + f(Y(ax)) + '"/>');
       out.push('<line class="f-axis" x1="' + f(X(ay)) + '" y1="' + f(Y(g.y[0])) + '" x2="' + f(X(ay)) + '" y2="' + f(Y(g.y[1])) + '"/>');
-      for (v = Math.ceil(g.x[0] / ev) * ev; v <= g.x[1] + 1e-9; v += ev) if (v !== 0) out.push(txt(X(v), Y(ax) + 12, String(v), 'f-tick'));
-      for (v = Math.ceil(g.y[0] / ev) * ev; v <= g.y[1] + 1e-9; v += ev) if (v !== 0) out.push(txt(X(ay) - 12, Y(v), String(v), 'f-tick'));
-      out.push(txt(X(g.x[1]) + 2, Y(ax) - 11, 'x', 'f-tick'), txt(X(ay) + 11, Y(g.y[1]) - 2, 'y', 'f-tick'));
+      for (v = Math.ceil(g.x[0] / evx) * evx; v <= g.x[1] + 1e-9; v += evx) if (Math.abs(v) > 1e-9) out.push(txt(X(v), Y(ax) + 12, String(Math.round(v * 100) / 100), 'f-tick'));
+      for (v = Math.ceil(g.y[0] / evy) * evy; v <= g.y[1] + 1e-9; v += evy) if (Math.abs(v) > 1e-9) out.push(txt(X(ay) - 12, Y(v), String(Math.round(v * 100) / 100), 'f-tick'));
+      if (g.xlabel) out.push(txt(X((g.x[0] + g.x[1]) / 2), Y(ax) + 29, g.xlabel, 'f-tick f-axl'));
+      else out.push(txt(X(g.x[1]) + 2, Y(ax) - 11, 'x', 'f-tick'));
+      if (g.ylabel) out.push(txt(X(ay), Y(g.y[1]) - 15, g.ylabel, 'f-tick f-axl'));
+      else out.push(txt(X(ay) + 11, Y(g.y[1]) - 2, 'y', 'f-tick'));
     }
 
+    function poly(ptsPx, cls) {
+      if (ptsPx.length > 1) out.push('<polyline class="' + cls + '" points="' + ptsPx.map(function (p) { return f(p[0]) + ',' + f(p[1]); }).join(' ') + '"/>');
+    }
+    (sc.curves || []).forEach(function (c) {
+      var n = 240, run = [], k, x, y, lo = g ? g.y[0] : -Infinity, hi = g ? g.y[1] : Infinity, cls = 'f-curve' + (c.accent ? ' f-acc' : '') + (c.dash ? ' f-dash' : '');
+      for (k = 0; k <= n; k++) {
+        x = c.from + (c.to - c.from) * k / n;
+        y = c.f(x);
+        if (isFinite(y) && y >= lo - 1e-9 && y <= hi + 1e-9) run.push([X(x), Y(y)]);
+        else { poly(run, cls); run = []; }
+      }
+      poly(run, cls);
+    });
+    (sc.paths || []).forEach(function (p) {
+      poly(p.pts.map(function (q) { return [X(q[0]), Y(q[1])]; }), 'f-curve' + (p.accent ? ' f-acc' : '') + (p.dash ? ' f-dash' : ''));
+    });
+
     (sc.circles || []).forEach(function (c) {
-      out.push('<circle class="f-line" cx="' + f(PX[c.at][0]) + '" cy="' + f(PX[c.at][1]) + '" r="' + f(c.r * s) + '"/>');
+      out.push('<circle class="f-line" cx="' + f(PX[c.at][0]) + '" cy="' + f(PX[c.at][1]) + '" r="' + f(c.r * sx) + '"/>');
     });
 
     sc.lines.forEach(function (l) {
@@ -307,6 +340,13 @@ EMATH.fig = (function () {
       if (!a || !b) return;
       var cls = 'f-line' + (l.dash ? ' f-dash' : '') + (l.faint ? ' f-faint' : '') + (l.accent ? ' f-acc' : '');
       out.push('<line class="' + cls + '" x1="' + f(a[0]) + '" y1="' + f(a[1]) + '" x2="' + f(b[0]) + '" y2="' + f(b[1]) + '"/>');
+    });
+
+    sc.lines.forEach(function (l) {
+      if (!l.arrowFrom || !PX[l.a] || !PX[l.b]) return;
+      var from = PX[l.arrowFrom], to = PX[l.arrowFrom === l.a ? l.b : l.a], dx = to[0] - from[0], dy = to[1] - from[1], len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var ux = dx / len, uy = dy / len, k = l.arrowEnd ? 1 : 0.55, tx = from[0] + dx * k, ty = from[1] + dy * k;
+      out.push('<polygon class="f-head" points="' + f(tx) + ',' + f(ty) + ' ' + f(tx - ux * 10 - uy * 4.5) + ',' + f(ty - uy * 10 + ux * 4.5) + ' ' + f(tx - ux * 10 + uy * 4.5) + ',' + f(ty - uy * 10 - ux * 4.5) + '"/>');
     });
 
     (sc.parallels || []).forEach(function (p) {
