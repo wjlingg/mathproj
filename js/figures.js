@@ -13,11 +13,19 @@
  *   grid      x:[min,max] y:[min,max] points:{A:[x,y]} segments:[['A','B','accent'|'dash'|'arrow']] dots
  *             curves:[{f:function(x){...}, from, to, accent, dash}]  paths:[{pts:[[x,y],...], accent, dash}]
  *             free:true h:220 (axes scaled separately, for speed-time and other graphs) xstep ystep step every xlabel ylabel
+ *             xticks:false yticks:false   paths may take smooth:true (monotone curve through the points, for cumulative frequency)
  *   cuboid    dims:[l,w,h]  (base ABCD, top EFGH, D is the hidden corner)
  *   circle    on:{A:angleDeg,...} o:'O' (or false) radii:['A'] chords:[['A','B']] poly:['A','B','C','D']
  *             ext:{name:'P', angle, dist, touch:['A','B']} (tangents from P, radius 1)  tangentAt:[{at:'A', names:['T','U']}]
  *   bearing   start:'A' legs:[{name:'B', from, bearing, dist, label:'050°', side:'20 km', dash}] north:['B']
  *             (drawn true to the bearings and distances; north rays are added where a bearing is labelled)
+ *   venn      sets:['A','B'] or ['A','B','C']  counts:{A:'8', AB:'x', B:'12', out:'5'}  shade:['A']  layout:'subset' (B inside A)
+ *             setLabels:['Football 25','Basketball 18']  u:'ξ'   region keys: letters of the sets a region is inside, 'out' = none
+ *   tree      first:[{label:'R', p:'3/5'},...]  second:[[{label,p},...], ...] (second[i] hangs off first[i]; omit for one stage)
+ *   bar       labels:[...] values:[...] ylabel xlabel ystep ymax touch:true (histogram, equal widths) edges:[0,2,4,...] showValues
+ *   pie       slices:[{deg:150, label:'Sports 150°'},...]
+ *   box       min q1 median q3 max xlabel xstep axisMin axisMax
+ *   stem      rows:[{stem:1, leaves:[2,5,5]},...] key:'1 | 2 means 12'
  *   multi     parts:[spec, spec, ...]  places several figures side by side (for similar and congruent shapes)
  * Triangle also takes shape:'sss' sides:[AB,BC,CA] k (scale), so similar triangles can be drawn from their sides.
  * Common keys: side:{AB:'8 cm'}  angle:{A:'65°'}  right:['B']  equal:[['AB','AC']]  extend:[{from,through,name,len}]
@@ -27,7 +35,7 @@
  *   texts:[{at:'A' | [x,y] in graph units, text:'N', dx, dy}]   arrow:['OA','OB'] (arrowhead at the middle of that side, pointing away from the first letter)
  */
 EMATH.fig = (function () {
-  var esc = EMATH.util.esc;
+  var esc = EMATH.util.esc, uidN = 0;
   var W = 360, MAXH = 290, PAD = 40, PADX = 56, RAD = Math.PI / 180;
 
   function key2(k) {
@@ -199,6 +207,118 @@ EMATH.fig = (function () {
       (spec.north || []).forEach(north);
       return sc;
     },
+    venn: function (spec) {
+      var sets = spec.sets || ['A', 'B'], three = sets.length === 3, subset = spec.layout === 'subset';
+      var sc = { points: {}, lines: [], polygon: null, centre: [0, 0], texts: [], paths: [], circles: [], shades: [] };
+      var C, R, rect, pos, lab, ids = ['A', 'B', 'C'], i;
+      if (three) {
+        C = [[-0.55, 0.4], [0.55, 0.4], [0, -0.55]]; R = [1, 1, 1]; rect = [-2.1, -1.85, 2.1, 1.85];
+        pos = { A: [-1.0, 0.75], B: [1.0, 0.75], C: [0, -1.15], AB: [0, 0.85], AC: [-0.58, -0.2], BC: [0.58, -0.2], ABC: [0, 0.12], out: [1.65, -1.5] };
+        lab = [[-1.45, 1.3], [1.45, 1.3], [0.95, -1.3]];
+      } else if (subset) {
+        C = [[0, 0], [0.3, 0]]; R = [1.15, 0.55]; rect = [-1.9, -1.5, 1.9, 1.5];
+        pos = { A: [-0.62, 0], AB: [0.3, 0], out: [1.45, -1.1] }; lab = [[-0.95, 1.0], [0.62, 0.52]];
+      } else {
+        C = [[-0.55, 0], [0.55, 0]]; R = [1, 1]; rect = [-2.3, -1.5, 2.3, 1.65];
+        pos = { A: [-1.1, 0], AB: [0, 0], B: [1.1, 0], out: [1.8, -1.15] }; lab = [[-1.3, 1.32], [1.3, 1.32]];
+      }
+      for (i = 0; i < sets.length; i++) {
+        sc.points['_c' + ids[i]] = C[i];
+        sc.circles.push({ at: '_c' + ids[i], r: R[i], id: ids[i] });
+      }
+      var corners = [[rect[0], rect[1]], [rect[2], rect[1]], [rect[2], rect[3]], [rect[0], rect[3]]];
+      corners.forEach(function (c, k) { sc.points['_r' + k] = c; });
+      sc.paths.push({ pts: corners.concat([corners[0]]) });
+      sc.vrect = rect;
+      Object.keys(spec.counts || {}).forEach(function (k) {
+        if (pos[k]) sc.texts.push({ at: pos[k], text: String(spec.counts[k]), cls: 'f-vt' });
+      });
+      sets.forEach(function (n, k) { sc.texts.push({ at: lab[k], text: (spec.setLabels || sets)[k], cls: 'f-ang' }); });
+      sc.texts.push({ at: [rect[0] + 0.28, rect[3] - 0.25], text: spec.u || 'ξ', cls: 'f-vt' });
+      (spec.shade || []).forEach(function (key) {
+        var inn = [], out = [];
+        ids.slice(0, sets.length).forEach(function (id) { (key !== 'out' && key.indexOf(id) >= 0 ? inn : out).push(id); });
+        sc.shades.push({ inn: inn, out: out });
+      });
+      return sc;
+    },
+    tree: function (spec) {
+      var first = spec.first || [], rows = spec.second || first.map(function () { return []; });
+      var sc = { points: { _o: [0, 0] }, lines: [], polygon: null, texts: [], centre: [3, 0] };
+      var total = 0;
+      rows.forEach(function (r) { total += Math.max(r.length, 1); });
+      var cur = (total - 1) / 2;
+      function branch(from, fy, to, ty, p) {
+        sc.lines.push({ a: from, b: to, label: p, right: true, side: ty > fy + 0.01 ? -1 : 1 });
+      }
+      first.forEach(function (f, i) {
+        var kids = rows[i] || [], ysum = 0, top = cur;
+        kids.forEach(function (k, j) {
+          sc.points['_l' + i + '_' + j] = [6, cur];
+          ysum += cur; cur -= 1;
+        });
+        if (!kids.length) cur -= 1;
+        var ny = kids.length ? ysum / kids.length : top;
+        sc.points['_n' + i] = [3, ny];
+        branch('_o', 0, '_n' + i, ny, f.p);
+        sc.texts.push({ at: '_n' + i, text: f.label, cls: 'f-vt', dy: kids.length ? -14 : 0, dx: kids.length ? 0 : 16 });
+        kids.forEach(function (k, j) {
+          var id = '_l' + i + '_' + j;
+          branch('_n' + i, ny, id, sc.points[id][1], k.p);
+          sc.texts.push({ at: id, text: k.label, cls: 'f-vt', dx: 16 });
+        });
+      });
+      return sc;
+    },
+    bar: function (spec) {
+      var vals = spec.values, n = vals.length, gap = spec.touch ? 0 : 0.18;
+      var ymax = spec.ymax || Math.max.apply(null, vals) * 1.15;
+      var sc = presets.grid({ x: [0, n], y: [0, ymax], free: true, h: spec.h || 200, ystep: spec.ystep, ylabel: spec.ylabel, xlabel: spec.xlabel });
+      sc.grid.xticks = false; sc.grid.xstep = 1000;
+      if (!spec.xlabel) sc.grid.xlabel = false;
+      sc.rects = []; sc.texts = [];
+      vals.forEach(function (v, i) {
+        sc.rects.push({ x0: i + gap, y0: 0, x1: i + 1 - gap, y1: v });
+        if (spec.showValues) sc.texts.push({ at: [i + 0.5, v], text: String(v), dy: -9, cls: 'f-tick' });
+        if (!spec.edges) sc.texts.push({ at: [i + 0.5, 0], text: spec.labels[i], dy: 14, cls: 'f-tick' });
+      });
+      (spec.edges || []).forEach(function (e, i) { sc.texts.push({ at: [i, 0], text: String(e), dy: 14, cls: 'f-tick' }); });
+      return sc;
+    },
+    pie: function (spec) {
+      var sc = { points: { _O: [0, 0] }, lines: [], polygon: null, circles: [{ at: '_O', r: 1, hide: true }], wedges: [], centre: [0, 0] };
+      var cur = 0;
+      (spec.slices || []).forEach(function (sl, i) {
+        sc.wedges.push({ at: '_O', r: 1, a0: cur, a1: cur + sl.deg, label: sl.label, i: i });
+        cur += sl.deg;
+      });
+      return sc;
+    },
+    box: function (spec) {
+      var span = spec.max - spec.min, pad = span * 0.08;
+      var x0 = spec.axisMin != null ? spec.axisMin : Math.floor(spec.min - pad), x1 = spec.axisMax != null ? spec.axisMax : Math.ceil(spec.max + pad);
+      var sc = presets.grid({ x: [x0, x1], y: [0, 2], free: true, h: 100, ystep: 2, xstep: spec.xstep, xlabel: spec.xlabel });
+      sc.grid.yticks = false;
+      sc.rects = [{ x0: spec.q1, y0: 0.6, x1: spec.q3, y1: 1.4 }];
+      sc.paths = [
+        { pts: [[spec.min, 1], [spec.q1, 1]] }, { pts: [[spec.q3, 1], [spec.max, 1]] },
+        { pts: [[spec.min, 0.75], [spec.min, 1.25]] }, { pts: [[spec.max, 0.75], [spec.max, 1.25]] },
+        { pts: [[spec.median, 0.6], [spec.median, 1.4]], accent: true }
+      ];
+      return sc;
+    },
+    stem: function (spec) {
+      var rows = spec.rows || [], n = rows.length;
+      var sc = { points: { _a: [0, 0], _b: [4.2, n + 1.4] }, lines: [], polygon: null, texts: [], centre: [2, n / 2], maxScale: 26 };
+      rows.forEach(function (r, i) {
+        var y = n - i;
+        sc.texts.push({ at: [1.2, y], text: String(r.stem), cls: 'f-vt', anchor: 'end' });
+        sc.texts.push({ at: [1.32, y], text: '|', cls: 'f-t' });
+        sc.texts.push({ at: [1.45, y], text: r.leaves.join('  '), cls: 'f-t', anchor: 'start' });
+      });
+      if (spec.key) sc.texts.push({ at: [2.1, 0], text: 'Key: ' + spec.key, cls: 'f-tick' });
+      return sc;
+    },
     cuboid: function (spec) {
       var d = spec.dims || [4, 3, 2], l = d[0], wd = d[1] * 0.55, h = d[2], ox = wd * 0.8, oy = wd * 0.6;
       var sc = { points: { A: [0, 0], B: [l, 0], C: [l + ox, oy], D: [ox, oy], E: [0, h], F: [l, h], G: [l + ox, oy + h], H: [ox, oy + h] },
@@ -277,6 +397,7 @@ EMATH.fig = (function () {
     var maxH = g ? 350 : MAXH;
     var s = Math.min((W - 2 * PADX) / spanX, (maxH - 2 * PAD) / spanY);
     if (g) s = Math.min(s, 34);
+    if (sc.maxScale) s = Math.min(s, sc.maxScale);
     var sx = s, sy = s, H;
     if (g && g.free) { sx = (W - 2 * PADX) / spanX; sy = (g.h || 220) / spanY; H = (g.h || 220) + 2 * PAD; }
     else H = Math.max(110, spanY * s + 2 * PAD);
@@ -292,8 +413,8 @@ EMATH.fig = (function () {
       return [cx / k, cy / k];
     })();
     function f(n) { return Math.round(n * 10) / 10; }
-    function txt(x, y, t, cls) {
-      return '<text class="f-t ' + cls + '" x="' + f(x) + '" y="' + f(y) + '" text-anchor="middle" dominant-baseline="central">' + esc(t) + '</text>';
+    function txt(x, y, t, cls, anchor) {
+      return '<text class="f-t ' + cls + '" x="' + f(x) + '" y="' + f(y) + '" text-anchor="' + (anchor || 'middle') + '" dominant-baseline="central">' + esc(t) + '</text>';
     }
     var out = [];
 
@@ -305,12 +426,13 @@ EMATH.fig = (function () {
       for (v = Math.ceil(g.y[0] / sty) * sty; v <= g.y[1] + 1e-9; v += sty) out.push('<line class="f-grid" x1="' + f(X(g.x[0])) + '" y1="' + f(Y(v)) + '" x2="' + f(X(g.x[1])) + '" y2="' + f(Y(v)) + '"/>');
       var ax = g.y[0] <= 0 && g.y[1] >= 0 ? 0 : g.y[0], ay = g.x[0] <= 0 && g.x[1] >= 0 ? 0 : g.x[0];
       out.push('<line class="f-axis" x1="' + f(X(g.x[0])) + '" y1="' + f(Y(ax)) + '" x2="' + f(X(g.x[1])) + '" y2="' + f(Y(ax)) + '"/>');
-      out.push('<line class="f-axis" x1="' + f(X(ay)) + '" y1="' + f(Y(g.y[0])) + '" x2="' + f(X(ay)) + '" y2="' + f(Y(g.y[1])) + '"/>');
-      for (v = Math.ceil(g.x[0] / evx) * evx; v <= g.x[1] + 1e-9; v += evx) if (Math.abs(v) > 1e-9) out.push(txt(X(v), Y(ax) + 12, String(Math.round(v * 100) / 100), 'f-tick'));
-      for (v = Math.ceil(g.y[0] / evy) * evy; v <= g.y[1] + 1e-9; v += evy) if (Math.abs(v) > 1e-9) out.push(txt(X(ay) - 12, Y(v), String(Math.round(v * 100) / 100), 'f-tick'));
+      if (g.yticks !== false) out.push('<line class="f-axis" x1="' + f(X(ay)) + '" y1="' + f(Y(g.y[0])) + '" x2="' + f(X(ay)) + '" y2="' + f(Y(g.y[1])) + '"/>');
+      if (g.xticks !== false) for (v = Math.ceil(g.x[0] / evx) * evx; v <= g.x[1] + 1e-9; v += evx) if (Math.abs(v) > 1e-9) out.push(txt(X(v), Y(ax) + 12, String(Math.round(v * 100) / 100), 'f-tick'));
+      if (g.yticks !== false) for (v = Math.ceil(g.y[0] / evy) * evy; v <= g.y[1] + 1e-9; v += evy) if (Math.abs(v) > 1e-9) out.push(txt(X(ay) - 12, Y(v), String(Math.round(v * 100) / 100), 'f-tick'));
       if (g.xlabel) out.push(txt(X((g.x[0] + g.x[1]) / 2), Y(ax) + 29, g.xlabel, 'f-tick f-axl'));
-      else out.push(txt(X(g.x[1]) + 2, Y(ax) - 11, 'x', 'f-tick'));
-      if (g.ylabel) out.push(txt(X(ay), Y(g.y[1]) - 15, g.ylabel, 'f-tick f-axl'));
+      else if (g.xlabel !== false) out.push(txt(X(g.x[1]) + 2, Y(ax) - 11, 'x', 'f-tick'));
+      if (g.yticks === false) { /* no y axis (box plots) */ }
+      else if (g.ylabel) out.push(txt(X(ay), Y(g.y[1]) - 15, g.ylabel, 'f-tick f-axl'));
       else out.push(txt(X(ay) + 11, Y(g.y[1]) - 2, 'y', 'f-tick'));
     }
 
@@ -327,11 +449,68 @@ EMATH.fig = (function () {
       }
       poly(run, cls);
     });
+    function smooth(pts) {
+      // monotone cubic (Fritsch-Carlson) through the points, so a cumulative frequency curve never dips
+      var n = pts.length, d = [], m = [], k, out2 = [], j, t;
+      if (n < 3) return pts;
+      for (k = 0; k < n - 1; k++) d.push((pts[k + 1][1] - pts[k][1]) / (pts[k + 1][0] - pts[k][0]));
+      m[0] = d[0]; m[n - 1] = d[n - 2];
+      for (k = 1; k < n - 1; k++) {
+        if (d[k - 1] * d[k] <= 0) m[k] = 0;
+        else {
+          var h0 = pts[k][0] - pts[k - 1][0], h1 = pts[k + 1][0] - pts[k][0], w1 = 2 * h1 + h0, w2 = h1 + 2 * h0;
+          m[k] = (w1 + w2) / (w1 / d[k - 1] + w2 / d[k]);
+        }
+      }
+      for (k = 0; k < n - 1; k++) {
+        var h = pts[k + 1][0] - pts[k][0];
+        for (j = 0; j < 12; j++) {
+          t = j / 12;
+          var h00 = 2 * t * t * t - 3 * t * t + 1, h10 = t * t * t - 2 * t * t + t, h01 = -2 * t * t * t + 3 * t * t, h11 = t * t * t - t * t;
+          out2.push([pts[k][0] + t * h, h00 * pts[k][1] + h10 * h * m[k] + h01 * pts[k + 1][1] + h11 * h * m[k + 1]]);
+        }
+      }
+      out2.push(pts[n - 1]);
+      return out2;
+    }
     (sc.paths || []).forEach(function (p) {
-      poly(p.pts.map(function (q) { return [X(q[0]), Y(q[1])]; }), 'f-curve' + (p.accent ? ' f-acc' : '') + (p.dash ? ' f-dash' : ''));
+      var pts = p.smooth ? smooth(p.pts) : p.pts;
+      poly(pts.map(function (q) { return [X(q[0]), Y(q[1])]; }), 'f-curve' + (p.accent ? ' f-acc' : '') + (p.dash ? ' f-dash' : ''));
     });
 
+    (sc.rects || []).forEach(function (r) {
+      out.push('<rect class="f-bar" x="' + f(X(r.x0)) + '" y="' + f(Y(r.y1)) + '" width="' + f(X(r.x1) - X(r.x0)) + '" height="' + f(Y(r.y0) - Y(r.y1)) + '"/>');
+    });
+
+    (sc.wedges || []).forEach(function (w) {
+      var o = PX[w.at], r = w.r * sx, a0 = w.a0 * RAD, a1 = w.a1 * RAD, am = (a0 + a1) / 2;
+      function pp(a, rr) { return [o[0] + rr * Math.sin(a), o[1] - rr * Math.cos(a)]; }
+      var p0 = pp(a0, r), p1 = pp(a1, r);
+      out.push('<path class="f-wedge f-w' + (w.i % 4) + '" d="M' + f(o[0]) + ' ' + f(o[1]) + ' L' + f(p0[0]) + ' ' + f(p0[1]) + ' A' + f(r) + ' ' + f(r) + ' 0 ' + (w.a1 - w.a0 > 180 ? 1 : 0) + ' 1 ' + f(p1[0]) + ' ' + f(p1[1]) + ' Z"/>');
+      if (w.label) {
+        var inside = w.a1 - w.a0 >= 50, lp = pp(am, r * (inside ? 0.62 : 1.22));
+        out.push(txt(lp[0], lp[1], w.label, 'f-vt'));
+      }
+    });
+
+    if ((sc.shades || []).length && sc.vrect) {
+      var uid = ++uidN, vr = sc.vrect, x0 = X(vr[0]), x1 = X(vr[2]), yt = Y(vr[3]), yb = Y(vr[1]), defs = [];
+      sc.circles.forEach(function (c) {
+        var cx = PX[c.at][0], cy = PX[c.at][1], r = c.r * sx;
+        defs.push('<clipPath id="ci' + uid + c.id + '"><circle cx="' + f(cx) + '" cy="' + f(cy) + '" r="' + f(r) + '"/></clipPath>');
+        defs.push('<clipPath id="co' + uid + c.id + '"><path clip-rule="evenodd" d="M' + f(x0) + ' ' + f(yt) + 'H' + f(x1) + 'V' + f(yb) + 'H' + f(x0) + 'ZM' + f(cx - r) + ' ' + f(cy) + 'a' + f(r) + ' ' + f(r) + ' 0 1 0 ' + f(2 * r) + ' 0a' + f(r) + ' ' + f(r) + ' 0 1 0 ' + f(-2 * r) + ' 0Z"/></clipPath>');
+      });
+      out.push('<defs>' + defs.join('') + '</defs>');
+      sc.shades.forEach(function (sh) {
+        var open = '', close = '';
+        sh.inn.forEach(function (id) { open += '<g clip-path="url(#ci' + uid + id + ')">'; close += '</g>'; });
+        sh.out.forEach(function (id) { open += '<g clip-path="url(#co' + uid + id + ')">'; close += '</g>'; });
+        out.push(open + '<rect class="f-shade" x="' + f(x0) + '" y="' + f(yt) + '" width="' + f(x1 - x0) + '" height="' + f(yb - yt) + '"/>' + close);
+      });
+    }
+
     (sc.circles || []).forEach(function (c) {
+      if (c.hide) return;
       out.push('<circle class="f-line" cx="' + f(PX[c.at][0]) + '" cy="' + f(PX[c.at][1]) + '" r="' + f(c.r * sx) + '"/>');
     });
 
@@ -430,7 +609,7 @@ EMATH.fig = (function () {
 
     (sc.texts || []).forEach(function (t) {
       var p = typeof t.at === 'string' ? PX[t.at] : [X(t.at[0]), Y(t.at[1])];
-      if (p) out.push(txt(p[0] + (t.dx || 0), p[1] + (t.dy || 0), t.text, 'f-vt'));
+      if (p) out.push(txt(p[0] + (t.dx || 0), p[1] + (t.dy || 0), t.text, t.cls || 'f-vt', t.anchor));
     });
 
     return '<svg class="fig-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + f(H) + '" role="img" aria-label="' + esc(spec.alt || 'Diagram for the question') + '">' +

@@ -126,6 +126,10 @@ sup { font-size: .72em; line-height: 0; }
 .f-curve.f-acc { stroke: var(--accent); }
 .f-curve.f-dash { stroke-dasharray: 6 4; }
 .f-head { fill: var(--ink); }
+.f-bar { fill: var(--sq-a); stroke: var(--ink); stroke-width: 1.5; }
+.f-wedge { stroke: var(--ink); stroke-width: 1.5; }
+.f-w0 { fill: var(--sq-a); } .f-w1 { fill: var(--sq-b); } .f-w2 { fill: var(--sq-c); } .f-w3 { fill: var(--surface-2); }
+.f-shade { fill: var(--accent); opacity: .38; }
 .f-axl { font-style: italic; }
 .f-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 1.5; }
 .f-t { font-family: var(--font); font-size: 14px; fill: var(--ink); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }

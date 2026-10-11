@@ -56,17 +56,20 @@
         parts: [{ label: '(a)', prompt: 'Find n(A ∩ B).', answer: 2, marks: 2 }, { label: '(b)', prompt: 'Find n(A ∪ B).', answer: 8, marks: 2 }, { label: '(c)', prompt: 'Find n((A ∪ B)′).', answer: 4, marks: 2 }],
         solution: ['A = {2, 4, 6, 8, 10, 12}, B = {3, 6, 9, 12}.', 'A ∩ B = {6, 12}: 2.', 'n(A ∪ B) = 6 + 4 - 2 = 8.', '12 - 8 = 4.'] },
       { id: 'st8', level: 'standard', prompt: 'Of 60 students, 36 play football, 28 play basketball and 12 play both.',
+        figure: { type: 'venn', setLabels: ['Football', 'Basketball'], counts: { AB: '12' } , alt: 'A Venn diagram with two overlapping circles, Football and Basketball, with 12 in the overlap.' },
         parts: [{ label: '(a)', prompt: 'How many play neither sport?', answer: 8, marks: 3 }, { label: '(b)', prompt: 'How many play football only?', answer: 24, marks: 2 }],
         solution: ['n(F ∪ B) = 36 + 28 - 12 = 52, so neither = 60 - 52 = 8.', 'Football only = 36 - 12 = 24.'] },
       { id: 'st9', level: 'standard', marks: 3, prompt: 'n(ξ) = 50, n(A) = 30, n(B) = 25 and n(A ∪ B) = 42. Find n(A ∩ B).', answer: 13,
         solution: ['n(A ∪ B) = n(A) + n(B) - n(A ∩ B).', '42 = 55 - n(A ∩ B), so n(A ∩ B) = 13.'] },
       { id: 'st10', level: 'standard', prompt: 'n(ξ) = 60 and n(A′) = 24. B is a subset of A and n(B) = 15.',
+        figure: { type: 'venn', layout: 'subset', counts: { out: '24', AB: '15' } , alt: 'A Venn diagram with the circle B inside the circle A. 15 is written inside B and 24 is written outside A.' },
         parts: [{ label: '(a)', prompt: 'Find n(A).', answer: 36, marks: 2 }, { label: '(b)', prompt: 'Find n(A ∩ B′), the number in A but not in B.', answer: 21, marks: 2 }],
         solution: ['n(A) = 60 - 24 = 36.', 'Since B ⊂ A, the number in A but not in B is 36 - 15 = 21.'] },
       { id: 'st11', level: 'standard', prompt: 'ξ = {integers from 1 to 20}, P = {prime numbers} and Q = {odd numbers}.',
         parts: [{ label: '(a)', prompt: 'Find n(P ∩ Q).', answer: 7, marks: 2 }, { label: '(b)', prompt: 'Find n(P ∪ Q).', answer: 11, marks: 3 }],
         hint: 'P = {2, 3, 5, 7, 11, 13, 17, 19}. The only prime that is not odd is 2.', solution: ['P has 8 elements, Q has 10, and P ∩ Q = {3, 5, 7, 11, 13, 17, 19} has 7.', 'n(P ∪ Q) = 8 + 10 - 7 = 11.'] },
       { id: 'st12', level: 'standard', marks: 3, prompt: 'In a class of 40 students, 22 like Maths, 18 like Science and 5 like neither. Find the number who like both subjects.', answer: 5,
+        figure: { type: 'venn', setLabels: ['Maths', 'Science'], counts: { out: '5' } , alt: 'A Venn diagram with two overlapping circles, Maths and Science, with 5 written outside both circles.' },
         solution: ['Students who like at least one = 40 - 5 = 35.', '35 = 22 + 18 - n(both), so n(both) = 5.'] },
       { id: 'st13', level: 'standard', prompt: 'n(A) = 12 and n(B) = 9, and the universal set has 18 elements.',
         parts: [{ label: '(a)', prompt: 'Find the greatest possible value of n(A ∩ B).', answer: 9, marks: 2 }, { label: '(b)', prompt: 'Find the least possible value of n(A ∩ B).', answer: 3, marks: 2 }],
@@ -74,10 +77,19 @@
       { id: 'st14', level: 'standard', marks: 2, prompt: 'A = {x : x is an integer, 2 < x ≤ 7}. Find n(A).', answer: 5, solution: ['A = {3, 4, 5, 6, 7}, so n(A) = 5.'] },
       // Sec 4 style: Venn diagrams with an unknown, and number sets
       { id: 'st17', level: 'standard', marks: 2, prompt: 'A Venn diagram for ξ shows 8 elements in A only, x elements in both A and B, 12 elements in B only and 5 elements in neither. n(ξ) = 35. Find x.', answer: 10,
+        figure: { type: 'venn', counts: { A: '8', AB: 'x', B: '12', out: '5' } , alt: 'A Venn diagram with two overlapping circles A and B. 8 is in A only, x is in the overlap, 12 is in B only and 5 is outside both circles.' },
         solution: ['8 + x + 12 + 5 = 35.', 'x + 25 = 35, so x = 10.'] },
       { id: 'st18', level: 'standard', marks: 1, type: 'mcq', prompt: 'Which set notation describes the elements that are in B but not in A?', options: ['A′ ∩ B', 'A ∩ B′', 'A ∪ B', 'A′ ∪ B′'], answer: 0, solution: ['In B and not in A means in B and in A′, so A′ ∩ B.'] },
       { id: 'st19', level: 'standard', marks: 2, type: 'mcq', prompt: 'A is the set of integers and B is the set of rational numbers. Is B a subset of A?', options: ['Yes', 'No, because B contains numbers such as {1|2} that are not integers'], answer: 1,
-        solution: ['Every integer is rational, so A ⊂ B. But {1|2} is rational and not an integer, so B is not a subset of A.'] }
+        solution: ['Every integer is rational, so A ⊂ B. But {1|2} is rational and not an integer, so B is not a subset of A.'] },
+      { id: 'st20', level: 'standard', marks: 1, type: 'mcq', prompt: 'The Venn diagram shows the sets A and B. Which expression describes the shaded region?',
+        figure: { type: 'venn', shade: ['A'], alt: 'A Venn diagram with two overlapping circles A and B. The part of A that is outside B is shaded.' },
+        options: ['A ∩ B′', 'A′ ∩ B', 'A ∪ B′', '(A ∩ B)′'], answer: 0,
+        solution: ['The shaded region is inside A and outside B.', 'Outside B is B′, so the region is A ∩ B′.'] },
+      { id: 'st21', level: 'standard', marks: 2, type: 'mcq', prompt: 'The Venn diagram shows the sets A, B and C. Which expression describes the shaded region?',
+        figure: { type: 'venn', sets: ['A', 'B', 'C'], shade: ['AB'], alt: 'A Venn diagram with three overlapping circles A, B and C. The part where A and B overlap, outside C, is shaded.' },
+        options: ['(A ∩ B) ∪ C', 'A ∩ B ∩ C', 'A ∩ B ∩ C′', 'A ∪ B ∪ C′'], answer: 2,
+        solution: ['The shaded region is inside A and inside B, but outside C.', 'So it is A ∩ B ∩ C′. The part inside all three circles is not shaded.'] }
     ],
     generators: [
       { id: 'union', level: 'foundation', make: function (r) {
@@ -88,6 +100,7 @@
       { id: 'neither', level: 'standard', make: function (r) {
         var a = r.int(15, 35), b = r.int(15, 35), both = r.int(4, 12), nei = r.int(2, 10), total = a + b - both + nei;
         return { prompt: 'In a group of ' + total + ' people, ' + a + ' like tea, ' + b + ' like coffee and ' + both + ' like both. How many like neither?', answer: nei,
+          figure: { type: 'venn', setLabels: ['Tea', 'Coffee'], counts: { AB: String(both) }, alt: 'A Venn diagram with two overlapping circles, Tea and Coffee, with ' + both + ' in the overlap.' },
           hint: 'Find the number who like at least one drink first.', solution: ['At least one: ' + a + ' + ' + b + ' - ' + both + ' = ' + (a + b - both) + '.', 'Neither = ' + total + ' - ' + (a + b - both) + ' = ' + nei + '.'] };
       } }
     ]
