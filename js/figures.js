@@ -26,8 +26,13 @@
  *   pie       slices:[{deg:150, label:'Sports 150°'},...]
  *   box       min q1 median q3 max xlabel xstep axisMin axisMax
  *   stem      rows:[{stem:1, leaves:[2,5,5]},...] key:'1 | 2 means 12'
+ *   pyramid   dims:[l,w,h] (base ABCD, apex V)  height:'9 cm' (dashed height to the centre of the base)
+ *   solid     parts:[{k:'cyl'|'cone'|'dome'|'bowl'|'sphere', r, h, rl:'radius label', hl:'height label', sl:'slant label'}, ...]
+ *             stacked from the bottom; 'dome' is a hemisphere on top, 'bowl' a hemisphere hanging below
  *   multi     parts:[spec, spec, ...]  places several figures side by side (for similar and congruent shapes)
- * Triangle also takes shape:'sss' sides:[AB,BC,CA] k (scale), so similar triangles can be drawn from their sides.
+ * Triangle also takes shape:'sss' sides:[AB,BC,CA] k (scale), 'sas' sas:[AB,BC,angleB] and 'asa' asa:[angleB,angleC,BC],
+ * so a triangle can be drawn from the data a question gives. paths:[{pts, dash, accent}] works on every type;
+ * EMATH.fig.arc(cx, cy, r, fromDeg, toDeg) returns points for an arc.
  * Common keys: side:{AB:'8 cm'}  angle:{A:'65°'}  right:['B']  equal:[['AB','AC']]  extend:[{from,through,name,len}]
  *   rays:[{from,angle,len,name,dash}]  arcs:[{at,from,to,label,r,big}]  lines:[{a,b,dash,label,side,accent}]
  *   points:{name:[x,y]} (names starting "_" are hidden)  dots:[names]  names:false  hide:[names]  nameAt:{A:[dx,dy]}
@@ -54,6 +59,14 @@ EMATH.fig = (function () {
     if (r > 2.4) w = h * 2.4; else if (r < 1 / 2.4) h = w * 2.4;
     return [w, h];
   }
+  function arc(cx, cy, r, a0, a1, flat) {
+    var out = [], n = 36, k, a, e = flat == null ? 1 : flat;
+    for (k = 0; k <= n; k++) {
+      a = (a0 + (a1 - a0) * k / n) * RAD;
+      out.push([cx + r * Math.cos(a), cy + r * e * Math.sin(a)]);
+    }
+    return out;
+  }
   function letters(n) { var o = [], i; for (i = 0; i < n; i++) o.push(String.fromCharCode(65 + i)); return o; }
 
   /* ---- presets: spec -> scene {points, lines, polygon, ...} ---- */
@@ -67,6 +80,14 @@ EMATH.fig = (function () {
         var ab = spec.sides[0], bc = spec.sides[1], ca = spec.sides[2], k = spec.k || 1;
         var ax = (ab * ab + bc * bc - ca * ca) / (2 * bc);
         pts = [[ax * k, Math.sqrt(Math.max(ab * ab - ax * ax, 0.01)) * k], [0, 0], [bc * k, 0]];
+      }
+      else if (shape === 'sas') {
+        var q = spec.sas, ang = q[2] * RAD, kk = spec.k || 1;
+        pts = [[q[0] * Math.cos(ang) * kk, q[0] * Math.sin(ang) * kk], [0, 0], [q[1] * kk, 0]];
+      }
+      else if (shape === 'asa') {
+        var an = spec.asa, pb = an[0] * RAD, pc = an[1] * RAD, ab2 = an[2] * Math.sin(pc) / Math.sin(Math.PI - pb - pc);
+        pts = [[ab2 * Math.cos(pb), ab2 * Math.sin(pb)], [0, 0], [an[2], 0]];
       }
       else if (shape === 'right') pts = [[0, h], [0, 0], [w, 0]];
       else if (shape === 'isosceles' || shape === 'equilateral') pts = [[w / 2, h], [0, 0], [w, 0]];
@@ -319,6 +340,61 @@ EMATH.fig = (function () {
       if (spec.key) sc.texts.push({ at: [2.1, 0], text: 'Key: ' + spec.key, cls: 'f-tick' });
       return sc;
     },
+    pyramid: function (spec) {
+      var d = spec.dims || [4, 4, 4], l = d[0], wd = d[1] * 0.55, h = d[2], ox = wd * 0.8, oy = wd * 0.6, mx = (l + ox) / 2, my = oy / 2;
+      var sc = { points: { A: [0, 0], B: [l, 0], C: [l + ox, oy], D: [ox, oy], V: [mx, my + h], _M: [mx, my] }, lines: [], polygon: null };
+      [['A', 'B'], ['B', 'C'], ['V', 'A'], ['V', 'B'], ['V', 'C']].forEach(function (e) { sc.lines.push({ a: e[0], b: e[1] }); });
+      [['A', 'D'], ['D', 'C'], ['V', 'D']].forEach(function (e) { sc.lines.push({ a: e[0], b: e[1], dash: true, faint: true }); });
+      if (spec.height) sc.lines.push({ a: 'V', b: '_M', dash: true, label: spec.height, right: true });
+      return sc;
+    },
+    solid: function (spec) {
+      var E = 0.3, sc = { points: { _a: [0, 0] }, lines: [], polygon: null, paths: [], texts: [], centre: [0, 0] }, cur = 0;
+      function ell(y, r, a0, a1, dash) { sc.paths.push({ pts: arc(0, y, r, a0, a1, E), dash: dash }); }
+      function radius(y, r, label) {
+        if (!label) return;
+        sc.paths.push({ pts: [[0, y], [r, y]], dash: true, accent: true });
+        sc.texts.push({ at: [r / 2, y], text: label, cls: 'f-len', dy: -10 });
+      }
+      (spec.parts || []).forEach(function (p) {
+        var r = p.r, h = p.h, base = cur, k = p.k;
+        if (k === 'cyl') {
+          ell(base, r, 180, 360); ell(base, r, 0, 180, true); ell(base + h, r, 0, 360);
+          sc.paths.push({ pts: [[-r, base], [-r, base + h]] }, { pts: [[r, base], [r, base + h]] });
+          radius(base + h, r, p.rl);
+          if (p.hl) sc.texts.push({ at: [r, base + h / 2], text: p.hl, cls: 'f-len', dx: 24 });
+          cur = base + h;
+        } else if (k === 'cone') {
+          ell(base, r, 180, 360); ell(base, r, 0, 180, true);
+          sc.paths.push({ pts: [[-r, base], [0, base + h], [r, base]] });
+          radius(base, r, p.rl);
+          if (p.hl) {
+            sc.paths.push({ pts: [[0, base], [0, base + h]], dash: true });
+            sc.texts.push({ at: [0, base + h / 2], text: p.hl, cls: 'f-len', dx: -18 });
+          }
+          if (p.sl) sc.texts.push({ at: [r / 2, base + h / 2], text: p.sl, cls: 'f-len', dx: 18, dy: -4 });
+          cur = base + h;
+        } else if (k === 'dome') {
+          ell(base, r, 180, 360); ell(base, r, 0, 180, true);
+          sc.paths.push({ pts: arc(0, base, r, 0, 180, 1) });
+          radius(base, r, p.rl);
+          cur = base + r;
+        } else if (k === 'bowl') {
+          var top = base + r;
+          sc.paths.push({ pts: arc(0, top, r, 180, 360, 1) });
+          ell(top, r, 180, 360); ell(top, r, 0, 180, true);
+          radius(top, r, p.rl);
+          cur = top;
+        } else if (k === 'sphere') {
+          var c = base + r;
+          sc.paths.push({ pts: arc(0, c, r, 0, 360, 1) });
+          ell(c, r, 180, 360, true);
+          radius(c, r, p.rl);
+          cur = c + r;
+        }
+      });
+      return sc;
+    },
     cuboid: function (spec) {
       var d = spec.dims || [4, 3, 2], l = d[0], wd = d[1] * 0.55, h = d[2], ox = wd * 0.8, oy = wd * 0.6;
       var sc = { points: { A: [0, 0], B: [l, 0], C: [l + ox, oy], D: [ox, oy], E: [0, h], F: [l, h], G: [l + ox, oy + h], H: [ox, oy + h] },
@@ -344,6 +420,7 @@ EMATH.fig = (function () {
     });
     (spec.par || []).forEach(function (p) { sc.parallels.push({ a: p[0], b: p[1], t: 0.5 }); });
     sc.texts = (sc.texts || []).concat(spec.texts || []);
+    if (spec.type !== 'grid') sc.paths = (sc.paths || []).concat(spec.paths || []);
     (spec.extend || []).forEach(function (e) {
       var a = P[e.from], b = P[e.through], k = e.len != null ? e.len : 0.5;
       P[e.name] = [b[0] + (b[0] - a[0]) * k, b[1] + (b[1] - a[1]) * k];
@@ -393,6 +470,7 @@ EMATH.fig = (function () {
     (sc.circles || []).forEach(function (c) {
       var o = P[c.at]; grow(o[0] - c.r, o[1] - c.r); grow(o[0] + c.r, o[1] + c.r);
     });
+    (sc.paths || []).forEach(function (p) { p.pts.forEach(function (q) { grow(q[0], q[1]); }); });
     var spanX = (maxx - minx) || 1, spanY = (maxy - miny) || 1;
     var maxH = g ? 350 : MAXH;
     var s = Math.min((W - 2 * PADX) / spanX, (maxH - 2 * PAD) / spanY);
@@ -618,16 +696,23 @@ EMATH.fig = (function () {
 
   /* place several scenes side by side, bottoms aligned, for similar / congruent shapes */
   function merge(scs, gap) {
-    var out = { points: {}, lines: [], arcs: [], rights: [], ticks: [], dots: [], parallels: [], texts: [], circles: [], nameAt: {}, polygon: null };
+    var out = { points: {}, lines: [], arcs: [], rights: [], ticks: [], dots: [], parallels: [], texts: [], circles: [], paths: [], nameAt: {}, polygon: null };
     var cursor = 0;
     scs.forEach(function (sc) {
       var minx = Infinity, maxx = -Infinity;
-      Object.keys(sc.points).forEach(function (n) {
-        minx = Math.min(minx, sc.points[n][0]); maxx = Math.max(maxx, sc.points[n][0]);
-      });
+      function span(x) { if (x < minx) minx = x; if (x > maxx) maxx = x; }
+      Object.keys(sc.points).forEach(function (n) { span(sc.points[n][0]); });
+      (sc.paths || []).forEach(function (p) { p.pts.forEach(function (q) { span(q[0]); }); });
+      (sc.circles || []).forEach(function (c) { var o = sc.points[c.at]; span(o[0] - c.r); span(o[0] + c.r); });
       var shift = cursor - minx;
       Object.keys(sc.points).forEach(function (n) { out.points[n] = [sc.points[n][0] + shift, sc.points[n][1]]; });
-      ['lines', 'arcs', 'rights', 'ticks', 'dots', 'texts', 'circles'].forEach(function (k) { out[k] = out[k].concat(sc[k] || []); });
+      ['lines', 'arcs', 'rights', 'ticks', 'dots', 'circles'].forEach(function (k) { out[k] = out[k].concat(sc[k] || []); });
+      (sc.paths || []).forEach(function (p) {
+        out.paths.push(Object.assign({}, p, { pts: p.pts.map(function (q) { return [q[0] + shift, q[1]]; }) }));
+      });
+      (sc.texts || []).forEach(function (t) {
+        out.texts.push(typeof t.at === 'string' ? t : Object.assign({}, t, { at: [t.at[0] + shift, t.at[1]] }));
+      });
       (sc.parallels || []).forEach(function (p) { out.parallels.push(p.t != null ? p : Object.assign({}, p, { x: p.x + shift })); });
       Object.assign(out.nameAt, sc.nameAt || {});
       cursor = maxx + shift + gap;
@@ -652,5 +737,5 @@ EMATH.fig = (function () {
       (spec.scale === true ? '' : '<figcaption class="muted">Not drawn to scale.</figcaption>') });
   }
 
-  return { render: render, types: Object.keys(presets).concat('multi') };
+  return { render: render, arc: function (cx, cy, r, a0, a1) { return arc(cx, cy, r, a0, a1, 1); }, types: Object.keys(presets).concat('multi') };
 })();
