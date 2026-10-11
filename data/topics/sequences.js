@@ -97,7 +97,7 @@
           solution: ['Common difference d = ' + d + '.', k + 'th term = ' + a + ' + ' + (k - 1) + ' × (' + d + ') = ' + (a + (k - 1) * d) + '.'] };
       } },
       { id: 'find-n', level: 'standard', make: function (r) {
-        var d = r.int(2, 9), c = r.int(-5, 9), n = r.int(10, 40), v = d * n + c;
+        var d = r.int(2, 9), c = r.int(-5, 9) || 4, n = r.int(10, 40), v = d * n + c;
         return { prompt: 'The nth term of a sequence is ' + d + 'n ' + (c < 0 ? '- ' + (-c) : '+ ' + c) + '. Which term is equal to ' + v + '?', answer: n,
           hint: 'Solve ' + d + 'n ' + (c < 0 ? '- ' + (-c) : '+ ' + c) + ' = ' + v + '.',
           solution: [d + 'n ' + (c < 0 ? '- ' + (-c) : '+ ' + c) + ' = ' + v + ', so ' + d + 'n = ' + (v - c) + '.', 'n = ' + n + '.'] };
