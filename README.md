@@ -29,13 +29,14 @@ index.html            app shell
 css/                  tokens (light/dark themes), base, components
 js/                   app (router), store, util, math (answer checker), render-math, walkthrough
 js/views/             home, topic, practice, quiz, reference, dashboard
-js/viz/viz.js         pythagoras-proof, graph-plotter, prob-tree
+js/viz/viz.js         interactive demos: pythagoras-proof, graph-plotter, prob-tree
+js/figures.js         static question diagrams (triangles, circles, graphs, Venn, charts, solids ...) drawn as SVG
 data/                 syllabus, glossary, formulae, topics/<id>.js
 ```
 
 ## Topics
 
-All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked examples, 10 to 32 hand-written questions (foundation, standard, challenge; about 475 in total) with exam-style mark allocations, common mistakes, formulae and randomised generators. Redundant, trivial or out-of-syllabus questions have been removed:
+All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked examples, 10 to 32 hand-written questions (foundation, standard, challenge; about 480 in total) with exam-style mark allocations, common mistakes, formulae and randomised generators. Redundant, trivial or out-of-syllabus questions have been removed:
 
 - **Number and algebra:** Ratio and Proportion, Percentage, Algebraic Manipulation, Primes/HCF/LCM, Integers and Rational Numbers, Approximation and Estimation, Direct and Inverse Proportion, Indices and Standard Form, Linear Inequalities, Number Patterns and Sequences, Linear Graphs and Simultaneous Equations, Quadratic Equations and Graphs, Set Language, Speed-Time Graphs, Matrices, Money Matters (interest, hire purchase, exchange rates), Graphs of Functions.
 - **Geometry and measurement:** Angles/Lines/Polygons, Perimeter/Area/Volume, Congruence and Similarity, Pythagoras' Theorem, Trigonometry, Sine and Cosine Rules, Properties of Circles, Bearings, Vectors.
@@ -43,7 +44,7 @@ All 30 topics in `data/syllabus.js` are ready, each with notes, 3 worked example
 
 ## Where the questions come from
 
-The questions are original. They were written to match the topic spread, style and mark allocations of Sec 1 to Sec 4 school exam papers (a local, git-ignored `papers/` folder holds the source PDFs). No exam question text is copied. Diagrams cannot be shown, so figure-based and graph-reading questions state the values to use. Topic levels follow the MOE syllabus (see above).
+The questions are original. They were written to match the topic spread, style and mark allocations of Sec 1 to Sec 4 school exam papers (a local, git-ignored `papers/` folder holds the source PDFs). No exam question text is copied. Figure-based questions carry a diagram drawn from the question's own numbers (about 1 in 3 questions, in every geometry, graph, data and mensuration topic); the diagrams are schematic and marked "not drawn to scale". Constructions and graph drawing are not covered yet. Topic levels follow the MOE syllabus (see above).
 
 ## Notes
 

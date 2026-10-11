@@ -4,7 +4,7 @@ Read this before large changes. [AGENTS.md](../AGENTS.md) has the rules; this fi
 
 ## Where things stand (October 2026)
 
-- 30 topics, all ready, about 475 hand-written questions plus 2 generators per topic (see `data/syllabus.js` and `data/topics/`).
+- 30 topics, all ready, about 480 hand-written questions plus 2 generators per topic (17 topics have diagrams) (see `data/syllabus.js` and `data/topics/`).
 - Topic levels follow the MOE "Mathematics Syllabuses, Secondary One to Four" (O-Level Mathematics, Section 3). The syllabus groups content as Sec 1, Sec 2 and "Sec 3/4", so a Sec 3/4 topic lists `levels: [3, 4]`. Each topic's `syllabusNote` cites the strand (for example N7.11, G3).
 - 28 topics are `verified: true`. **Speed-Time Graphs** and **Money Matters** stay `verified: false`: the syllabus names speed-time graphs, interest, instalments and money exchange only as real-world contexts for all four years, so their level is a teaching choice.
 - `tests/selfcheck.js` is the regression test (see Testing below).
@@ -32,7 +32,7 @@ Keep multi-step, real-world and "explain/compare" items, and one clean example o
 
 1. **Spot-check answers against a trusted key.** Worked answers were verified by hand or in code, not against a published key. Review a sample from each topic.
 2. **Add generators for Probability** (the only topic with `generators: []`).
-3. **Roll diagrams out to the remaining topics.** The figure engine (`js/figures.js`) is done, with figures in Angles, Pythagoras, Trigonometry, Circles, Bearings, Congruence & Similarity, every geometry, graph, data and mensuration topic (17 of 30 topics, 2026-10-12). Matrices has no geometric content (matrix arithmetic and tables only), so it has none. Still missing: constructions, graph drawing and an interactive plot/draw input. New figure types are added as a preset in `js/figures.js`. Constructions and graph drawing still need an interactive plot/draw input.
+3. **Interactive drawing.** Static diagrams are done for every geometry, graph, data and mensuration topic (17 of 30 topics, 2026-10-12; `js/figures.js`). Matrices has no geometric content, so it has none. Still missing: constructions, graph drawing and a "plot the points" input, which need an interactive drawing input rather than a static figure. New figure types are added as a preset in `js/figures.js`.
 4. **Decide the level of Speed-Time Graphs and Money Matters** (see above), then set `verified: true` or remove the flag.
 5. **Check balance of difficulty.** Some banks have few challenge items (for example Approximation, Sets, Data Handling, Cumulative Frequency).
 6. **Add a quiz or exam-paper mode** that mixes topics by level with a paper-style mark total (Paper 1 about 26 short questions, Paper 2 about 9 to 10 longer questions, 90 marks each).
